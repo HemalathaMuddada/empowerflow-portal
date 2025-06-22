@@ -6,7 +6,16 @@ const ActiveEmployeesWidget = () => {
   const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
-    const employeeList = JSON.parse(localStorage.getItem('masterEmployeeList') || '[]');
+    const itemStr = localStorage.getItem('masterEmployeeList');
+    let employeeList = [];
+    if (itemStr && itemStr !== 'undefined') {
+      try {
+        employeeList = JSON.parse(itemStr);
+      } catch (e) {
+        console.error("Failed to parse 'masterEmployeeList' from localStorage:", e);
+        employeeList = []; // Fallback to empty array on error
+      }
+    }
     setTotalCount(employeeList.length);
     setActiveCount(employeeList.filter(emp => emp.status === 'Active').length);
   }, []); // Add dependencies if this needs to re-run on employee list changes

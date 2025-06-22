@@ -5,7 +5,16 @@ const OpenConcernsWidget = () => {
   const [openConcernsCount, setOpenConcernsCount] = useState(0);
 
   useEffect(() => {
-    const raisedConcerns = JSON.parse(localStorage.getItem('raisedConcerns') || '[]');
+    const itemStr = localStorage.getItem('raisedConcerns');
+    let raisedConcerns = [];
+    if (itemStr && itemStr !== 'undefined') {
+      try {
+        raisedConcerns = JSON.parse(itemStr);
+      } catch (e) {
+        console.error("Failed to parse 'raisedConcerns' from localStorage:", e);
+        raisedConcerns = [];
+      }
+    }
     setOpenConcernsCount(raisedConcerns.filter(c => c.status === 'Open' || c.status === 'Submitted').length);
   }, []);
 
