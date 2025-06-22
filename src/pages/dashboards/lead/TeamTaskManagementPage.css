@@ -1,0 +1,163 @@
+/* Styles for TeamTaskManagementPage.css */
+
+.team-task-management-page .dashboard-content h3 {
+  margin-bottom: 20px;
+  color: var(--secondary-accent-color);
+}
+
+.assign-task-section,
+.team-task-list-section {
+  margin-bottom: 30px;
+  /* .dashboard-card styles are applied */
+}
+
+/* Task Form Styles (can reuse/adapt from TaskManagementPage.css if made global) */
+.task-form .form-group {
+  margin-bottom: 18px;
+}
+.task-form .form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+.task-form .form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+
+.task-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.task-form input[type="text"],
+.task-form input[type="date"],
+.task-form textarea,
+.task-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(var(--text-color), 0.3);
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.task-form input[type="text"]:focus,
+.task-form input[type="date"]:focus,
+.task-form textarea:focus,
+.task-form select:focus {
+  border-color: var(--primary-accent-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--primary-accent-color), 0.2);
+}
+
+.task-form textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.task-form .submit-button {
+  background-color: var(--primary-accent-color);
+  color: var(--button-text-color);
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.task-form .submit-button:hover {
+  background-color: var(--secondary-accent-color);
+}
+
+/* Form messages */
+.form-message {
+  padding: 10px; margin-bottom: 15px; border-radius: 5px; font-size: 0.9rem; text-align: center;
+}
+.form-message.error-message { background-color: rgba(231, 76, 60, 0.1); color: #e74c3c; border: 1px solid #e74c3c; }
+.form-message.success-message { background-color: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid #2ecc71; }
+
+
+/* Team Task List Styles */
+.team-task-filters {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-end; /* Align items to bottom for better label-select alignment */
+  flex-wrap: wrap;
+}
+.team-task-filters .form-group {
+  flex: 1;
+  min-width: 200px; /* Ensure filters don't get too squished */
+  margin-bottom: 0;
+}
+.team-task-filters label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+}
+.team-task-filters select {
+  width: 100%;
+  padding: 8px 10px; /* Slightly smaller padding for filter selects */
+  border-radius: 5px;
+  border: 1px solid rgba(var(--text-color), 0.3);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Reusing .task-list, .task-item, .task-details, .task-actions from employee's TaskManagementPage.css */
+/* If specific styles are needed for team tasks, they can be prefixed with .team-tasks */
+/* For example: .team-tasks .task-item { ... } */
+/* The .task-item styling from src/pages/dashboards/employee/TaskManagementPage.css should be globally accessible or duplicated/refactored */
+/* For now, assume those styles are available or make them more global. */
+
+/* If TaskManagementPage.css styles are not global, copy relevant .task-list and .task-item styles here */
+.task-list { list-style: none; padding: 0; }
+.task-item {
+  background-color: rgba(var(--primary-accent-color), 0.03);
+  border: 1px solid rgba(var(--text-color), 0.1);
+  padding: 15px; margin-bottom: 10px; border-radius: 6px;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 15px;
+}
+.task-item .task-details { flex-grow: 1; }
+.task-item h4 { margin: 0 0 5px 0; font-size: 1.1rem; color: var(--text-color); }
+.task-item .task-due-date { font-size: 0.8rem; color: rgba(var(--text-color), 0.7); margin-bottom: 8px; }
+.task-item .task-desc { font-size: 0.9rem; line-height: 1.4; color: rgba(var(--text-color), 0.85); white-space: pre-wrap; }
+.task-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.task-actions select { padding: 5px 8px; border-radius: 4px; border: 1px solid rgba(var(--text-color), 0.3); font-size: 0.85rem; background-color: var(--background-color); color: var(--text-color); }
+.delete-task-button { background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 1.2rem; padding: 5px; line-height: 1; }
+.delete-task-button:hover { color: #c0392b; }
+.task-item.status-to-do { border-left: 5px solid #f39c12; }
+.task-item.status-in-progress { border-left: 5px solid #3498db; }
+.task-item.status-done { border-left: 5px solid #2ecc71; background-color: rgba(var(--text-color), 0.05); }
+.task-item.status-done h4, .task-item.status-done .task-due-date, .task-item.status-done .task-desc { text-decoration: line-through; opacity: 0.7; }
+
+@media (max-width: 768px) {
+  .task-form .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+   .task-form .form-row .form-group {
+    margin-bottom:18px;
+  }
+  .team-task-filters {
+    flex-direction: column;
+    align-items: stretch; /* Make filters full width when stacked */
+  }
+   .team-task-filters .form-group {
+    min-width: auto; /* Reset min-width */
+  }
+}
+
+@media (max-width: 600px) { /* Copied from employee TaskManagementPage.css */
+  .task-item { flex-direction: column; align-items: stretch; }
+  .task-actions { margin-top: 10px; align-self: flex-end; }
+}
