@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { speakText, getTimeBasedGreeting } from '../../utils/speech';
+import { useNavigate } from 'react-router-dom';
+import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
+import ThemeSwitcher from '../../components/ThemeSwitcher';
 import './Dashboard.css'; // Common dashboard styles
 
 function ManagerDashboard() {
   const [userName, setUserName] = useState('Manager');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = localStorage.getItem('loggedInUser');
@@ -22,8 +25,10 @@ function ManagerDashboard() {
     setUserName(currentUserName);
 
     const greeting = getTimeBasedGreeting();
-    const welcomeMessage = `${greeting} ${currentUserName}, you have successfully logged into the portal. Welcome to your Manager Dashboard.`;
-    speakText(welcomeMessage);
+    if (storedUser) {
+        const welcomeMessage = `${greeting} ${currentUserName}, you have successfully logged into the portal. Welcome to your Manager Dashboard.`;
+        speakText(welcomeMessage);
+    }
 
     return () => {
       if (window.speechSynthesis) {
@@ -32,11 +37,33 @@ function ManagerDashboard() {
     };
   }, []);
 
+  const handleLogout = () => {
+    const storedUserForLogout = localStorage.getItem('loggedInUser');
+    let currentUserNameForLogout = 'User';
+    if (storedUserForLogout) {
+      try {
+        const userData = JSON.parse(storedUserForLogout);
+        currentUserNameForLogout = userData.name || currentUserNameForLogout;
+      } catch (e) { /* ignore */ }
+    }
+    speakLogoutMessage(currentUserNameForLogout);
+    localStorage.removeItem('loggedInUser');
+    navigate('/login');
+  };
+
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
-        <h1>EmpowerFlow</h1>
-        <p>Manager Dashboard</p>
+        <div className="header-content">
+          <div className="logo-and-title">
+            <h1>EmpowerFlow</h1>
+            <p>Manager Dashboard</p>
+          </div>
+          <div className="header-actions">
+            <ThemeSwitcher />
+            <button onClick={handleLogout} className="logout-button">Logout</button>
+          </div>
+        </div>
       </header>
       <main className="dashboard-content">
         <h2>Welcome, {userName}!</h2>
