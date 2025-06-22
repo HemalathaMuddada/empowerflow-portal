@@ -12,8 +12,10 @@ import SuperAdminDashboard from './pages/dashboards/SuperAdminDashboard';
 // Employee specific sub-pages
 import LeaveManagementPage from './pages/dashboards/employee/LeaveManagementPage';
 import HolidayListPage from './pages/dashboards/employee/HolidayListPage';
-import PayslipListPage from './pages/dashboards/employee/PayslipListPage'; // New import
-import AttendanceLogPage from './pages/dashboards/employee/AttendanceLogPage'; // New import
+import PayslipListPage from './pages/dashboards/employee/PayslipListPage';
+import AttendanceLogPage from './pages/dashboards/employee/AttendanceLogPage';
+import WorkStatusReportPage from './pages/dashboards/employee/WorkStatusReportPage'; // New
+import RaiseConcernPage from './pages/dashboards/employee/RaiseConcernPage'; // New
 
 
 import './App.css';
@@ -42,6 +44,8 @@ function App() {
             <Route path="/dashboard/employee/holidays" element={<HolidayListPage />} />
             <Route path="/dashboard/employee/payslips" element={<PayslipListPage />} />
             <Route path="/dashboard/employee/attendance" element={<AttendanceLogPage />} />
+            <Route path="/dashboard/employee/work-status-report" element={<WorkStatusReportPage />} />
+            <Route path="/dashboard/employee/raise-concern" element={<RaiseConcernPage />} />
             {/* Future employee sub-routes can be added here:
             <Route path="/dashboard/employee/tasks" element={<div>Employee Tasks Page</div>} />
             */}

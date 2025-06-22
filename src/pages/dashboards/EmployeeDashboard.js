@@ -86,11 +86,12 @@ function EmployeeDashboard() {
             <Link to="/dashboard/employee/leave" className="action-button">
               Manage My Leave
             </Link>
-            {/* Add other primary action buttons here if needed:
-            <Link to="/dashboard/employee/submit-report" className="action-button">
+            <Link to="/dashboard/employee/work-status-report" className="action-button">
               Submit Work Report
             </Link>
-            */}
+            <Link to="/dashboard/employee/raise-concern" className="action-button">
+              Raise a Concern
+            </Link>
         </div>
 
         <div className="dashboard-grid">
