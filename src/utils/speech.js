@@ -90,27 +90,49 @@ export const speakLogoutMessage = (userName) => {
   // Get voices and try to select one
   // Voices may load asynchronously, so we might need to wait or retry.
   // For simplicity, we'll try to get them directly.
-  const voices = window.speechSynthesis.getVoices();
-  if (voices.length > 0) {
-      preferredVoice = findVoiceByGenderHint(genderHint);
-  } else {
-      // If voices are not loaded yet, set up an event listener
-      // and try again once they are loaded.
-      window.speechSynthesis.onvoiceschanged = () => {
-          const updatedVoices = window.speechSynthesis.getVoices();
-          if (updatedVoices.length > 0) {
-              const voiceForLogout = findVoiceByGenderHint(genderHint);
-              speakText(text, 'en-US', voiceForLogout ? voiceForLogout.name : null);
-              window.speechSynthesis.onvoiceschanged = null; // Remove listener after use
-          }
-      };
-      // Fallback to speaking without specific voice if onvoiceschanged doesn't fire quickly
-      // or if no suitable voice is found.
-      speakText(text, 'en-US');
-      return; // Exit early as the onvoiceschanged will handle it
-  }
+  let voices = window.speechSynthesis.getVoices();
 
-  speakText(text, 'en-US', preferredVoice ? preferredVoice.name : null);
+  const attemptSpeakWithVoice = () => {
+    voices = window.speechSynthesis.getVoices(); // Refresh voices list
+    if (voices.length > 0) {
+        preferredVoice = findVoiceByGenderHint(genderHint);
+        // Fallback to a default good quality English voice if no gender hint match
+        if (!preferredVoice) {
+            preferredVoice = voices.find(voice => voice.lang.startsWith('en') && (voice.name.includes('Google') || voice.name.includes('Microsoft') || voice.default));
+        }
+        // If still no preferred voice, the speakText will use browser default
+        speakText(text, 'en-US', preferredVoice ? preferredVoice.name : null);
+        window.speechSynthesis.onvoiceschanged = null; // Clean up listener
+        return true; // Speech was attempted
+    }
+    return false; // Voices not ready
+  };
+
+  if (!attemptSpeakWithVoice()) {
+    // If voices are not loaded yet, set up an event listener
+    // and try again once they are loaded.
+    window.speechSynthesis.onvoiceschanged = attemptSpeakWithVoice;
+    // As a final fallback if onvoiceschanged doesn't fire or no voices are ever found
+    // (e.g. browser support issue after initial check), speak with default settings.
+    // This timeout gives onvoiceschanged a moment to fire.
+    setTimeout(() => {
+        if (!window.speechSynthesis.speaking && !window.speechSynthesis.pending) { // Check if speech hasn't started
+             // Ensure listener is removed if we proceed with this fallback
+            if(window.speechSynthesis.onvoiceschanged === attemptSpeakWithVoice) {
+                 window.speechSynthesis.onvoiceschanged = null;
+            }
+            // Only speak if not already spoken by the event handler
+            // This check is tricky because speech might have been queued by attemptSpeakWithVoice if voices became available.
+            // The speakText itself cancels previous utterances.
+            // A more robust check would involve seeing if the 'text' is already in the queue, but that's complex.
+            // For now, relying on speakText's internal cancel.
+            if (!voices.length) { // If voices array is still empty after a short delay
+                 console.warn("Speech synthesis voices did not load promptly. Speaking with default voice.");
+                 speakText(text, 'en-US');
+            }
+        }
+    }, 500); // Wait 500ms for voices to potentially load
+  }
 };
 
 /**

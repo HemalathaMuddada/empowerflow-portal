@@ -46,7 +46,7 @@ function HolidayListPage() {
   };
 
   return (
-    <div className="dashboard-container holiday-list-page">
+    <div className="dashboard-container holiday-list-page fade-in-content">
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">

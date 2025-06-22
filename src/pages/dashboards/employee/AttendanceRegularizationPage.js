@@ -116,7 +116,7 @@ Status: ${newRequest.status}
   };
 
   return (
-    <div className="dashboard-container attendance-reg-page">
+    <div className="dashboard-container attendance-reg-page fade-in-content">
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">

@@ -68,7 +68,7 @@ function EmployeeDashboard() {
   };
 
   return (
-    <div className="dashboard-container employee-dashboard"> {/* Added 'employee-dashboard' class for specific layout */}
+    <div className="dashboard-container employee-dashboard fade-in-content"> {/* Added fade-in-content */}
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">

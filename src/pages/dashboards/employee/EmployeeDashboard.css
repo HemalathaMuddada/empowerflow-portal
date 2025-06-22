@@ -58,17 +58,17 @@
 /* This .dashboard-card is a more specific version for the grid items */
 .dashboard-card {
   background-color: var(--card-background);
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: var(--card-shadow);
+  border-radius: 10px; /* Slightly more rounded */
+  padding: 25px; /* Increased padding */
+  box-shadow: 0 4px 12px var(--card-shadow); /* Refined shadow */
   transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
 .dashboard-card:hover {
-    transform: translateY(-5px); /* Lift card on hover */
-    box-shadow: 0 8px 20px rgba(var(--text-color), 0.15); /* Enhanced shadow on hover */
+    transform: translateY(-6px); /* Slightly more lift */
+    box-shadow: 0 10px 25px rgba(var(--text-color), 0.18); /* More pronounced shadow */
 }
 
 

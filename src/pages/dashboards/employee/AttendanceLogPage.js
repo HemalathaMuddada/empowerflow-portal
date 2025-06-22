@@ -116,7 +116,7 @@ function AttendanceLogPage() {
   };
 
   return (
-    <div className="dashboard-container attendance-log-page">
+    <div className="dashboard-container attendance-log-page fade-in-content">
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">

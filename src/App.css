@@ -1,9 +1,9 @@
 /* Global Styles and Resets */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; /* Roboto as primary */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f4f7fc; /* Default background for the app */
@@ -36,20 +36,49 @@ a {
 
 a:hover {
   text-decoration: underline;
+  color: var(--secondary-accent-color); /* Use theme variable for hover */
 }
 
 /* Basic button styling (can be overridden by component-specific styles) */
-button {
+button, .action-button /* Apply to .action-button class as well if it's used globally */ {
   font-family: inherit;
   cursor: pointer;
-  padding: 0.5em 1em;
-  border-radius: 4px;
+  padding: 0.6em 1.2em; /* Slightly more padding */
+  border-radius: 5px; /* Consistent radius */
   border: 1px solid transparent;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
 }
+
+button:hover, .action-button:hover {
+  transform: translateY(-1px); /* Subtle lift */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow on hover */
+}
+button:active, .action-button:active {
+  transform: translateY(0px); /* Press down effect */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
 
 /* Main App container - ensure it takes full height if needed by layouts */
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* General fade-in animation for content */
+.fade-in-content {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* Slight upward movement */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

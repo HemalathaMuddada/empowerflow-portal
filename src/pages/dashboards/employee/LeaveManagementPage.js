@@ -58,7 +58,7 @@ function LeaveManagementPage() {
   };
 
   return (
-    <div className="dashboard-container leave-management-page">
+    <div className="dashboard-container leave-management-page fade-in-content">
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">

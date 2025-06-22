@@ -134,7 +134,7 @@ Description: ${concernData.description}
   };
 
   return (
-    <div className="dashboard-container raise-concern-page">
+    <div className="dashboard-container raise-concern-page fade-in-content">
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">
