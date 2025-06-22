@@ -25,7 +25,8 @@ import AttendanceRegularizationPage from './pages/dashboards/employee/Attendance
 import { initializeDummyPendingRequests } from './utils/constants'; // For Lead testing
 // Lead Portal Pages
 import TeamApprovalsPage from './pages/dashboards/lead/TeamApprovalsPage';
-import TeamTaskManagementPage from './pages/dashboards/lead/TeamTaskManagementPage'; // New
+import TeamTaskManagementPage from './pages/dashboards/lead/TeamTaskManagementPage';
+import TeamCompensationPage from './pages/dashboards/lead/TeamCompensationPage'; // New
 
 
 import './App.css';
@@ -72,6 +73,7 @@ function App() {
           <Route path="/dashboard/lead" element={<LeadDashboard />} />
             <Route path="/dashboard/lead/approvals" element={<TeamApprovalsPage />} />
             <Route path="/dashboard/lead/team-tasks" element={<TeamTaskManagementPage />} />
+            <Route path="/dashboard/lead/team-compensation" element={<TeamCompensationPage />} />
             {/* Future lead sub-routes can be added here */}
 
           <Route path="/dashboard/manager" element={<ManagerDashboard />} />
