@@ -12,6 +12,8 @@ import SuperAdminDashboard from './pages/dashboards/SuperAdminDashboard';
 // Employee specific sub-pages
 import LeaveManagementPage from './pages/dashboards/employee/LeaveManagementPage';
 import HolidayListPage from './pages/dashboards/employee/HolidayListPage';
+import PayslipListPage from './pages/dashboards/employee/PayslipListPage'; // New import
+import AttendanceLogPage from './pages/dashboards/employee/AttendanceLogPage'; // New import
 
 
 import './App.css';
@@ -38,9 +40,10 @@ function App() {
             {/* Employee Sub-Routes */}
             <Route path="/dashboard/employee/leave" element={<LeaveManagementPage />} />
             <Route path="/dashboard/employee/holidays" element={<HolidayListPage />} />
+            <Route path="/dashboard/employee/payslips" element={<PayslipListPage />} />
+            <Route path="/dashboard/employee/attendance" element={<AttendanceLogPage />} />
             {/* Future employee sub-routes can be added here:
             <Route path="/dashboard/employee/tasks" element={<div>Employee Tasks Page</div>} />
-            <Route path="/dashboard/employee/payslips" element={<div>Employee Payslips Page</div>} />
             */}
 
           <Route path="/dashboard/manager" element={<ManagerDashboard />} />

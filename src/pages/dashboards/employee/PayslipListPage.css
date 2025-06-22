@@ -1,0 +1,62 @@
+/* Styles for PayslipListPage.css */
+
+.payslip-list-page .dashboard-content h2 {
+  margin-bottom: 20px;
+  color: var(--secondary-accent-color);
+}
+
+.payslip-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.payslip-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: var(--card-background);
+  border: 1px solid rgba(var(--text-color), 0.1);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s ease;
+}
+
+.payslip-item:hover {
+  box-shadow: 0 4px 12px rgba(var(--text-color), 0.15); /* Enhanced shadow on hover */
+}
+
+.payslip-info {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.download-button {
+  background-color: var(--primary-accent-color);
+  color: var(--button-text-color);
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+  background-color: var(--secondary-accent-color);
+}
+
+@media (max-width: 600px) {
+  .payslip-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .download-button {
+    align-self: flex-start; /* Or stretch: width: 100%; text-align: center; */
+  }
+}
