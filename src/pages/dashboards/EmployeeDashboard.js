@@ -6,8 +6,11 @@ import UpcomingHolidays from '../../components/employeeDashboard/UpcomingHoliday
 import LeaveBalances from '../../components/employeeDashboard/LeaveBalances'; // To be created
 import MyTasks from '../../components/employeeDashboard/MyTasks';
 import RecentPayslips from '../../components/employeeDashboard/RecentPayslips';
-import DocumentCenterCard from '../../components/employeeDashboard/DocumentCenterCard'; // New
-import CompensationCard from '../../components/employeeDashboard/CompensationCard'; // New
+import DocumentCenterCard from '../../components/employeeDashboard/DocumentCenterCard';
+import CompensationCard from '../../components/employeeDashboard/CompensationCard';
+import PerformanceReviewCard from '../../components/employeeDashboard/PerformanceReviewCard';
+import BirthdaysCard from '../../components/employeeDashboard/BirthdaysCard';
+import AttendanceRegularizationCard from '../../components/employeeDashboard/AttendanceRegularizationCard'; // New
 import './Dashboard.css';
 import './employee/EmployeeDashboard.css'; // Specific styles for Employee Dashboard layout
 
@@ -104,9 +107,9 @@ function EmployeeDashboard() {
           <RecentPayslips />
           <DocumentCenterCard />
           <CompensationCard />
-          {/* Example of how more cards can be added:
-          <div className="dashboard-card"><h3>Performance Review</h3><p>Status: Upcoming</p><Link to="/dashboard/employee/performance" className="card-link">View Details</Link></div>
-          */}
+          <PerformanceReviewCard />
+          <BirthdaysCard />
+          <AttendanceRegularizationCard />
         </div>
       </main>
       <footer className="dashboard-footer">

@@ -178,3 +178,16 @@ export const DOCUMENT_CATEGORIES = [
     { value: 'Forms', label: 'Forms' },
     { value: 'Company Announcements', label: 'Company Announcements' }
 ];
+
+export const DUMMY_TEAM_BIRTHDAYS = [
+  // Ensure dates are in a format that can be easily parsed and compared for "upcoming"
+  // Using YYYY-MM-DD for consistency, but will only use MM-DD for matching upcoming.
+  { name: 'Alice Wonderland', birthDate: '1990-07-28', role: 'Designer' },
+  { name: 'Bob The Builder', birthDate: '1985-08-05', role: 'Engineer' },
+  { name: 'Charlie Brown', birthDate: '1992-07-30', role: 'QA Analyst' },
+  { name: 'Diana Prince', birthDate: '1988-08-15', role: 'HR Manager' },
+  { name: 'Edward Scissorhands', birthDate: '1995-09-02', role: 'Frontend Dev' },
+  { name: 'Fiona Gallagher', birthDate: '1993-01-10', role: 'Backend Dev (Past)' },
+  { name: 'Gus Fring', birthDate: (new Date().getFullYear()) + '-' + (new Date().getMonth() + 1).toString().padStart(2,'0') + '-' + (new Date().getDate() + 1).toString().padStart(2,'0'), role: 'Team Lead (Tomorrow!)' }, // Tomorrow's birthday for testing
+  { name: 'Harry Potter', birthDate: (new Date().getFullYear()) + '-' + (new Date().getMonth() + 1).toString().padStart(2,'0') + '-' + (new Date().getDate()).toString().padStart(2,'0'), role: 'Wizard (Today!)' }, // Today's birthday
+];
