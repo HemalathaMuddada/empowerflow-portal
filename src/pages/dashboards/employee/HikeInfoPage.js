@@ -56,7 +56,7 @@ function HikeInfoPage() {
   };
 
   return (
-    <div className="dashboard-container hike-info-page">
+    <div className="dashboard-container hike-info-page fade-in-content">
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">

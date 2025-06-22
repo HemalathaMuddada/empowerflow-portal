@@ -46,7 +46,7 @@ body[data-theme="corporate-blue"] {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', 'Arial', sans-serif; /* Updated to Roboto */
   background-color: var(--background-color);
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;

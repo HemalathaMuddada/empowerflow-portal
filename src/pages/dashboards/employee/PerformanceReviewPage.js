@@ -49,7 +49,7 @@ function PerformanceReviewPage() {
   };
 
   return (
-    <div className="dashboard-container performance-review-page">
+    <div className="dashboard-container performance-review-page fade-in-content">
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">

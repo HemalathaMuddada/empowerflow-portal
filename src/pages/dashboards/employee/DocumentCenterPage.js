@@ -85,7 +85,7 @@ function DocumentCenterPage() {
   };
 
   return (
-    <div className="dashboard-container document-center-page">
+    <div className="dashboard-container document-center-page fade-in-content">
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">

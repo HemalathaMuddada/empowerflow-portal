@@ -77,23 +77,30 @@ function LoginPage() {
         </p>
       </div>
       <div className="login-carousel-section">
-        <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} interval={5000}>
+        <Carousel
+            autoPlay
+            infiniteLoop
+            showThumbs={false}
+            showStatus={false}
+            interval={4000} // Slightly faster interval
+            transitionTime={700} // Smoother transition
+            emulateTouch={true}
+        >
           <div>
-            {/* Using Unsplash for more control over image type - searching for "abstract" or "business technology" */}
-            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVzaW5lc3MlMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60" alt="Modern Business Technology" />
-            <p className="legend">Integrated HR Solutions</p>
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29sbGFib3JhdGlvbnxlbnwwfHwwfHx8MA&auto=format&fit=crop&w=1000&q=80" alt="Dynamic Team Collaboration" />
+            <p className="legend">Foster Seamless Collaboration</p>
           </div>
           <div>
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZGF0YSUyMGFuYWx5dGljc3xlbnwwfHwwfHx8MA&auto=format&fit=crop&w=800&q=60" alt="Data Analytics and Insights" />
-            <p className="legend">Unlock Data-Driven Insights</p>
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3Rpdml0eXxlbnwwfHwwfHx8MA&auto=format&fit=crop&w=1000&q=80" alt="Peak Productivity Tools" />
+            <p className="legend">Elevate Team Productivity</p>
           </div>
           <div>
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c7da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dGVhbSUyMGNvbGxhYm9yYXRpb258ZW58MHx8MHx8fDA&auto=format&fit=crop&w=800&q=60" alt="Seamless Collaboration" />
-            <p className="legend">Empower Your Workforce</p>
+            <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVtcGxveWVlJTIwd2VsbGJlaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=80" alt="Employee Well-being Focus" />
+            <p className="legend">Champion Employee Well-being</p>
           </div>
           <div>
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJ1c2luZXNzJTIwZ3Jvd3RofGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60" alt="Business Growth and Scalability" />
-            <p className="legend">Scale With Confidence</p>
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW9kZXJuJTIwb2ZmaWNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=80" alt="Future of Work Solutions" />
+            <p className="legend">Innovate Your HR Processes</p>
           </div>
         </Carousel>
       </div>

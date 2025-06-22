@@ -127,7 +127,7 @@ ${blockers.trim() || 'N/A'}
   };
 
   return (
-    <div className="dashboard-container work-status-report-page">
+    <div className="dashboard-container work-status-report-page fade-in-content">
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">

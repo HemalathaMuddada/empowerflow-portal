@@ -14,26 +14,33 @@
 .leave-history-table {
     width: 100%;
     border-collapse: collapse;
-    /* background-color: var(--card-background); */ /* Handled by tab content container */
+    margin-top: 15px; /* Added margin top */
 }
 
 .leave-history-table th,
 .leave-history-table td {
-    padding: 10px 12px;
+    padding: 12px 15px; /* Increased padding */
     text-align: left;
-    border-bottom: 1px solid rgba(var(--text-color), 0.15);
+    border-bottom: 1px solid rgba(var(--text-color), 0.1); /* Slightly lighter border */
     font-size: 0.9rem;
     vertical-align: middle;
 }
 
 .leave-history-table th {
-    background-color: rgba(var(--primary-accent-color), 0.05); /* Very light tint for header */
+    background-color: rgba(var(--primary-accent-color), 0.08); /* Slightly more prominent header */
     color: var(--secondary-accent-color);
-    font-weight: 600; /* Slightly bolder */
+    font-weight: 600;
+    text-transform: uppercase; /* Uppercase headers */
+    font-size: 0.8rem; /* Smaller font for header */
+    letter-spacing: 0.5px;
 }
 
+.leave-history-table tbody tr:nth-child(even) { /* Zebra striping */
+    background-color: rgba(var(--background-color), 0.5); /* Use themed background for stripes */
+}
+/* Ensure hover is distinct from zebra striping */
 .leave-history-table tbody tr:hover {
-    background-color: rgba(var(--primary-accent-color), 0.03);
+    background-color: rgba(var(--primary-accent-color), 0.15); /* More prominent hover */
 }
 
 .leave-history-table td.reason-cell {
