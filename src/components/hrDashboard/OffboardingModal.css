@@ -1,0 +1,108 @@
+/* Styles for OffboardingModal.css */
+
+/* General modal styles (.modal-backdrop, .modal-content, .modal-actions) are assumed to be global or in a shared modal CSS.
+   If not, they should be copied/adapted from ManageEmployeesPage.css or similar.
+   This file will contain styles specific to the OffboardingModal content if any.
+*/
+
+.offboarding-modal-content {
+  max-width: 650px; /* Can be adjusted */
+}
+
+.offboarding-modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--secondary-accent-color);
+    font-size: 1.3rem; /* Slightly smaller than main page H2 */
+    text-align: center;
+    border-bottom: 1px solid rgba(var(--text-color), 0.1);
+    padding-bottom: 10px;
+}
+
+.offboarding-modal-content .form-group {
+    margin-bottom: 18px;
+}
+.offboarding-modal-content label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    display: block;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.offboarding-modal-content input[type="date"],
+.offboarding-modal-content input[type="text"],
+.offboarding-modal-content select,
+.offboarding-modal-content textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border: 1px solid rgba(var(--text-color), 0.3);
+    border-radius: 5px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+.offboarding-modal-content input[type="date"]:focus,
+.offboarding-modal-content input[type="text"]:focus,
+.offboarding-modal-content select:focus,
+.offboarding-modal-content textarea:focus {
+    border-color: var(--primary-accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-accent-color), 0.2);
+    outline: none;
+}
+
+.offboarding-modal-content textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+.offboarding-modal-content .confirm-offboarding-btn {
+    background-color: var(--danger-color); /* Red for confirmation of a significant action */
+}
+.offboarding-modal-content .confirm-offboarding-btn:hover {
+    background-color: #c0392b; /* Darker red */
+}
+
+
+/* Form messages (consistent with other forms) */
+.form-message {
+  padding: 10px; margin-bottom: 15px; border-radius: 5px; font-size: 0.9rem; text-align: center;
+}
+.form-message.error-message { background-color: rgba(231, 76, 60, 0.1); color: #e74c3c; border: 1px solid #e74c3c; }
+
+/* If general modal styles are not global, copy .modal-backdrop, .modal-content, .modal-actions here */
+/* For example: */
+/*
+.modal-backdrop {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); display: flex;
+  justify-content: center; align-items: center; z-index: 1000;
+  animation: fadeInBackdrop 0.3s ease-out forwards;
+}
+@keyframes fadeInBackdrop { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-content {
+  background-color: var(--card-background); padding: 25px 30px; border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2); width: 100%;
+  max-height: 90vh; overflow-y: auto;
+  animation: slideInModal 0.4s ease-out forwards;
+}
+@keyframes slideInModal {
+    from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-actions {
+  display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px;
+  padding-top: 15px; border-top: 1px solid rgba(var(--text-color), 0.1);
+}
+.modal-actions .submit-button, .modal-actions .cancel-button {
+    padding: 10px 20px; font-size: 0.9rem;
+}
+.modal-actions .cancel-button {
+    background-color: var(--text-color); color: var(--card-background); opacity: 0.7;
+}
+.modal-actions .cancel-button:hover { opacity: 1; }
+*/
