@@ -77,18 +77,23 @@ function LoginPage() {
         </p>
       </div>
       <div className="login-carousel-section">
-        <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
+        <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} interval={5000}>
           <div>
-            <img src="https://picsum.photos/seed/empower1/800/600" alt="Office Scene 1" />
-            <p className="legend">Streamline Your Workflow</p>
+            {/* Using Unsplash for more control over image type - searching for "abstract" or "business technology" */}
+            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVzaW5lc3MlMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60" alt="Modern Business Technology" />
+            <p className="legend">Integrated HR Solutions</p>
           </div>
           <div>
-            <img src="https://picsum.photos/seed/empower2/800/600" alt="Team Collaboration" />
-            <p className="legend">Enhance Team Productivity</p>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZGF0YSUyMGFuYWx5dGljc3xlbnwwfHwwfHx8MA&auto=format&fit=crop&w=800&q=60" alt="Data Analytics and Insights" />
+            <p className="legend">Unlock Data-Driven Insights</p>
           </div>
           <div>
-            <img src="https://picsum.photos/seed/empower3/800/600" alt="Business Growth" />
-            <p className="legend">Drive Business Success</p>
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c7da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dGVhbSUyMGNvbGxhYm9yYXRpb258ZW58MHx8MHx8fDA&auto=format&fit=crop&w=800&q=60" alt="Seamless Collaboration" />
+            <p className="legend">Empower Your Workforce</p>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJ1c2luZXNzJTIwZ3Jvd3RofGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60" alt="Business Growth and Scalability" />
+            <p className="legend">Scale With Confidence</p>
           </div>
         </Carousel>
       </div>

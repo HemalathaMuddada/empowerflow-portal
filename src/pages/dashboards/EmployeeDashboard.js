@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-// import { useLocation } from 'react-router-dom'; // Using localStorage now
-import { speakText, getTimeBasedGreeting } from '../../utils/speech';
+import { useNavigate } from 'react-router-dom';
+import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
+import ThemeSwitcher from '../../components/ThemeSwitcher'; // Import ThemeSwitcher
 import './Dashboard.css'; // Common dashboard styles
 
 function EmployeeDashboard() {
-  // const location = useLocation();
-  // const routeUserName = location.state?.user?.name; // From route state if passed
-
   const [userName, setUserName] = useState('Employee');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = localStorage.getItem('loggedInUser');
@@ -30,8 +29,11 @@ function EmployeeDashboard() {
     setUserName(currentUserName);
 
     const greeting = getTimeBasedGreeting();
-    const welcomeMessage = `${greeting} ${currentUserName}, you have successfully logged into the portal. Welcome to your Employee Dashboard.`;
-    speakText(welcomeMessage);
+    // Only speak welcome if user data was actually found and parsed
+    if (storedUser) {
+        const welcomeMessage = `${greeting} ${currentUserName}, you have successfully logged into the portal. Welcome to your Employee Dashboard.`;
+        speakText(welcomeMessage);
+    }
 
     // Cleanup function to stop speech if component unmounts
     return () => {
@@ -41,11 +43,35 @@ function EmployeeDashboard() {
     };
   }, []); // Empty dependency array ensures this runs only once on mount
 
+  const handleLogout = () => {
+    const storedUserForLogout = localStorage.getItem('loggedInUser');
+    let currentUserNameForLogout = 'User';
+    if (storedUserForLogout) {
+      try {
+        const userData = JSON.parse(storedUserForLogout);
+        currentUserNameForLogout = userData.name || currentUserNameForLogout;
+      } catch (e) { /* ignore parsing error */ }
+    }
+
+    speakLogoutMessage(currentUserNameForLogout);
+
+    localStorage.removeItem('loggedInUser');
+    navigate('/login');
+  };
+
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
-        <h1>EmpowerFlow</h1>
-        <p>Employee Dashboard</p>
+        <div className="header-content">
+          <div className="logo-and-title">
+            <h1>EmpowerFlow</h1>
+            <p>Employee Dashboard</p>
+          </div>
+          <div className="header-actions">
+            <ThemeSwitcher />
+            <button onClick={handleLogout} className="logout-button">Logout</button>
+          </div>
+        </div>
       </header>
       <main className="dashboard-content">
         <h2>Welcome, {userName}!</h2>

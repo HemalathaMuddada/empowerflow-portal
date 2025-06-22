@@ -1,0 +1,39 @@
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-switcher-label {
+  font-size: 0.9rem;
+  color: var(--header-text-color); /* Inherit from header, good for themes */
+  font-weight: normal;
+}
+
+.theme-switcher-select {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--header-text-color); /* Themed border */
+  background-color: var(--header-background); /* Themed background */
+  color: var(--header-text-color); /* Themed text */
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.theme-switcher-select:hover {
+  border-color: var(--primary-accent-color); /* Use an accent color on hover */
+}
+
+.theme-switcher-select option {
+  /* Some browsers may not style options fully, but provide basics */
+  background-color: var(--card-background); /* Or a neutral color like white/grey */
+  color: var(--text-color); /* Or a neutral text color */
+}
+
+/* Style for when the select is focused */
+.theme-switcher-select:focus {
+  border-color: var(--primary-accent-color);
+  box-shadow: 0 0 0 2px rgba(var(--primary-accent-color), 0.2); /* Example focus ring */
+}
