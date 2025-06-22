@@ -179,10 +179,17 @@ export const DOCUMENT_CATEGORIES = [
     { value: 'Company Announcements', label: 'Company Announcements' }
 ];
 
+export const DUMMY_TEAM_MEMBERS = [
+    { id: 'emp101', name: 'Peter Pan', email: 'peter.pan@example.com', role: 'Frontend Developer' },
+    { id: 'emp102', name: 'Wendy Darling', email: 'wendy.darling@example.com', role: 'Backend Developer' },
+    { id: 'emp103', name: 'John Darling', email: 'john.darling@example.com', role: 'QA Engineer' },
+    { id: 'emp104', name: 'Michael Darling', email: 'michael.darling@example.com', role: 'UI/UX Designer' },
+];
+
 export const DUMMY_TEAM_BIRTHDAYS = [
   // Ensure dates are in a format that can be easily parsed and compared for "upcoming"
   // Using YYYY-MM-DD for consistency, but will only use MM-DD for matching upcoming.
-  { name: 'Alice Wonderland', birthDate: '1990-07-28', role: 'Designer' },
+  { name: 'Alice Wonderland', birthDate: '1990-07-28', role: 'Designer' }, // This is a generic list, not tied to DUMMY_TEAM_MEMBERS for now
   { name: 'Bob The Builder', birthDate: '1985-08-05', role: 'Engineer' },
   { name: 'Charlie Brown', birthDate: '1992-07-30', role: 'QA Analyst' },
   { name: 'Diana Prince', birthDate: '1988-08-15', role: 'HR Manager' },
@@ -191,3 +198,68 @@ export const DUMMY_TEAM_BIRTHDAYS = [
   { name: 'Gus Fring', birthDate: (new Date().getFullYear()) + '-' + (new Date().getMonth() + 1).toString().padStart(2,'0') + '-' + (new Date().getDate() + 1).toString().padStart(2,'0'), role: 'Team Lead (Tomorrow!)' }, // Tomorrow's birthday for testing
   { name: 'Harry Potter', birthDate: (new Date().getFullYear()) + '-' + (new Date().getMonth() + 1).toString().padStart(2,'0') + '-' + (new Date().getDate()).toString().padStart(2,'0'), role: 'Wizard (Today!)' }, // Today's birthday
 ];
+
+
+// Helper to initialize dummy pending requests for lead testing
+export const initializeDummyPendingRequests = () => {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+    const dayAfterTomorrow = new Date(today);
+    dayAfterTomorrow.setDate(today.getDate() + 2);
+
+    const toISODate = (date) => date.toISOString().split('T')[0];
+
+    const sampleLeaveRequests = [
+        {
+            id: `lr${Date.now() + 1}`,
+            employeeId: 'emp101',
+            employeeName: 'Peter Pan',
+            leaveType: 'annual',
+            leaveLabel: 'Annual Leave',
+            startDate: toISODate(tomorrow),
+            endDate: toISODate(dayAfterTomorrow),
+            days: 2,
+            reason: 'Vacation with family.',
+            status: 'Pending',
+            appliedDate: new Date().toISOString()
+        },
+        {
+            id: `lr${Date.now() + 2}`,
+            employeeId: 'emp102',
+            employeeName: 'Wendy Darling',
+            leaveType: 'sick',
+            leaveLabel: 'Sick Leave',
+            startDate: toISODate(today),
+            endDate: toISODate(today),
+            days: 1,
+            reason: 'Feeling unwell.',
+            status: 'Pending',
+            appliedDate: new Date().toISOString()
+        },
+    ];
+
+    const sampleRegRequests = [
+        {
+            id: `rr${Date.now() + 1}`,
+            employeeId: 'emp103',
+            employeeName: 'John Darling',
+            discrepancyDate: toISODate(new Date(today.setDate(today.getDate() -1))), // Yesterday
+            originalInTime: '09:00',
+            originalOutTime: 'N/A',
+            requestedInTime: '09:00',
+            requestedOutTime: '17:30',
+            reason: 'Forgot to punch out yesterday.',
+            submissionDate: new Date().toISOString(),
+            status: 'Pending'
+        },
+    ];
+
+    if (!localStorage.getItem('teamLeaveRequests')) {
+        localStorage.setItem('teamLeaveRequests', JSON.stringify(sampleLeaveRequests));
+    }
+    if (!localStorage.getItem('teamRegularizationRequests')) {
+        localStorage.setItem('teamRegularizationRequests', JSON.stringify(sampleRegRequests));
+    }
+    console.log("Dummy pending requests initialized in localStorage if they didn't exist.");
+};

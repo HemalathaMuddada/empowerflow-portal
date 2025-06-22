@@ -1,0 +1,35 @@
+/* Styles for LeadDashboard.css */
+
+.lead-dashboard .lead-sections-container {
+    margin-top: 20px;
+}
+
+.lead-dashboard .lead-section {
+    margin-bottom: 30px;
+}
+
+.lead-dashboard .lead-section h2.section-title {
+    font-size: 1.5rem;
+    color: var(--secondary-accent-color);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-accent-color);
+    margin-bottom: 20px;
+}
+
+/* Styling for lead-specific widgets if needed beyond .dashboard-card */
+.lead-widget ul {
+    list-style: disc;
+    margin-left: 20px;
+    padding-left: 0;
+}
+.lead-widget ul li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.disabled-link {
+    color: var(--text-color) !important;
+    opacity: 0.6;
+    pointer-events: none;
+    text-decoration: none !important;
+}

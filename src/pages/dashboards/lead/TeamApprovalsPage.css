@@ -1,0 +1,115 @@
+/* Styles for TeamApprovalsPage.css */
+
+.team-approvals-page .dashboard-content h2 {
+  margin-bottom: 20px;
+  color: var(--secondary-accent-color);
+}
+.team-approvals-page .dashboard-content h4 { /* For tab content headers */
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--secondary-accent-color);
+  font-size: 1.2rem;
+}
+
+.approval-tabs {
+  display: flex;
+  margin-bottom: 0;
+  border-bottom: 2px solid var(--primary-accent-color);
+}
+
+.approval-tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.approval-tab-button:hover {
+  color: var(--primary-accent-color);
+}
+
+.approval-tab-button.active {
+  color: var(--primary-accent-color);
+  border-bottom-color: var(--primary-accent-color);
+  font-weight: bold;
+}
+
+.approval-content-container {
+  /* .dashboard-card styles are applied */
+  padding: 25px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  min-height: 400px; /* Ensure space for content */
+}
+
+.approval-section p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(var(--text-color), 0.85);
+}
+
+/* Styles for approval lists/tables will go here in subsequent steps */
+.approval-list {
+    list-style: none;
+    padding: 0;
+}
+.approval-item {
+    border: 1px solid rgba(var(--text-color), 0.15);
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: rgba(var(--background-color), 0.7); /* Slightly different from card for depth */
+}
+.approval-item p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+.approval-item strong {
+    color: var(--text-color);
+}
+.approval-actions button {
+    margin-right: 10px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+.approve-button {
+    background-color: #2ecc71; /* Green */
+    color: white;
+    border-color: #2ecc71;
+}
+.approve-button:hover {
+    background-color: #27ae60;
+}
+.reject-button {
+    background-color: #e74c3c; /* Red */
+    color: white;
+    border-color: #e74c3c;
+}
+.reject-button:hover {
+    background-color: #c0392b;
+}
+
+
+@media (max-width: 600px) {
+  .approval-tabs {
+    flex-direction: column;
+    border-bottom: none;
+  }
+  .approval-tab-button {
+    border-bottom: 1px solid rgba(var(--text-color), 0.1);
+    text-align: left;
+  }
+  .approval-tab-button.active {
+    border-left: 3px solid var(--primary-accent-color);
+    padding-left: 17px;
+  }
+  .approval-content-container {
+    border-radius: 8px;
+  }
+}
