@@ -20,8 +20,11 @@ import DocumentCenterPage from './pages/dashboards/employee/DocumentCenterPage';
 import HikeInfoPage from './pages/dashboards/employee/HikeInfoPage';
 import TaskManagementPage from './pages/dashboards/employee/TaskManagementPage';
 import DeclarationsPage from './pages/dashboards/employee/DeclarationsPage';
-import PerformanceReviewPage from './pages/dashboards/employee/PerformanceReviewPage'; // New
-import AttendanceRegularizationPage from './pages/dashboards/employee/AttendanceRegularizationPage'; // New
+import PerformanceReviewPage from './pages/dashboards/employee/PerformanceReviewPage';
+import AttendanceRegularizationPage from './pages/dashboards/employee/AttendanceRegularizationPage';
+import { initializeDummyPendingRequests } from './utils/constants'; // For Lead testing
+// Lead Portal Pages
+import TeamApprovalsPage from './pages/dashboards/lead/TeamApprovalsPage';
 
 
 import './App.css';
@@ -33,6 +36,9 @@ import './App.css';
 // const HRDashboard = () => <div>HR Dashboard Placeholder</div>;
 // const SuperAdminDashboard = () => <div>SuperAdmin Dashboard Placeholder</div>;
 
+
+// Initialize dummy data for lead portal testing if not already present
+initializeDummyPendingRequests();
 
 function App() {
   return (
@@ -61,8 +67,12 @@ function App() {
             {/* Future employee sub-routes can be added here:
             */}
 
-          <Route path="/dashboard/manager" element={<ManagerDashboard />} />
+          {/* Lead Dashboard and Sub-Routes */}
           <Route path="/dashboard/lead" element={<LeadDashboard />} />
+            <Route path="/dashboard/lead/approvals" element={<TeamApprovalsPage />} />
+            {/* Future lead sub-routes can be added here */}
+
+          <Route path="/dashboard/manager" element={<ManagerDashboard />} />
           <Route path="/dashboard/hr" element={<HRDashboard />} />
           <Route path="/dashboard/superadmin" element={<SuperAdminDashboard />} />
 
