@@ -123,10 +123,6 @@ body[data-theme="corporate-blue"] {
 } */
 
 /* Update other elements to use CSS variables */
-  margin: 5px 0 0;
-  font-size: 1rem;
-  opacity: 0.9;
-}
 
 .dashboard-content {
   flex-grow: 1;
