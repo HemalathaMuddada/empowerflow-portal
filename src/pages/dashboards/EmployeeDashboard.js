@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Added Link
 import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
-import ThemeSwitcher from '../../components/ThemeSwitcher'; // Import ThemeSwitcher
-import './Dashboard.css'; // Common dashboard styles
+import ThemeSwitcher from '../../components/ThemeSwitcher';
+import UpcomingHolidays from '../../components/employeeDashboard/UpcomingHolidays'; // To be created
+import LeaveBalances from '../../components/employeeDashboard/LeaveBalances'; // To be created
+import MyTasks from '../../components/employeeDashboard/MyTasks'; // Placeholder created
+import RecentPayslips from '../../components/employeeDashboard/RecentPayslips'; // Placeholder created
+import './Dashboard.css';
+import './employee/EmployeeDashboard.css'; // Specific styles for Employee Dashboard layout
 
 function EmployeeDashboard() {
   const [userName, setUserName] = useState('Employee');
@@ -29,12 +34,10 @@ function EmployeeDashboard() {
     setUserName(currentUserName);
 
     const greeting = getTimeBasedGreeting();
-    // Only speak welcome if user data was actually found and parsed
     if (storedUser) {
-        const welcomeMessage = `${greeting} ${currentUserName}, you have successfully logged into the portal. Welcome to your Employee Dashboard.`;
+        const welcomeMessage = `${greeting} ${currentUserName}, welcome to your Employee Dashboard.`; // Shortened for brevity on reloads
         speakText(welcomeMessage);
     }
-
     // Cleanup function to stop speech if component unmounts
     return () => {
       if (window.speechSynthesis) {
@@ -60,7 +63,7 @@ function EmployeeDashboard() {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container employee-dashboard"> {/* Added 'employee-dashboard' class for specific layout */}
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">
@@ -74,9 +77,33 @@ function EmployeeDashboard() {
         </div>
       </header>
       <main className="dashboard-content">
-        <h2>Welcome, {userName}!</h2>
-        <p>This is your personal dashboard. Here you can find your tasks, company updates, and personal information.</p>
-        {/* More employee-specific content would go here */}
+        <div className="dashboard-greeting">
+          <h2>Welcome, {userName}!</h2>
+          <p>Here's an overview of your information and quick actions.</p>
+        </div>
+
+        <div className="dashboard-actions">
+            <Link to="/dashboard/employee/leave" className="action-button">
+              Manage My Leave
+            </Link>
+            {/* Add other primary action buttons here if needed:
+            <Link to="/dashboard/employee/submit-report" className="action-button">
+              Submit Work Report
+            </Link>
+            */}
+        </div>
+
+        <div className="dashboard-grid">
+          {/* These components will be created in subsequent steps */}
+          <UpcomingHolidays />
+          <LeaveBalances />
+          <MyTasks />
+          <RecentPayslips />
+          {/* Example of how more cards can be added:
+          <div className="dashboard-card"><h3>Performance Review</h3><p>Status: Upcoming</p><Link to="/dashboard/employee/performance" className="card-link">View Details</Link></div>
+          <div className="dashboard-card"><h3>My Documents</h3><Link to="/dashboard/employee/documents" className="card-link">Access Document Center</Link></div>
+          */}
+        </div>
       </main>
       <footer className="dashboard-footer">
         <p>&copy; {new Date().getFullYear()} EmpowerFlow Inc. All rights reserved.</p>

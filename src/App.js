@@ -9,6 +9,10 @@ import ManagerDashboard from './pages/dashboards/ManagerDashboard';
 import LeadDashboard from './pages/dashboards/LeadDashboard';
 import HRDashboard from './pages/dashboards/HRDashboard';
 import SuperAdminDashboard from './pages/dashboards/SuperAdminDashboard';
+// Employee specific sub-pages
+import LeaveManagementPage from './pages/dashboards/employee/LeaveManagementPage';
+import HolidayListPage from './pages/dashboards/employee/HolidayListPage';
+
 
 import './App.css';
 
@@ -29,7 +33,16 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
 
           {/* Dashboard Routes - these will be protected later */}
+          {/* Main Employee Dashboard */}
           <Route path="/dashboard/employee" element={<EmployeeDashboard />} />
+            {/* Employee Sub-Routes */}
+            <Route path="/dashboard/employee/leave" element={<LeaveManagementPage />} />
+            <Route path="/dashboard/employee/holidays" element={<HolidayListPage />} />
+            {/* Future employee sub-routes can be added here:
+            <Route path="/dashboard/employee/tasks" element={<div>Employee Tasks Page</div>} />
+            <Route path="/dashboard/employee/payslips" element={<div>Employee Payslips Page</div>} />
+            */}
+
           <Route path="/dashboard/manager" element={<ManagerDashboard />} />
           <Route path="/dashboard/lead" element={<LeadDashboard />} />
           <Route path="/dashboard/hr" element={<HRDashboard />} />

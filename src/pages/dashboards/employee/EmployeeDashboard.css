@@ -1,0 +1,120 @@
+/* Styles specific to EmployeeDashboard.js layout */
+
+.employee-dashboard .dashboard-greeting {
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.employee-dashboard .dashboard-greeting h2 {
+  margin-bottom: 5px; /* Tighter spacing for greeting */
+  border-bottom: none; /* Remove border from main welcome if desired */
+}
+
+.employee-dashboard .dashboard-greeting p {
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.dashboard-actions {
+  margin-bottom: 25px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.action-button {
+  background-color: var(--primary-accent-color);
+  color: var(--button-text-color);
+  padding: 12px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block; /* Ensure proper padding and alignment */
+  border: none; /* Reset default border */
+}
+
+.action-button:hover {
+  background-color: var(--secondary-accent-color);
+  transform: translateY(-2px); /* Slight lift on hover */
+  text-decoration: none; /* Keep text decoration off */
+  color: var(--button-text-color); /* Ensure text color remains on hover */
+}
+
+
+/* Dashboard Grid Layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between cards */
+}
+
+/* General Card Styling (can be in Dashboard.css if truly global, or here if more specific) */
+/* This .dashboard-card is a more specific version for the grid items */
+.dashboard-card {
+  background-color: var(--card-background);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 8px 20px rgba(var(--text-color), 0.15); /* Enhanced shadow on hover */
+}
+
+
+.dashboard-card h3 {
+  color: var(--secondary-accent-color);
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(var(--text-color), 0.2);
+  padding-bottom: 10px;
+}
+
+.dashboard-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  flex-grow: 1; /* Allows content to fill space before link */
+}
+
+.dashboard-card ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.dashboard-card ul li {
+  font-size: 0.9rem;
+  padding: 5px 0;
+  border-bottom: 1px dashed rgba(var(--text-color), 0.1);
+}
+.dashboard-card ul li:last-child {
+  border-bottom: none;
+}
+
+
+.card-link {
+  color: var(--primary-accent-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  align-self: flex-start; /* Align link to the bottom left if card is flex column */
+  margin-top: auto; /* Pushes link to bottom if card is flex column and p has flex-grow */
+}
+
+.card-link:hover {
+  text-decoration: underline;
+  color: var(--secondary-accent-color);
+}
