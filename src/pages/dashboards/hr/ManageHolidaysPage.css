@@ -1,0 +1,131 @@
+/* Styles for ManageHolidaysPage.css */
+
+.manage-holidays-page .dashboard-content h2 {
+  margin-bottom: 20px;
+  color: var(--secondary-accent-color);
+}
+
+/* Reusing .page-actions from ManageEmployeesPage.css if they are similar, or define here */
+.page-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.page-actions .action-button.secondary-action-button {
+    background-color: var(--text-color) !important;
+    opacity: 0.8;
+}
+.page-actions .action-button.secondary-action-button:hover {
+    opacity: 1;
+}
+
+
+.holiday-management-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  box-shadow: var(--card-shadow);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.holiday-management-table th,
+.holiday-management-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(var(--text-color), 0.1);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.holiday-management-table th {
+  background-color: rgba(var(--primary-accent-color), 0.08);
+  color: var(--secondary-accent-color);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.holiday-management-table tbody tr:nth-child(even) {
+  background-color: rgba(var(--background-color), 0.5);
+}
+.holiday-management-table tbody tr:hover {
+  background-color: rgba(var(--primary-accent-color), 0.1);
+}
+
+.holiday-management-table .actions-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+.holiday-management-table .action-btn { /* Copied from ManageEmployeesPage.css for consistency */
+  background: none; border: none; cursor: pointer; font-size: 1.1rem;
+  padding: 5px 8px; margin: 0 3px; border-radius: 4px; transition: background-color 0.2s ease;
+}
+.holiday-management-table .action-btn.edit-btn { color: var(--primary-accent-color); }
+.holiday-management-table .action-btn.edit-btn:hover { background-color: rgba(var(--primary-accent-color), 0.15); }
+.holiday-management-table .action-btn.delete-btn { color: var(--danger-color); }
+.holiday-management-table .action-btn.delete-btn:hover { background-color: rgba(var(--danger-color), 0.15); }
+
+
+/* Holiday Form Modal Styles (similar to EmployeeFormModal) */
+.holiday-form-modal-content { /* Class defined in ManageEmployeesPage.css for .modal-content */
+    /* max-width: 500px; */ /* Adjust if needed */
+}
+.holiday-form-modal-content h3 {
+    margin-top: 0; margin-bottom: 20px; color: var(--secondary-accent-color);
+    font-size: 1.4rem; text-align: center;
+}
+.holiday-form-modal-content .form-group { margin-bottom: 15px; }
+.holiday-form-modal-content label { font-size: 0.85rem; margin-bottom: 5px; display: block; font-weight: bold; }
+.holiday-form-modal-content input {
+    width: 100%; padding: 9px 12px; font-size: 0.9rem;
+    border: 1px solid rgba(var(--text-color), 0.3); border-radius: 5px;
+    background-color: var(--background-color); color: var(--text-color);
+}
+.holiday-form-modal-content input:focus {
+    border-color: var(--primary-accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-accent-color), 0.2);
+    outline: none;
+}
+
+/* Reusing .modal-backdrop, .modal-content, .modal-actions from ManageEmployeesPage.css */
+/* Ensure those are general enough or make them global in Dashboard.css */
+/* If not, copy them here: */
+.modal-backdrop {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); display: flex;
+  justify-content: center; align-items: center; z-index: 1000;
+  animation: fadeInBackdrop 0.3s ease-out forwards;
+}
+@keyframes fadeInBackdrop { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-content { /* General modal content styling */
+  background-color: var(--card-background); padding: 25px 30px; border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2); width: 100%;
+  max-width: 500px; /* Default max-width for holiday modal */
+  max-height: 90vh; overflow-y: auto;
+  animation: slideInModal 0.4s ease-out forwards;
+}
+@keyframes slideInModal {
+    from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-actions {
+  display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px;
+  padding-top: 15px; border-top: 1px solid rgba(var(--text-color), 0.1);
+}
+.modal-actions .submit-button, .modal-actions .cancel-button {
+    padding: 10px 20px; font-size: 0.9rem;
+}
+.modal-actions .cancel-button {
+    background-color: var(--text-color); color: var(--card-background); opacity: 0.7;
+}
+.modal-actions .cancel-button:hover { opacity: 1; }
+
+.form-message { /* Copied for modal error messages */
+  padding: 10px; margin-bottom: 15px; border-radius: 5px; font-size: 0.9rem; text-align: center;
+}
+.form-message.error-message { background-color: rgba(231, 76, 60, 0.1); color: #e74c3c; border: 1px solid #e74c3c; }

@@ -1,0 +1,70 @@
+/* Styles for HRDashboard.css */
+
+.hr-dashboard .dashboard-greeting h2 {
+    margin-bottom: 5px;
+}
+.hr-dashboard .dashboard-greeting p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.hr-dashboard .hr-main-navigation {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+/* .action-button styles from EmployeeDashboard.css will be reused or can be globalized */
+
+.hr-dashboard .hr-widgets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for widgets */
+    gap: 25px;
+}
+
+/* Styling for HR specific widgets */
+.hr-widget {
+    /* .dashboard-card styles are applied */
+    text-align: center; /* Center align text in widgets */
+}
+
+.hr-widget h3 {
+    font-size: 1.1rem; /* Slightly smaller for widget titles */
+    margin-bottom: 10px;
+}
+
+.hr-widget .metric-large {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary-accent-color);
+    margin: 10px 0 5px 0;
+    line-height: 1;
+}
+
+.hr-widget .metric-label {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.hr-widget .metric-small {
+    font-size: 0.85rem;
+    color: rgba(var(--text-color), 0.7);
+    margin-bottom: 15px;
+}
+
+/* Ensure card-link is visible and spaced */
+.hr-widget .card-link {
+    margin-top: auto; /* Pushes link to bottom */
+    display: inline-block; /* Allows margin-top auto to work with flex */
+    padding-top: 10px;
+}
+
+/* Disabled link styling (if not already global) */
+.disabled-link {
+    color: var(--text-color) !important;
+    opacity: 0.6;
+    pointer-events: none;
+    text-decoration: none !important;
+}

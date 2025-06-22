@@ -22,11 +22,14 @@ import TaskManagementPage from './pages/dashboards/employee/TaskManagementPage';
 import DeclarationsPage from './pages/dashboards/employee/DeclarationsPage';
 import PerformanceReviewPage from './pages/dashboards/employee/PerformanceReviewPage';
 import AttendanceRegularizationPage from './pages/dashboards/employee/AttendanceRegularizationPage';
-import { initializeDummyPendingRequests } from './utils/constants'; // For Lead testing
+import { initializeDummyPendingRequests, INITIAL_MASTER_EMPLOYEE_LIST } from './utils/constants'; // Added INITIAL_MASTER_EMPLOYEE_LIST
 // Lead Portal Pages
 import TeamApprovalsPage from './pages/dashboards/lead/TeamApprovalsPage';
 import TeamTaskManagementPage from './pages/dashboards/lead/TeamTaskManagementPage';
-import TeamCompensationPage from './pages/dashboards/lead/TeamCompensationPage'; // New
+import TeamCompensationPage from './pages/dashboards/lead/TeamCompensationPage';
+// HR Portal Pages
+import ManageEmployeesPage from './pages/dashboards/hr/ManageEmployeesPage'; // New
+import ManageHolidaysPage from './pages/dashboards/hr/ManageHolidaysPage'; // New
 
 
 import './App.css';
@@ -41,6 +44,13 @@ import './App.css';
 
 // Initialize dummy data for lead portal testing if not already present
 initializeDummyPendingRequests();
+
+// Initialize master employee list for HR portal testing if not already present
+if (!localStorage.getItem('masterEmployeeList')) {
+  localStorage.setItem('masterEmployeeList', JSON.stringify(INITIAL_MASTER_EMPLOYEE_LIST));
+  console.log("Initialized masterEmployeeList in localStorage.");
+}
+
 
 function App() {
   return (
@@ -77,7 +87,13 @@ function App() {
             {/* Future lead sub-routes can be added here */}
 
           <Route path="/dashboard/manager" element={<ManagerDashboard />} />
+
+          {/* HR Dashboard and Sub-Routes */}
           <Route path="/dashboard/hr" element={<HRDashboard />} />
+            <Route path="/dashboard/hr/manage-employees" element={<ManageEmployeesPage />} />
+            <Route path="/dashboard/hr/manage-holidays" element={<ManageHolidaysPage />} />
+            {/* Future HR sub-routes can be added here */}
+
           <Route path="/dashboard/superadmin" element={<SuperAdminDashboard />} />
 
           {/* Default redirect to login page */}
