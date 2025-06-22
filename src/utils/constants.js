@@ -32,3 +32,74 @@ export const LEAVE_TYPES = [
 
 // Could add more constants here as needed, e.g., for task statuses, etc.
 // For now, these cover holidays and leave management basics.
+
+export const DUMMY_PAYSLIPS = [
+  {
+    id: 'payslip_2024_06',
+    month: 'June',
+    year: 2024,
+    grossSalary: 6000,
+    totalDeductions: 1200,
+    netSalary: 4800,
+    fileName: 'Payslip_June_2024.txt', // For simulated download
+    details: { // More detailed breakdown for simulated content
+      basic: 3000,
+      hra: 1500,
+      specialAllowance: 1500,
+      providentFund: 720,
+      professionalTax: 200,
+      incomeTax: 280,
+    }
+  },
+  {
+    id: 'payslip_2024_05',
+    month: 'May',
+    year: 2024,
+    grossSalary: 5900, // Slight variation
+    totalDeductions: 1180,
+    netSalary: 4720,
+    fileName: 'Payslip_May_2024.txt',
+    details: {
+      basic: 2950,
+      hra: 1475,
+      specialAllowance: 1475,
+      providentFund: 708,
+      professionalTax: 200,
+      incomeTax: 272,
+    }
+  },
+  {
+    id: 'payslip_2024_04',
+    month: 'April',
+    year: 2024,
+    grossSalary: 5950,
+    totalDeductions: 1190,
+    netSalary: 4760,
+    fileName: 'Payslip_April_2024.txt',
+    details: {
+      basic: 2975,
+      hra: 1487.50,
+      specialAllowance: 1487.50,
+      providentFund: 714,
+      professionalTax: 200,
+      incomeTax: 276,
+    }
+  },
+    {
+    id: 'payslip_2024_03',
+    month: 'March',
+    year: 2024,
+    grossSalary: 5800,
+    totalDeductions: 1160,
+    netSalary: 4640,
+    fileName: 'Payslip_March_2024.txt',
+    details: {
+      basic: 2900,
+      hra: 1450,
+      specialAllowance: 1450,
+      providentFund: 696,
+      professionalTax: 200,
+      incomeTax: 264,
+    }
+  }
+];

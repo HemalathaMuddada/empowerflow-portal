@@ -118,3 +118,22 @@
   text-decoration: underline;
   color: var(--secondary-accent-color);
 }
+
+/* Styling for inline buttons within card lists, like download in RecentPayslips */
+.inline-download-button {
+  background-color: transparent;
+  color: var(--primary-accent-color);
+  border: none;
+  padding: 2px 5px; /* Smaller padding */
+  margin-left: 8px; /* Space from the text */
+  cursor: pointer;
+  font-size: 0.85rem; /* Smaller font size */
+  font-weight: bold;
+  text-decoration: underline;
+  border-radius: 3px;
+}
+
+.inline-download-button:hover {
+  color: var(--secondary-accent-color);
+  background-color: rgba(var(--primary-accent-color), 0.1); /* Subtle background on hover */
+}
