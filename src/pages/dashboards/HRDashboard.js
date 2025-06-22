@@ -82,8 +82,8 @@ function HRDashboard() {
         <nav className="hr-main-navigation">
             <Link to="/dashboard/hr/manage-employees" className="action-button">Manage Employees</Link>
             <Link to="/dashboard/hr/manage-holidays" className="action-button">Manage Holidays</Link>
+            <Link to="/dashboard/hr/manage-documents" className="action-button">Manage Documents</Link>
             {/* Add more primary navigation links as features are built */}
-            <Link to="#" onClick={(e) => e.preventDefault()} className="action-button disabled-link">Manage Documents (Soon)</Link>
             <Link to="#" onClick={(e) => e.preventDefault()} className="action-button disabled-link">Manage Hikes (Soon)</Link>
         </nav>
 

@@ -22,14 +22,15 @@ import TaskManagementPage from './pages/dashboards/employee/TaskManagementPage';
 import DeclarationsPage from './pages/dashboards/employee/DeclarationsPage';
 import PerformanceReviewPage from './pages/dashboards/employee/PerformanceReviewPage';
 import AttendanceRegularizationPage from './pages/dashboards/employee/AttendanceRegularizationPage';
-import { initializeDummyPendingRequests, INITIAL_MASTER_EMPLOYEE_LIST } from './utils/constants'; // Added INITIAL_MASTER_EMPLOYEE_LIST
+import { initializeDummyPendingRequests, INITIAL_MASTER_EMPLOYEE_LIST, DUMMY_DOCUMENTS } from './utils/constants'; // Added DUMMY_DOCUMENTS
 // Lead Portal Pages
 import TeamApprovalsPage from './pages/dashboards/lead/TeamApprovalsPage';
 import TeamTaskManagementPage from './pages/dashboards/lead/TeamTaskManagementPage';
 import TeamCompensationPage from './pages/dashboards/lead/TeamCompensationPage';
 // HR Portal Pages
-import ManageEmployeesPage from './pages/dashboards/hr/ManageEmployeesPage'; // New
-import ManageHolidaysPage from './pages/dashboards/hr/ManageHolidaysPage'; // New
+import ManageEmployeesPage from './pages/dashboards/hr/ManageEmployeesPage';
+import ManageHolidaysPage from './pages/dashboards/hr/ManageHolidaysPage';
+import ManageDocumentsPage from './pages/dashboards/hr/ManageDocumentsPage'; // New
 
 
 import './App.css';
@@ -49,6 +50,12 @@ initializeDummyPendingRequests();
 if (!localStorage.getItem('masterEmployeeList')) {
   localStorage.setItem('masterEmployeeList', JSON.stringify(INITIAL_MASTER_EMPLOYEE_LIST));
   console.log("Initialized masterEmployeeList in localStorage.");
+}
+
+// Initialize company documents for HR portal testing if not already present
+if (!localStorage.getItem('companyDocuments')) {
+  localStorage.setItem('companyDocuments', JSON.stringify(DUMMY_DOCUMENTS));
+  console.log("Initialized companyDocuments in localStorage.");
 }
 
 
@@ -92,6 +99,7 @@ function App() {
           <Route path="/dashboard/hr" element={<HRDashboard />} />
             <Route path="/dashboard/hr/manage-employees" element={<ManageEmployeesPage />} />
             <Route path="/dashboard/hr/manage-holidays" element={<ManageHolidaysPage />} />
+            <Route path="/dashboard/hr/manage-documents" element={<ManageDocumentsPage />} />
             {/* Future HR sub-routes can be added here */}
 
           <Route path="/dashboard/superadmin" element={<SuperAdminDashboard />} />
