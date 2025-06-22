@@ -1,0 +1,156 @@
+.login-page-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.login-form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #f4f7fc;
+}
+
+.login-carousel-section {
+  flex: 1.5; /* Carousel takes more space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e9eef7; /* Slightly different background for contrast */
+  overflow: hidden; /* Ensures carousel images don't overflow */
+}
+
+.login-carousel-section .carousel-root {
+  width: 100%;
+  height: 100%;
+}
+
+.login-carousel-section .carousel .slider-wrapper,
+.login-carousel-section .carousel .slider {
+  height: 100%;
+}
+
+.login-carousel-section .carousel .slide img {
+  object-fit: cover; /* Cover the area, might crop */
+  height: 100vh; /* Make image take full viewport height */
+  width: 100%;
+}
+
+.login-carousel-section .carousel .legend {
+  background: rgba(0, 0, 0, 0.6) !important;
+  color: #fff !important;
+  font-size: 1.2rem !important;
+  padding: 10px !important;
+  opacity: 0.9 !important;
+}
+
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333; /* Darker color for better readability */
+  margin-bottom: 30px;
+  /* A more specific color related to "EmpowerFlow" could be used if available */
+  /* Example: color: #4A90E2; */
+}
+
+.login-form-section h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.login-form-section form {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Important for padding and width */
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.login-button {
+  padding: 12px;
+  background-color: #007bff; /* Standard blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.signup-link {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.signup-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .login-page-container {
+    flex-direction: column;
+  }
+
+  .login-carousel-section {
+    flex: 1;
+    height: 300px; /* Fixed height for carousel on smaller screens */
+    order: -1; /* Show carousel on top on mobile */
+  }
+
+  .login-carousel-section .carousel .slide img {
+    height: 300px; /* Adjust image height */
+  }
+
+  .login-form-section {
+    flex: 2; /* Give more space to form on mobile if carousel is smaller */
+    padding: 20px;
+  }
+
+  .logo {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .login-form-section h2 {
+    font-size: 1.5rem;
+  }
+}
