@@ -78,7 +78,12 @@ function WorkStatusReportPage() {
       return;
     }
 
-    const leadEmail = "lead@example.com"; // Dummy lead email
+    let leadEmail = "lead@example.com"; // Default for employee
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
+    if (loggedInUser.role === 'lead') {
+        leadEmail = "manager@example.com"; // Lead reports to their manager
+    }
+
     const reportData = {
       id: Date.now(),
       reportDate,

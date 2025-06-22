@@ -13,6 +13,9 @@
   --footer-background: #343a40;
   --footer-text-color: white;
   --button-text-color: white;
+  --danger-color: #e74c3c; /* Red */
+  --warning-color: #f39c12; /* Orange */
+  --success-color: #2ecc71; /* Green */
 }
 
 body[data-theme="dark"] {
