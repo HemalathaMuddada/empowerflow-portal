@@ -1,0 +1,77 @@
+/* Styles for LeaveManagementPage.js */
+
+.leave-management-page .dashboard-content h2 {
+  margin-bottom: 20px;
+  color: var(--secondary-accent-color);
+}
+
+.lm-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--primary-accent-color);
+}
+
+.lm-tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 3px solid transparent; /* For active state */
+  margin-bottom: -2px; /* Align with parent border */
+  transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.lm-tab-button:hover {
+  color: var(--primary-accent-color);
+}
+
+.lm-tab-button.active {
+  color: var(--primary-accent-color);
+  border-bottom-color: var(--primary-accent-color);
+  font-weight: bold;
+}
+
+.lm-tab-content-container {
+  padding: 20px;
+  background-color: var(--card-background);
+  border-radius: 0 0 8px 8px; /* Rounded bottom corners if tabs are on top */
+  box-shadow: var(--card-shadow);
+  min-height: 300px; /* Ensure some space for content */
+}
+
+/* Styling for content within tabs - can be more specific in component CSS */
+.tab-content h3 {
+  margin-top: 0;
+  color: var(--secondary-accent-color);
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.tab-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive tabs */
+@media (max-width: 600px) {
+  .lm-tabs {
+    flex-direction: column; /* Stack tabs vertically */
+    border-bottom: none;
+  }
+  .lm-tab-button {
+    border-bottom: 1px solid rgba(var(--text-color), 0.1);
+    margin-bottom: 0;
+    text-align: left;
+  }
+  .lm-tab-button.active {
+    border-bottom-color: var(--primary-accent-color); /* Or a different indicator for vertical tabs */
+    border-left: 3px solid var(--primary-accent-color); /* Example active state for vertical */
+    padding-left: 17px; /* Adjust padding for border */
+  }
+  .lm-tab-content-container {
+    border-radius: 8px; /* Full radius if tabs are stacked */
+  }
+}

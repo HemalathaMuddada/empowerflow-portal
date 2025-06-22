@@ -1,0 +1,51 @@
+/* Styles for HolidayListPage */
+
+.holiday-list-page .dashboard-content h2 {
+  margin-bottom: 20px;
+  color: var(--secondary-accent-color);
+}
+
+.holiday-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: var(--card-background);
+  box-shadow: var(--card-shadow);
+  border-radius: 8px;
+  overflow: hidden; /* Ensures border-radius is respected by table */
+}
+
+.holiday-table th,
+.holiday-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid rgba(var(--text-color), 0.1);
+  color: var(--text-color);
+}
+
+.holiday-table th {
+  background-color: rgba(var(--primary-accent-color), 0.1); /* Light tint of primary accent for header */
+  color: var(--secondary-accent-color);
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.holiday-table tbody tr:last-child td {
+  border-bottom: none; /* Remove border from last row */
+}
+
+.holiday-table tbody tr:hover {
+  background-color: rgba(var(--primary-accent-color), 0.05); /* Slight hover effect */
+}
+
+/* Responsive table considerations if needed */
+@media (max-width: 768px) {
+  .holiday-table {
+    display: block;
+    overflow-x: auto; /* Allow horizontal scrolling for small screens */
+  }
+  .holiday-table th,
+  .holiday-table td {
+    white-space: nowrap; /* Prevent text wrapping that might break layout badly */
+  }
+}
