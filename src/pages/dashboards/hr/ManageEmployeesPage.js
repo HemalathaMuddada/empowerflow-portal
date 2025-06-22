@@ -112,7 +112,16 @@ function ManageEmployeesPage() {
   const [editingEmployee, setEditingEmployee] = useState(null); // null for Add, employee object for Edit
 
   const loadEmployees = () => {
-    const storedEmployees = JSON.parse(localStorage.getItem('masterEmployeeList') || '[]');
+    const itemStr = localStorage.getItem('masterEmployeeList');
+    let storedEmployees = [];
+    if (itemStr && itemStr !== 'undefined') {
+      try {
+        storedEmployees = JSON.parse(itemStr);
+      } catch (e) {
+        console.error("Failed to parse 'masterEmployeeList' from localStorage:", e);
+        storedEmployees = [];
+      }
+    }
     // Sort by ID by default
     storedEmployees.sort((a,b) => a.id.localeCompare(b.id));
     setAllEmployees(storedEmployees);

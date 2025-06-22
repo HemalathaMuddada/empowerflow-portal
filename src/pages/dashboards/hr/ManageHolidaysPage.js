@@ -64,13 +64,17 @@ function ManageHolidaysPage() {
       console.log("Initialized companyHolidayList in localStorage from constants.");
     }
     try {
-      const parsedHolidays = JSON.parse(storedHolidays);
+      // Ensure storedHolidays is not the string "undefined" before parsing
+      const holidaysToParse = (storedHolidays && storedHolidays !== 'undefined') ? storedHolidays : '[]';
+      const parsedHolidays = JSON.parse(holidaysToParse);
       // Sort by date
       parsedHolidays.sort((a,b) => new Date(a.date) - new Date(b.date));
       setHolidays(parsedHolidays);
     } catch (e) {
       console.error("Failed to parse holidays from localStorage", e);
-      setHolidays([]);
+      // If parsing fails, consider re-initializing from INITIAL_HOLIDAYS as a recovery
+      localStorage.setItem('companyHolidayList', JSON.stringify(INITIAL_HOLIDAYS));
+      setHolidays([...INITIAL_HOLIDAYS].sort((a,b) => new Date(a.date) - new Date(b.date)));
     }
   };
 
