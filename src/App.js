@@ -18,8 +18,10 @@ import WorkStatusReportPage from './pages/dashboards/employee/WorkStatusReportPa
 import RaiseConcernPage from './pages/dashboards/employee/RaiseConcernPage';
 import DocumentCenterPage from './pages/dashboards/employee/DocumentCenterPage';
 import HikeInfoPage from './pages/dashboards/employee/HikeInfoPage';
-import TaskManagementPage from './pages/dashboards/employee/TaskManagementPage'; // New
-import DeclarationsPage from './pages/dashboards/employee/DeclarationsPage'; // New
+import TaskManagementPage from './pages/dashboards/employee/TaskManagementPage';
+import DeclarationsPage from './pages/dashboards/employee/DeclarationsPage';
+import PerformanceReviewPage from './pages/dashboards/employee/PerformanceReviewPage'; // New
+import AttendanceRegularizationPage from './pages/dashboards/employee/AttendanceRegularizationPage'; // New
 
 
 import './App.css';
@@ -54,6 +56,8 @@ function App() {
             <Route path="/dashboard/employee/hike-info" element={<HikeInfoPage />} />
             <Route path="/dashboard/employee/tasks" element={<TaskManagementPage />} />
             <Route path="/dashboard/employee/declarations" element={<DeclarationsPage />} />
+            <Route path="/dashboard/employee/performance-review" element={<PerformanceReviewPage />} />
+            <Route path="/dashboard/employee/attendance-regularization" element={<AttendanceRegularizationPage />} />
             {/* Future employee sub-routes can be added here:
             */}
 

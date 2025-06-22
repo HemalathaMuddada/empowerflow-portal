@@ -137,3 +137,58 @@
   color: var(--secondary-accent-color);
   background-color: rgba(var(--primary-accent-color), 0.1); /* Subtle background on hover */
 }
+
+/* Status highlight styles for cards (e.g., PerformanceReviewCard) */
+/* Copied from PerformanceReviewPage.css - consider globalizing if used more widely */
+.status-highlight {
+  font-weight: bold;
+  padding: 2px 6px; /* Slightly smaller padding for card view */
+  border-radius: 4px;
+  font-size: 0.8rem; /* Smaller font for card view */
+  color: white;
+  display: inline-block; /* Ensure background color applies correctly */
+}
+.status-highlight.status-completed { background-color: #2ecc71; }
+.status-highlight.status-upcoming { background-color: #3498db; }
+.status-highlight.status-in-progress { background-color: #f39c12; }
+.status-highlight.status-awaiting-manager-review { background-color: #e67e22; }
+.status-highlight.status-awaiting-employee-acknowledgement { background-color: #9b59b6; }
+
+/* BirthdaysCard specific styles */
+.birthdays-card ul {
+  list-style: none;
+  padding: 0;
+}
+.birthdays-card li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(var(--text-color), 0.1);
+}
+.birthdays-card li:last-child {
+  border-bottom: none;
+}
+.birthdays-card .birthday-info {
+  flex-grow: 1;
+}
+.birthdays-card .birthday-date {
+  font-size: 0.8rem;
+  color: rgba(var(--text-color), 0.7);
+  display: block; /* Ensure it takes its own line if needed */
+}
+.birthdays-card .send-wishes-button {
+  background-color: transparent;
+  color: var(--primary-accent-color);
+  border: 1px solid var(--primary-accent-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-left: 10px; /* Space from text */
+  white-space: nowrap; /* Prevent button text from wrapping */
+}
+.birthdays-card .send-wishes-button:hover {
+  background-color: rgba(var(--primary-accent-color), 0.1);
+  color: var(--secondary-accent-color);
+}
