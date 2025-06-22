@@ -1,0 +1,104 @@
+/* Styles for AddEditDocumentModal.css */
+
+/* Using general .modal-backdrop, .modal-content, .modal-actions from a more global scope like ManageEmployeesPage.css or Dashboard.css if available */
+/* For now, let's assume those are available or copy them if this component is truly standalone in styling */
+
+.add-edit-document-modal-content { /* Specific class for this modal if needed */
+  /* max-width: 650px; */ /* Can adjust max-width if form is wider */
+}
+
+.add-edit-document-modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--secondary-accent-color);
+    font-size: 1.4rem;
+    text-align: center;
+}
+.add-edit-document-modal-content .form-group {
+    margin-bottom: 15px;
+}
+.add-edit-document-modal-content label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    display: block;
+    font-weight: bold;
+    color: var(--text-color);
+}
+.add-edit-document-modal-content input[type="text"],
+.add-edit-document-modal-content input[type="url"],
+.add-edit-document-modal-content input[type="file"],
+.add-edit-document-modal-content select,
+.add-edit-document-modal-content textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border: 1px solid rgba(var(--text-color), 0.3);
+    border-radius: 5px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+.add-edit-document-modal-content input[type="text"]:focus,
+.add-edit-document-modal-content input[type="url"]:focus,
+.add-edit-document-modal-content input[type="file"]:focus,
+.add-edit-document-modal-content select:focus,
+.add-edit-document-modal-content textarea:focus {
+    border-color: var(--primary-accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-accent-color), 0.2);
+    outline: none;
+}
+
+.add-edit-document-modal-content textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.add-edit-document-modal-content .radio-label {
+    font-weight: normal;
+    font-size: 0.9rem;
+    margin-right: 15px;
+    display: inline-flex; /* Align radio button and text */
+    align-items: center;
+    cursor: pointer;
+}
+.add-edit-document-modal-content .radio-label input[type="radio"] {
+    width: auto; /* Override full width for radio */
+    margin-right: 6px;
+}
+
+.add-edit-document-modal-content .file-name-display {
+    font-size: 0.85rem;
+    color: rgba(var(--text-color), 0.7);
+    margin-top: 5px;
+    font-style: italic;
+}
+.add-edit-document-modal-content .form-hint {
+    font-size: 0.8rem;
+    color: rgba(var(--text-color), 0.6);
+    margin-top: 3px; /* Pull it closer to the input */
+    margin-bottom: 10px;
+}
+
+
+/* Form messages (consistent with other forms) */
+.form-message {
+  padding: 10px; margin-bottom: 15px; border-radius: 5px; font-size: 0.9rem; text-align: center;
+}
+.form-message.error-message { background-color: rgba(231, 76, 60, 0.1); color: #e74c3c; border: 1px solid #e74c3c; }
+
+/* Modal actions styling should be inherited if .modal-actions is global */
+/* If not, add .modal-actions styling here as copied from ManageEmployeesPage.css */
+/*
+.modal-actions {
+  display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px;
+  padding-top: 15px; border-top: 1px solid rgba(var(--text-color), 0.1);
+}
+.modal-actions .submit-button, .modal-actions .cancel-button {
+    padding: 10px 20px; font-size: 0.9rem;
+}
+.modal-actions .cancel-button {
+    background-color: var(--text-color); color: var(--card-background); opacity: 0.7;
+}
+.modal-actions .cancel-button:hover { opacity: 1; }
+*/
