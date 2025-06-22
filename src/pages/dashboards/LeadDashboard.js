@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
-import '../Dashboard.css'; // Common dashboard styles
+import './Dashboard.css'; // Corrected path
 import './lead/LeadDashboard.css'; // Specific styles for Lead Dashboard
 
 // Import Employee Dashboard Cards for self-service section
