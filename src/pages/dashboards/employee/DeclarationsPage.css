@@ -1,0 +1,179 @@
+/* Styles for DeclarationsPage.css */
+
+.declarations-page .dashboard-content h2 {
+  margin-bottom: 20px;
+  color: var(--secondary-accent-color);
+}
+.declarations-page .dashboard-content h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--secondary-accent-color); /* Or var(--text-color) for less emphasis */
+  font-size: 1.1rem;
+}
+
+
+.declaration-tabs {
+  display: flex;
+  margin-bottom: 0; /* Remove margin if content container has padding/shadow */
+  border-bottom: 2px solid var(--primary-accent-color);
+}
+
+.declaration-tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px; /* Align with parent border */
+  transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.declaration-tab-button:hover {
+  color: var(--primary-accent-color);
+}
+
+.declaration-tab-button.active {
+  color: var(--primary-accent-color);
+  border-bottom-color: var(--primary-accent-color);
+  font-weight: bold;
+}
+
+.declaration-content-container {
+  /* .dashboard-card styles are applied */
+  padding: 25px;
+  border-top-left-radius: 0; /* Flatten top if tabs are directly above */
+  border-top-right-radius: 0;
+}
+
+.declaration-section p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  color: rgba(var(--text-color), 0.85);
+}
+
+/* Basic form styling within sections - can be more specific later */
+.declaration-section form {
+  margin-top: 20px;
+}
+.declaration-section .form-group {
+  margin-bottom: 15px;
+}
+.declaration-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.declaration-section input[type="text"],
+.declaration-section input[type="number"],
+.declaration-section input[type="file"],
+.declaration-section select {
+  width: 100%;
+  max-width: 400px; /* Limit width of inputs for better readability */
+  padding: 8px;
+  border: 1px solid rgba(var(--text-color), 0.3);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.declaration-section .submit-button {
+  background-color: var(--primary-accent-color);
+  color: var(--button-text-color);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.declaration-section .submit-button.disabled-button {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.declaration-section .submit-button:hover:not(.disabled-button) {
+  background-color: var(--secondary-accent-color);
+}
+
+.submitted-declarations {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(var(--text-color), 0.2);
+}
+.submitted-declarations h5 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.declaration-form-item .file-name-display {
+    font-size: 0.85rem;
+    color: rgba(var(--text-color), 0.7);
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Declarations History Table */
+.declarations-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.declarations-history-table th,
+.declarations-history-table td {
+  padding: 8px 10px; /* Slightly smaller padding for declaration tables */
+  text-align: left;
+  border-bottom: 1px solid rgba(var(--text-color), 0.1);
+  font-size: 0.85rem; /* Slightly smaller font */
+  vertical-align: middle;
+}
+
+.declarations-history-table th {
+  background-color: rgba(var(--primary-accent-color), 0.05);
+  color: var(--secondary-accent-color);
+  font-weight: 600;
+}
+
+.declarations-history-table tbody tr:hover {
+  background-color: rgba(var(--primary-accent-color), 0.03);
+}
+
+/* Status Badge (consistent with other pages) */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: #fff;
+}
+.status-badge.status-submitted { background-color: #3498db; /* Blue */ }
+.status-badge.status-approved { background-color: #2ecc71; /* Green */ }
+.status-badge.status-queried { background-color: #f39c12; /* Orange */ }
+.status-badge.status-rejected { background-color: #e74c3c; /* Red */ }
+
+
+@media (max-width: 600px) {
+  .declaration-tabs {
+    flex-direction: column;
+    border-bottom: none;
+  }
+  .declaration-tab-button {
+    border-bottom: 1px solid rgba(var(--text-color), 0.1);
+    text-align: left;
+  }
+  .declaration-tab-button.active {
+    border-left: 3px solid var(--primary-accent-color);
+    padding-left: 17px;
+  }
+  .declaration-content-container {
+    border-radius: 8px; /* Full radius if tabs are stacked */
+  }
+}

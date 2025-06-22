@@ -16,8 +16,10 @@ import PayslipListPage from './pages/dashboards/employee/PayslipListPage';
 import AttendanceLogPage from './pages/dashboards/employee/AttendanceLogPage';
 import WorkStatusReportPage from './pages/dashboards/employee/WorkStatusReportPage';
 import RaiseConcernPage from './pages/dashboards/employee/RaiseConcernPage';
-import DocumentCenterPage from './pages/dashboards/employee/DocumentCenterPage'; // New
-import HikeInfoPage from './pages/dashboards/employee/HikeInfoPage'; // New
+import DocumentCenterPage from './pages/dashboards/employee/DocumentCenterPage';
+import HikeInfoPage from './pages/dashboards/employee/HikeInfoPage';
+import TaskManagementPage from './pages/dashboards/employee/TaskManagementPage'; // New
+import DeclarationsPage from './pages/dashboards/employee/DeclarationsPage'; // New
 
 
 import './App.css';
@@ -50,8 +52,9 @@ function App() {
             <Route path="/dashboard/employee/raise-concern" element={<RaiseConcernPage />} />
             <Route path="/dashboard/employee/documents" element={<DocumentCenterPage />} />
             <Route path="/dashboard/employee/hike-info" element={<HikeInfoPage />} />
+            <Route path="/dashboard/employee/tasks" element={<TaskManagementPage />} />
+            <Route path="/dashboard/employee/declarations" element={<DeclarationsPage />} />
             {/* Future employee sub-routes can be added here:
-            <Route path="/dashboard/employee/tasks" element={<div>Employee Tasks Page</div>} />
             */}
 
           <Route path="/dashboard/manager" element={<ManagerDashboard />} />
