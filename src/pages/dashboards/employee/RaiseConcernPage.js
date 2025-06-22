@@ -100,11 +100,25 @@ function RaiseConcernPage() {
     };
 
     // Simulate routing/notification
-    let routeToDepartment = "Support Team";
-    if (category === 'hr_query') routeToDepartment = "HR Department";
-    else if (category === 'payroll') routeToDepartment = "Payroll Department";
-    else if (category === 'it_issue') routeToDepartment = "IT Department";
-    else if (category === 'facility') routeToDepartment = "Admin/Facility Team";
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
+    let routeToDepartment = "Support Team"; // Default
+
+    if (loggedInUser.role === 'lead') {
+        // Lead's concerns might be routed differently or have higher visibility
+        if (category === 'hr_query') routeToDepartment = "HR Department (via Lead)";
+        else if (category === 'payroll') routeToDepartment = "Payroll Department (via Lead)";
+        else if (category === 'it_issue') routeToDepartment = "IT Department (via Lead)";
+        else if (category === 'facility') routeToDepartment = "Admin/Facility Team (via Lead)";
+        else if (category === 'feedback' || category === 'other') routeToDepartment = "Admin/Management Review";
+        else routeToDepartment = "Relevant Department (Lead Submission)";
+    } else { // Employee's concern
+        if (category === 'hr_query') routeToDepartment = "HR Department";
+        else if (category === 'payroll') routeToDepartment = "Payroll Department";
+        else if (category === 'it_issue') routeToDepartment = "IT Department";
+        else if (category === 'facility') routeToDepartment = "Admin/Facility Team";
+        // 'feedback' and 'other' for employees still go to a general support or their lead conceptually
+    }
+
 
     console.log(`--- New Concern/Ticket Raised ---
 Ticket ID: ${ticketId}

@@ -180,10 +180,22 @@ export const DOCUMENT_CATEGORIES = [
 ];
 
 export const DUMMY_TEAM_MEMBERS = [
-    { id: 'emp101', name: 'Peter Pan', email: 'peter.pan@example.com', role: 'Frontend Developer' },
-    { id: 'emp102', name: 'Wendy Darling', email: 'wendy.darling@example.com', role: 'Backend Developer' },
-    { id: 'emp103', name: 'John Darling', email: 'john.darling@example.com', role: 'QA Engineer' },
-    { id: 'emp104', name: 'Michael Darling', email: 'michael.darling@example.com', role: 'UI/UX Designer' },
+    {
+        id: 'emp101', name: 'Peter Pan', email: 'peter.pan@example.com', role: 'Frontend Developer',
+        compensation: { currentGross: 62000, lastHikeDate: '2024-04-01', lastHikePercentage: '10%', nextReviewDate: '2025-03-31' }
+    },
+    {
+        id: 'emp102', name: 'Wendy Darling', email: 'wendy.darling@example.com', role: 'Backend Developer',
+        compensation: { currentGross: 68000, lastHikeDate: '2024-04-01', lastHikePercentage: '12%', nextReviewDate: '2025-03-31' }
+    },
+    {
+        id: 'emp103', name: 'John Darling', email: 'john.darling@example.com', role: 'QA Engineer',
+        compensation: { currentGross: 55000, lastHikeDate: '2023-10-01', lastHikePercentage: '7%', nextReviewDate: '2024-09-30' }
+    },
+    {
+        id: 'emp104', name: 'Michael Darling', email: 'michael.darling@example.com', role: 'UI/UX Designer',
+        compensation: { currentGross: 58000, lastHikeDate: '2024-01-01', lastHikePercentage: '9%', nextReviewDate: '2024-12-31' }
+    },
 ];
 
 export const DUMMY_TEAM_BIRTHDAYS = [

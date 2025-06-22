@@ -19,6 +19,7 @@ import AttendanceRegularizationCard from '../../components/employeeDashboard/Att
 // Import Lead Specific Widgets
 import PendingApprovalsWidget from '../../components/leadDashboard/PendingApprovalsWidget';
 import TeamTasksOverviewWidget from '../../components/leadDashboard/TeamTasksOverviewWidget';
+import TeamCompensationWidget from '../../components/leadDashboard/TeamCompensationWidget'; // New
 
 
 function LeadDashboard() {
@@ -95,6 +96,7 @@ function LeadDashboard() {
                 <div className="dashboard-grid">
                     <PendingApprovalsWidget />
                     <TeamTasksOverviewWidget />
+                    <TeamCompensationWidget />
                     {/* Add more team-specific widgets here later */}
                 </div>
             </section>
