@@ -14,8 +14,10 @@ import LeaveManagementPage from './pages/dashboards/employee/LeaveManagementPage
 import HolidayListPage from './pages/dashboards/employee/HolidayListPage';
 import PayslipListPage from './pages/dashboards/employee/PayslipListPage';
 import AttendanceLogPage from './pages/dashboards/employee/AttendanceLogPage';
-import WorkStatusReportPage from './pages/dashboards/employee/WorkStatusReportPage'; // New
-import RaiseConcernPage from './pages/dashboards/employee/RaiseConcernPage'; // New
+import WorkStatusReportPage from './pages/dashboards/employee/WorkStatusReportPage';
+import RaiseConcernPage from './pages/dashboards/employee/RaiseConcernPage';
+import DocumentCenterPage from './pages/dashboards/employee/DocumentCenterPage'; // New
+import HikeInfoPage from './pages/dashboards/employee/HikeInfoPage'; // New
 
 
 import './App.css';
@@ -46,6 +48,8 @@ function App() {
             <Route path="/dashboard/employee/attendance" element={<AttendanceLogPage />} />
             <Route path="/dashboard/employee/work-status-report" element={<WorkStatusReportPage />} />
             <Route path="/dashboard/employee/raise-concern" element={<RaiseConcernPage />} />
+            <Route path="/dashboard/employee/documents" element={<DocumentCenterPage />} />
+            <Route path="/dashboard/employee/hike-info" element={<HikeInfoPage />} />
             {/* Future employee sub-routes can be added here:
             <Route path="/dashboard/employee/tasks" element={<div>Employee Tasks Page</div>} />
             */}

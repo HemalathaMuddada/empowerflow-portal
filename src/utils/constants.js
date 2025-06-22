@@ -103,3 +103,78 @@ export const DUMMY_PAYSLIPS = [
     }
   }
 ];
+
+export const DUMMY_DOCUMENTS = [
+  {
+    id: 'doc001',
+    title: 'Employee Handbook 2024',
+    category: 'HR Policies',
+    description: 'Comprehensive guide to company policies, procedures, and employee benefits.',
+    uploadDate: '2024-01-15',
+    fileName: 'Employee_Handbook_2024.txt',
+    simulatedContent: "EmpowerFlow Employee Handbook 2024\n\nSection 1: Introduction\nWelcome to EmpowerFlow!...\n\nSection 2: Code of Conduct...\n\nSection 3: Leave Policy...\n(Full document content would be here)"
+  },
+  {
+    id: 'doc002',
+    title: 'IT Security Guidelines',
+    category: 'IT Guides',
+    description: 'Best practices for maintaining IT security and protecting company data.',
+    uploadDate: '2024-02-01',
+    fileName: 'IT_Security_Guidelines.txt',
+    simulatedContent: "EmpowerFlow IT Security Guidelines\n\n1. Password Policy: Create strong, unique passwords...\n2. Email Security: Beware of phishing attempts...\n3. Data Handling: Classify and protect sensitive information...\n(Full document content would be here)"
+  },
+  {
+    id: 'doc003',
+    title: 'Work From Home Policy',
+    category: 'HR Policies',
+    description: 'Guidelines and requirements for employees working remotely.',
+    uploadDate: '2024-03-10',
+    fileName: 'WFH_Policy_2024.txt',
+    simulatedContent: "EmpowerFlow Work From Home (WFH) Policy\n\nEligibility...\nEquipment...\nCommunication Expectations...\n(Full document content would be here)"
+  },
+  {
+    id: 'doc004',
+    title: 'Leave Application Form',
+    category: 'Forms',
+    description: 'Standard form for applying for all types of leave.',
+    uploadDate: '2023-12-20',
+    fileName: 'Leave_Application_Form.txt',
+    // externalUrl: 'https://www.example.com/sample-leave-form.pdf' // Example of external link
+    simulatedContent: "EmpowerFlow Leave Application Form\n\nEmployee Name: __________\nEmployee ID: __________\nLeave Type: __________\nStart Date: __________ End Date: __________\nReason: __________\n(This would typically be a fillable PDF or an online form)"
+  },
+  {
+    id: 'doc005',
+    title: 'Performance Review Process',
+    category: 'HR Policies',
+    description: 'Outline of the annual performance review cycle and expectations.',
+    uploadDate: '2024-04-05',
+    fileName: 'Performance_Review_Process.txt',
+    simulatedContent: "EmpowerFlow Performance Review Process\n\nTimeline...\nGoal Setting...\nSelf-Assessment...\nManager Review...\n(Full document content would be here)"
+  },
+  {
+    id: 'doc006',
+    title: 'VPN Setup Guide for Windows',
+    category: 'IT Guides',
+    description: 'Step-by-step instructions for configuring VPN access on Windows.',
+    uploadDate: '2024-05-15',
+    fileName: 'VPN_Setup_Windows.txt',
+    simulatedContent: "VPN Setup Guide (Windows)\n\n1. Download VPN client from [link]...\n2. Install the client...\n3. Configure server address: vpn.empowerflow.com...\n(Full document content would be here)"
+  },
+  {
+    id: 'doc007',
+    title: 'Q3 Company All-Hands Presentation',
+    category: 'Company Announcements',
+    description: 'Slides from the recent quarterly all-hands meeting.',
+    uploadDate: '2024-07-05',
+    fileName: 'Q3_All_Hands.txt',
+    simulatedContent: "Q3 All-Hands Meeting Slides\n\nSlide 1: Welcome & Agenda\nSlide 2: Q2 Review - Key Achievements\nSlide 3: Q3 Goals & Focus Areas\n(Full presentation content would be here)"
+  }
+];
+
+export const DOCUMENT_CATEGORIES = [
+    { value: 'all', label: 'All Categories' },
+    { value: 'HR Policies', label: 'HR Policies' },
+    { value: 'IT Guides', label: 'IT Guides' },
+    { value: 'Forms', label: 'Forms' },
+    { value: 'Company Announcements', label: 'Company Announcements' }
+];
