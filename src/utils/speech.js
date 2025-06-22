@@ -2,8 +2,9 @@
  * Speaks the given text using the browser's Web Speech API.
  * @param {string} text The text to be spoken.
  * @param {string} lang The language code (e.g., 'en-US'). Defaults to 'en-US'.
+ * @param {string | null} preferredVoiceName Optional name of the voice to use.
  */
-export const speakText = (text, lang = 'en-US') => {
+export const speakText = (text, lang = 'en-US', preferredVoiceName = null) => {
   if (!('speechSynthesis' in window)) {
     console.warn('Browser does not support speech synthesis.');
     return;
