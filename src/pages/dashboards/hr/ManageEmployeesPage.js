@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ThemeSwitcher from '../../../components/ThemeSwitcher';
 import { speakLogoutMessage, speakText } from '../../../utils/speech';
+import OffboardingModal from '../../../components/hrDashboard/OffboardingModal'; // Import OffboardingModal
 import './ManageEmployeesPage.css';
 
 // Dummy Add/Edit Modal (simplified, real modal would be a separate component)
@@ -110,6 +111,9 @@ function ManageEmployeesPage() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingEmployee, setEditingEmployee] = useState(null); // null for Add, employee object for Edit
+  const [isOffboardingModalOpen, setIsOffboardingModalOpen] = useState(false);
+  const [offboardingEmployee, setOffboardingEmployee] = useState(null);
+
 
   const loadEmployees = () => {
     const itemStr = localStorage.getItem('masterEmployeeList');
@@ -172,6 +176,54 @@ function ManageEmployeesPage() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setEditingEmployee(null);
+  };
+
+  const handleOpenOffboardingModal = (employee) => {
+    setOffboardingEmployee(employee);
+    setIsOffboardingModalOpen(true);
+  };
+
+  const handleCloseOffboardingModal = () => {
+    setIsOffboardingModalOpen(false);
+    setOffboardingEmployee(null);
+  };
+
+  const handleConfirmOffboarding = (offboardingData) => {
+    console.log("Offboarding Data Received:", offboardingData);
+    const updatedEmployees = allEmployees.map(emp => {
+      if (emp.id === offboardingData.employeeId) {
+        return {
+          ...emp,
+          status: 'Offboarding', // New status
+          offboardingInfo: { // Store details
+            lastWorkingDate: offboardingData.lastWorkingDate,
+            reasonForLeaving: offboardingData.reasonForLeavingLabel,
+            reassignDirectReporteesTo: offboardingData.reassignReporteesTo,
+            notesOnIncompleteTasks: offboardingData.notesOnIncompleteTasks,
+            additionalComments: offboardingData.additionalComments,
+            initiatedOn: new Date().toISOString()
+          }
+        };
+      }
+      return emp;
+    });
+
+    localStorage.setItem('masterEmployeeList', JSON.stringify(updatedEmployees));
+    setAllEmployees(updatedEmployees); // This will trigger filter useEffect
+
+    // Simulate notifications
+    console.log(`--- Offboarding Process Initiated ---
+Employee: ${offboardingData.employeeName} (${offboardingData.employeeId})
+Last Working Date: ${offboardingData.lastWorkingDate}
+Reason: ${offboardingData.reasonForLeavingLabel}
+Notifications sent to: IT, Admin, Finance, Reporting Manager (${offboardingEmployee?.reportingManagerName || 'N/A'}).
+Tasks to reassign from ${offboardingData.employeeName} to ${offboardingData.reassignReporteesTo || '[Not Specified]'}.
+Notes on Incomplete Tasks: ${offboardingData.notesOnIncompleteTasks || 'None'}
+HR Comments: ${offboardingData.additionalComments || 'None'}
+------------------------------------`);
+
+    handleCloseOffboardingModal();
+    speakText(`Offboarding process initiated for ${offboardingData.employeeName}.`);
   };
 
   const handleSaveEmployee = (employeeData) => {
@@ -294,8 +346,26 @@ function ManageEmployeesPage() {
                         className={`action-btn ${emp.status === 'Active' ? 'deactivate-btn' : 'activate-btn'}`}
                         title={emp.status === 'Active' ? 'Deactivate' : 'Activate'}
                     >
-                        {emp.status === 'Active' ? <>&#10006;</> : <>&#10004;</> }
+                        {emp.status === 'Active' ? <>&#x274C;</> : <>&#x2714;&#xFE0F;</> } {/* Cross Mark / Check Mark */}
                     </button>
+                    {emp.status === 'Active' && (
+                       <button
+                            onClick={() => handleOpenOffboardingModal(emp)}
+                            className="action-btn offboarding-btn"
+                            title="Initiate Offboarding"
+                        >
+                            &#x1F4C3; {/* Page with Curl Icon for Offboarding */}
+                        </button>
+                    )}
+                    {emp.status === 'Active' && ( // Only show for Active employees
+                       <button
+                            onClick={() => handleOpenOffboardingModal(emp)}
+                            className="action-btn offboarding-btn"
+                            title="Initiate Offboarding"
+                        >
+                            &#x1F4C3; {/* Page with Curl Icon for Offboarding */}
+                        </button>
+                    )}
                   </td>
                 </tr>
               )) : (
@@ -305,6 +375,13 @@ function ManageEmployeesPage() {
           </table>
         </div>
         {isModalOpen && <EmployeeFormModal employee={editingEmployee} onSave={handleSaveEmployee} onClose={handleCloseModal} allReportingManagers={reportingManagerOptions} />}
+        {isOffboardingModalOpen && offboardingEmployee && (
+            <OffboardingModal
+                employee={offboardingEmployee}
+                onConfirm={handleConfirmOffboarding}
+                onClose={handleCloseOffboardingModal}
+            />
+        )}
       </main>
       <footer className="dashboard-footer">
         <p>&copy; {new Date().getFullYear()} EmpowerFlow Inc. All rights reserved.</p>

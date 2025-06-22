@@ -115,6 +115,9 @@
 .employee-table .action-btn.activate-btn { color: var(--success-color); }
 .employee-table .action-btn.activate-btn:hover { background-color: rgba(var(--success-color), 0.15); }
 
+.employee-table .action-btn.offboarding-btn { color: #7f8c8d; /* Greyish, like a document */ }
+.employee-table .action-btn.offboarding-btn:hover { background-color: rgba(127, 140, 141, 0.15); }
+
 
 /* Modal Styles */
 .modal-backdrop {
@@ -196,7 +199,7 @@
 }
 .status-badge.status-active { background-color: #2ecc71; /* Green */ }
 .status-badge.status-inactive { background-color: #95a5a6; /* Grey */ }
-.status-badge.status-offboarding { background-color: #e67e22; /* Orange/Brown */ }
+.status-badge.status-offboarding { background-color: #e67e22; /* Orange/Brown - matches a warning/process color */ }
 
 
 @media (max-width: 768px) {
