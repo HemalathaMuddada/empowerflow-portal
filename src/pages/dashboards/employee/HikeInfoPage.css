@@ -1,0 +1,61 @@
+/* Styles for HikeInfoPage.css */
+
+.hike-info-page .dashboard-content h2 {
+  margin-bottom: 25px;
+  color: var(--secondary-accent-color);
+  border-bottom: 1px solid rgba(var(--text-color), 0.2);
+  padding-bottom: 10px;
+}
+
+.info-section {
+  /* .dashboard-card styles are applied */
+  margin-bottom: 25px;
+  padding: 20px;
+}
+
+.info-section h3 {
+  font-size: 1.3rem;
+  color: var(--secondary-accent-color);
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(var(--text-color), 0.1);
+}
+
+.info-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.info-section p strong {
+  font-weight: 600; /* Make strong tags a bit bolder */
+  color: var(--text-color); /* Ensure strong text is also themed */
+}
+
+.info-section p small {
+  font-size: 0.85em;
+  opacity: 0.8;
+  display: block; /* Make small tags take their own line if needed */
+  margin-top: 5px;
+}
+
+.info-section .hike-notes {
+  font-style: italic;
+  background-color: rgba(var(--primary-accent-color), 0.05); /* Subtle background for notes */
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 768px) {
+  .info-section h3 {
+    font-size: 1.15rem;
+  }
+  .info-section p {
+    font-size: 0.95rem;
+  }
+}

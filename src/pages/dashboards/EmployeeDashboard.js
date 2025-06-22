@@ -4,8 +4,10 @@ import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils
 import ThemeSwitcher from '../../components/ThemeSwitcher';
 import UpcomingHolidays from '../../components/employeeDashboard/UpcomingHolidays'; // To be created
 import LeaveBalances from '../../components/employeeDashboard/LeaveBalances'; // To be created
-import MyTasks from '../../components/employeeDashboard/MyTasks'; // Placeholder created
-import RecentPayslips from '../../components/employeeDashboard/RecentPayslips'; // Placeholder created
+import MyTasks from '../../components/employeeDashboard/MyTasks';
+import RecentPayslips from '../../components/employeeDashboard/RecentPayslips';
+import DocumentCenterCard from '../../components/employeeDashboard/DocumentCenterCard'; // New
+import CompensationCard from '../../components/employeeDashboard/CompensationCard'; // New
 import './Dashboard.css';
 import './employee/EmployeeDashboard.css'; // Specific styles for Employee Dashboard layout
 
@@ -100,9 +102,10 @@ function EmployeeDashboard() {
           <LeaveBalances />
           <MyTasks />
           <RecentPayslips />
+          <DocumentCenterCard />
+          <CompensationCard />
           {/* Example of how more cards can be added:
           <div className="dashboard-card"><h3>Performance Review</h3><p>Status: Upcoming</p><Link to="/dashboard/employee/performance" className="card-link">View Details</Link></div>
-          <div className="dashboard-card"><h3>My Documents</h3><Link to="/dashboard/employee/documents" className="card-link">Access Document Center</Link></div>
           */}
         </div>
       </main>
