@@ -211,6 +211,17 @@ export const DUMMY_TEAM_BIRTHDAYS = [
   { name: 'Harry Potter', birthDate: (new Date().getFullYear()) + '-' + (new Date().getMonth() + 1).toString().padStart(2,'0') + '-' + (new Date().getDate()).toString().padStart(2,'0'), role: 'Wizard (Today!)' }, // Today's birthday
 ];
 
+export const INITIAL_MASTER_EMPLOYEE_LIST = [
+  { id: 'emp001', name: 'Alice Johnson', email: 'alice.j@example.com', role: 'Software Engineer', designation: 'SE II', dateOfJoining: '2022-03-15', reportingManagerName: 'Bob Williams', status: 'Active' },
+  { id: 'emp002', name: 'Bob Williams', email: 'bob.w@example.com', role: 'Engineering Lead', designation: 'Lead Engineer', dateOfJoining: '2020-07-01', reportingManagerName: 'Carol Davis', status: 'Active' }, // This is a lead
+  { id: 'emp003', name: 'Carol Davis', email: 'carol.d@example.com', role: 'Engineering Manager', designation: 'Manager', dateOfJoining: '2018-05-20', reportingManagerName: 'David Green', status: 'Active' }, // This is a manager
+  { id: 'emp004', name: 'David Green', email: 'david.g@example.com', role: 'HR Executive', designation: 'Sr. HR Executive', dateOfJoining: '2019-11-01', reportingManagerName: 'Eva White', status: 'Active' }, // This is an HR
+  { id: 'emp005', name: 'Eva White', email: 'eva.w@example.com', role: 'HR Manager', designation: 'HR Head', dateOfJoining: '2017-02-10', reportingManagerName: 'Frank Black', status: 'Active' }, // This is an HR Manager
+  { id: 'emp006', name: 'Frank Black', email: 'frank.b@example.com', role: 'Super Admin', designation: 'System Administrator', dateOfJoining: '2016-01-05', reportingManagerName: 'System', status: 'Active' }, // Super Admin
+  { id: 'emp007', name: 'Grace Hall', email: 'grace.h@example.com', role: 'UI/UX Designer', designation: 'Designer II', dateOfJoining: '2023-01-20', reportingManagerName: 'Bob Williams', status: 'Active' },
+  { id: 'emp008', name: 'Henry Miller', email: 'henry.m@example.com', role: 'QA Engineer', designation: 'QA Lead', dateOfJoining: '2021-06-10', reportingManagerName: 'Carol Davis', status: 'Inactive' }, // Example of Inactive
+];
+
 
 // Helper to initialize dummy pending requests for lead testing
 export const initializeDummyPendingRequests = () => {

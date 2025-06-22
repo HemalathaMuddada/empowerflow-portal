@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Added Link
 import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
-import './Dashboard.css'; // Common dashboard styles
+import './Dashboard.css'; // Corrected path to be sibling
+import './hr/HRDashboard.css'; // Specific styles for HR Dashboard
+
+// Import HR Dashboard Widgets
+import ActiveEmployeesWidget from '../../components/hrDashboard/ActiveEmployeesWidget';
+import PendingReviewsWidget from '../../components/hrDashboard/PendingReviewsWidget';
+import NewHiresWidget from '../../components/hrDashboard/NewHiresWidget';
+import OpenConcernsWidget from '../../components/hrDashboard/OpenConcernsWidget';
+
 
 function HRDashboard() {
   const [userName, setUserName] = useState('HR Professional');
@@ -26,7 +34,7 @@ function HRDashboard() {
 
     const greeting = getTimeBasedGreeting();
     if (storedUser) {
-        const welcomeMessage = `${greeting} ${currentUserName}, you have successfully logged into the portal. Welcome to the HR Dashboard.`;
+        const welcomeMessage = `${greeting} ${currentUserName}, welcome to the HR Management Portal.`;
         speakText(welcomeMessage);
     }
 
@@ -52,12 +60,12 @@ function HRDashboard() {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container hr-dashboard fade-in-content">
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">
             <h1>EmpowerFlow</h1>
-            <p>HR Dashboard</p>
+            <p>Human Resources Dashboard</p>
           </div>
           <div className="header-actions">
             <ThemeSwitcher />
@@ -66,9 +74,27 @@ function HRDashboard() {
         </div>
       </header>
       <main className="dashboard-content">
-        <h2>Welcome, {userName}!</h2>
-        <p>Manage employee records, payroll, recruitment, and company policies.</p>
-        {/* More HR-specific content would go here */}
+        <div className="dashboard-greeting">
+            <h2>Welcome, {userName}!</h2>
+            <p>Oversee and manage all HR operations from here.</p>
+        </div>
+
+        <nav className="hr-main-navigation">
+            <Link to="/dashboard/hr/manage-employees" className="action-button">Manage Employees</Link>
+            <Link to="/dashboard/hr/manage-holidays" className="action-button">Manage Holidays</Link>
+            {/* Add more primary navigation links as features are built */}
+            <Link to="#" onClick={(e) => e.preventDefault()} className="action-button disabled-link">Manage Documents (Soon)</Link>
+            <Link to="#" onClick={(e) => e.preventDefault()} className="action-button disabled-link">Manage Hikes (Soon)</Link>
+        </nav>
+
+        <div className="hr-widgets-grid">
+            <ActiveEmployeesWidget />
+            <PendingReviewsWidget />
+            <NewHiresWidget />
+            <OpenConcernsWidget />
+            {/* More widgets can be added here */}
+        </div>
+
       </main>
       <footer className="dashboard-footer">
         <p>&copy; {new Date().getFullYear()} EmpowerFlow Inc. All rights reserved.</p>
