@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Added Link
+import { useNavigate, Link } from 'react-router-dom';
 import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
-import UpcomingHolidays from '../../components/employeeDashboard/UpcomingHolidays'; // To be created
-import LeaveBalances from '../../components/employeeDashboard/LeaveBalances'; // To be created
+import VoiceToggleSwitch from '../../components/VoiceToggleSwitch'; // Import VoiceToggleSwitch
+import UpcomingHolidays from '../../components/employeeDashboard/UpcomingHolidays';
+import LeaveBalances from '../../components/employeeDashboard/LeaveBalances';
 import MyTasks from '../../components/employeeDashboard/MyTasks';
 import RecentPayslips from '../../components/employeeDashboard/RecentPayslips';
 import DocumentCenterCard from '../../components/employeeDashboard/DocumentCenterCard';
@@ -38,10 +39,19 @@ function EmployeeDashboard() {
 
     setUserName(currentUserName);
 
-    const greeting = getTimeBasedGreeting();
-    if (storedUser) {
-        const welcomeMessage = `${greeting} ${currentUserName}, welcome to your Employee Dashboard.`; // Shortened for brevity on reloads
-        speakText(welcomeMessage);
+    const justLoggedIn = sessionStorage.getItem('justLoggedIn');
+    if (justLoggedIn === 'true') {
+      const greeting = getTimeBasedGreeting();
+      if (storedUser) { // Ensure user context is available for name
+          const welcomeMessage = `${greeting} ${currentUserName}, you have successfully logged into the portal. Welcome to your Employee Dashboard.`;
+          speakText(welcomeMessage);
+      }
+      sessionStorage.removeItem('justLoggedIn'); // Clear flag after speaking
+    } else {
+      // For subsequent loads of this page (not immediately after login),
+      // we might want a very brief page title announcement or nothing.
+      // For now, let's make other page title announcements more explicit on those pages.
+      // speakText("Employee Dashboard"); // Optional: if every visit should announce page title
     }
     // Cleanup function to stop speech if component unmounts
     return () => {
@@ -76,6 +86,7 @@ function EmployeeDashboard() {
             <p>Employee Dashboard</p>
           </div>
           <div className="header-actions">
+            <VoiceToggleSwitch />
             <ThemeSwitcher />
             <button onClick={handleLogout} className="logout-button">Logout</button>
           </div>

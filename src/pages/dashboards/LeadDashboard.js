@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
-import './Dashboard.css'; // Corrected path
-import './lead/LeadDashboard.css'; // Specific styles for Lead Dashboard
+import VoiceToggleSwitch from '../../components/VoiceToggleSwitch'; // Import
+import '../Dashboard.css';
+import './lead/LeadDashboard.css';
 
 // Import Employee Dashboard Cards for self-service section
 import UpcomingHolidays from '../../components/employeeDashboard/UpcomingHolidays';
@@ -42,10 +43,16 @@ function LeadDashboard() {
     }
     setUserName(currentUserName);
 
-    const greeting = getTimeBasedGreeting();
-    if (storedUser) {
-        const welcomeMessage = `${greeting} ${currentUserName}, welcome to your Lead Dashboard.`;
-        speakText(welcomeMessage);
+    const justLoggedIn = sessionStorage.getItem('justLoggedIn');
+    if (justLoggedIn === 'true') {
+      const greeting = getTimeBasedGreeting();
+      if (storedUser) {
+          const welcomeMessage = `${greeting} ${currentUserName}, you have successfully logged into the portal. Welcome to your Lead Dashboard.`;
+          speakText(welcomeMessage);
+      }
+      sessionStorage.removeItem('justLoggedIn');
+    } else {
+      // speakText("Lead Dashboard");
     }
 
     return () => {
@@ -78,6 +85,7 @@ function LeadDashboard() {
             <p>Lead Dashboard</p>
           </div>
           <div className="header-actions">
+            <VoiceToggleSwitch />
             <ThemeSwitcher />
             <button onClick={handleLogout} className="logout-button">Logout</button>
           </div>

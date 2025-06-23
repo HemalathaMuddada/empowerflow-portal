@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Added Link
+import { useNavigate, Link } from 'react-router-dom';
 import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
-import './Dashboard.css'; // Corrected path to be sibling
-import './hr/HRDashboard.css'; // Specific styles for HR Dashboard
+import VoiceToggleSwitch from '../../components/VoiceToggleSwitch'; // Import
+import './Dashboard.css';
+import './hr/HRDashboard.css';
 
 // Import HR Dashboard Widgets
 import ActiveEmployeesWidget from '../../components/hrDashboard/ActiveEmployeesWidget';
@@ -32,10 +33,16 @@ function HRDashboard() {
     }
     setUserName(currentUserName);
 
-    const greeting = getTimeBasedGreeting();
-    if (storedUser) {
-        const welcomeMessage = `${greeting} ${currentUserName}, welcome to the HR Management Portal.`;
+    const justLoggedIn = sessionStorage.getItem('justLoggedIn');
+    if (justLoggedIn === 'true') {
+      const greeting = getTimeBasedGreeting();
+      if (storedUser) {
+        const welcomeMessage = `${greeting} ${currentUserName}, you have successfully logged into the portal. Welcome to the HR Management Portal.`;
         speakText(welcomeMessage);
+      }
+      sessionStorage.removeItem('justLoggedIn');
+    } else {
+      // speakText("HR Management Portal");
     }
 
     return () => {
@@ -68,6 +75,7 @@ function HRDashboard() {
             <p>Human Resources Dashboard</p>
           </div>
           <div className="header-actions">
+            <VoiceToggleSwitch />
             <ThemeSwitcher />
             <button onClick={handleLogout} className="logout-button">Logout</button>
           </div>
