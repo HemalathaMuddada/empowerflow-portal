@@ -15,7 +15,7 @@ const IT_DECLARATION_TYPES = [
     { value: 'other', label: 'Other Tax Saving Investment' }
 ];
 
-const ITDeclarationSection = () => {
+const ITDeclarationSection = ({ userName }) => { // Accept userName as prop
   const [itemType, setItemType] = useState(IT_DECLARATION_TYPES[0].value);
   const [declaredAmount, setDeclaredAmount] = useState('');
   const [proofFileName, setProofFileName] = useState('');
@@ -159,7 +159,7 @@ const FBP_COMPONENT_TYPES = [
     { value: 'other_fbp', label: 'Other FBP Component' }
 ];
 
-const FBPDeclarationSection = () => {
+const FBPDeclarationSection = ({ userName }) => { // Accept userName as prop
   const [componentType, setComponentType] = useState(FBP_COMPONENT_TYPES[0].value);
   const [fbpDeclaredAmount, setFbpDeclaredAmount] = useState('');
   const [fbpProofFileName, setFbpProofFileName] = useState('');
@@ -352,8 +352,8 @@ function DeclarationsPage() {
         </nav>
 
         <div className="declaration-content-container dashboard-card">
-          {activeTab === 'it' && <ITDeclarationSection />}
-          {activeTab === 'fbp' && <FBPDeclarationSection />}
+          {activeTab === 'it' && <ITDeclarationSection userName={userName} />}
+          {activeTab === 'fbp' && <FBPDeclarationSection userName={userName} />}
         </div>
       </main>
       <footer className="dashboard-footer">
