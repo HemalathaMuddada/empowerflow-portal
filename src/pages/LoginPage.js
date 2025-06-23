@@ -41,6 +41,7 @@ function LoginPage() {
         role: user.role,
         email: email.toLowerCase() // Store consistent email
       }));
+      sessionStorage.setItem('justLoggedIn', 'true'); // Flag for one-time welcome message
 
       // Redirect based on role
       // Pass user object which now includes id to dashboards if needed, though localStorage is primary source

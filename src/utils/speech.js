@@ -3,14 +3,24 @@
  * @param {string} text The text to be spoken.
  * @param {string} lang The language code (e.g., 'en-US'). Defaults to 'en-US'.
  * @param {string | null} preferredVoiceName Optional name of the voice to use.
+ * @param {boolean} bypassGlobalCheck If true, ignores the global voiceFeedbackEnabled setting.
  */
-export const speakText = (text, lang = 'en-US', preferredVoiceName = null) => {
+export const speakText = (text, lang = 'en-US', preferredVoiceName = null, bypassGlobalCheck = false) => {
+  if (!bypassGlobalCheck) {
+    const voiceEnabled = localStorage.getItem('voiceFeedbackEnabled');
+    // Default to enabled if not set, only return if explicitly 'false'
+    if (voiceEnabled === 'false') {
+      // console.log("Voice feedback is disabled globally."); // Optional debug
+      return;
+    }
+  }
+
   if (!('speechSynthesis' in window)) {
     console.warn('Browser does not support speech synthesis.');
     return;
   }
 
-  // Cancel any ongoing speech
+  // Cancel any ongoing speech - helps prevent overlapping if calls are rapid
   window.speechSynthesis.cancel();
 
   const utterance = new SpeechSynthesisUtterance(text);
