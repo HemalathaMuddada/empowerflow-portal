@@ -5,12 +5,15 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 import './LoginPage.css'; // We will create this file for styles
 
 // Dummy credentials - In a real app, this would come from a backend or secure storage
+// Aligned with INITIAL_MASTER_EMPLOYEE_LIST for IDs and some names/roles
 const DUMMY_USERS = {
-  'employee@example.com': { password: 'password', role: 'employee', name: 'John Doe' },
-  'lead@example.com': { password: 'password', role: 'lead', name: 'Jane Smith' },
-  'manager@example.com': { password: 'password', role: 'manager', name: 'Mike Ross' },
-  'hr@example.com': { password: 'password', role: 'hr', name: 'Sarah Connor' },
-  'superadmin@example.com': { password: 'password', role: 'superadmin', name: 'Admin User' },
+  'alice.j@example.com': { id: 'emp001', password: 'password', role: 'employee', name: 'Alice Johnson' }, // Assuming 'employee' role for Alice for login simplicity
+  'bob.w@example.com': { id: 'emp002', password: 'password', role: 'lead', name: 'Bob Williams' },
+  'carol.d@example.com': { id: 'emp003', password: 'password', role: 'manager', name: 'Carol Davis' },
+  'david.g@example.com': { id: 'emp004', password: 'password', role: 'hr', name: 'David Green' },
+  'frank.b@example.com': { id: 'emp006', password: 'password', role: 'superadmin', name: 'Frank Black' },
+  // Add a generic employee if needed for the old 'employee@example.com'
+  'employee@example.com': { id: 'empDummy001', password: 'password', role: 'employee', name: 'John Doe (Demo)'}
 };
 
 function LoginPage() {
@@ -32,12 +35,16 @@ function LoginPage() {
 
     if (user && user.password === password) {
       // Store user info (e.g., in localStorage or context for other components to access)
-      // For now, we pass it via route state. This is simple but has limitations.
-      // A context API or Redux would be better for a larger application.
-      localStorage.setItem('loggedInUser', JSON.stringify({ name: user.name, role: user.role, email: email }));
+      localStorage.setItem('loggedInUser', JSON.stringify({
+        id: user.id, // Store the ID
+        name: user.name,
+        role: user.role,
+        email: email.toLowerCase() // Store consistent email
+      }));
 
       // Redirect based on role
-      navigate(`/dashboard/${user.role}`, { state: { user: { name: user.name, role: user.role } } });
+      // Pass user object which now includes id to dashboards if needed, though localStorage is primary source
+      navigate(`/dashboard/${user.role}`, { state: { user: { id: user.id, name: user.name, role: user.role } } });
     } else {
       setError('Invalid email or password.');
     }

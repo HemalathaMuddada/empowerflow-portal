@@ -60,8 +60,11 @@ const ITDeclarationSection = () => {
         return;
     }
 
+    const loggedInUserData = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
     const newDeclaration = {
       id: Date.now(),
+      employeeId: loggedInUserData.id || 'unknown_emp_id', // Add employeeId
+      employeeName: loggedInUserData.name || userName, // Ensure employeeName is stored
       itemType,
       itemLabel: IT_DECLARATION_TYPES.find(it => it.value === itemType)?.label || itemType,
       declaredAmount: parseFloat(declaredAmount).toFixed(2),
@@ -201,8 +204,11 @@ const FBPDeclarationSection = () => {
         return;
     }
 
+    const loggedInUserData = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
     const newDeclaration = {
       id: Date.now(),
+      employeeId: loggedInUserData.id || 'unknown_emp_id', // Add employeeId
+      employeeName: loggedInUserData.name || userName, // Ensure employeeName is stored (userName is from page state)
       componentType,
       componentLabel: FBP_COMPONENT_TYPES.find(fbp => fbp.value === componentType)?.label || componentType,
       declaredAmount: parseFloat(fbpDeclaredAmount).toFixed(2),
