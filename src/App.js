@@ -31,7 +31,8 @@ import TeamCompensationPage from './pages/dashboards/lead/TeamCompensationPage';
 import ManageEmployeesPage from './pages/dashboards/hr/ManageEmployeesPage';
 import ManageHolidaysPage from './pages/dashboards/hr/ManageHolidaysPage';
 import ManageDocumentsPage from './pages/dashboards/hr/ManageDocumentsPage';
-import ManageHikesPage from './pages/dashboards/hr/ManageHikesPage'; // New
+import ManageHikesPage from './pages/dashboards/hr/ManageHikesPage';
+import ViewDeclarationsPage from './pages/dashboards/hr/ViewDeclarationsPage'; // New
 
 
 import './App.css';
@@ -102,6 +103,7 @@ function App() {
             <Route path="/dashboard/hr/manage-holidays" element={<ManageHolidaysPage />} />
             <Route path="/dashboard/hr/manage-documents" element={<ManageDocumentsPage />} />
             <Route path="/dashboard/hr/manage-hikes" element={<ManageHikesPage />} />
+            <Route path="/dashboard/hr/view-declarations" element={<ViewDeclarationsPage />} />
             {/* Future HR sub-routes can be added here */}
 
           <Route path="/dashboard/superadmin" element={<SuperAdminDashboard />} />
