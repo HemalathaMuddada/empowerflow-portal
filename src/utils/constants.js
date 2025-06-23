@@ -286,3 +286,14 @@ export const initializeDummyPendingRequests = () => {
     }
     console.log("Dummy pending requests initialized in localStorage if they didn't exist.");
 };
+
+export const CANDIDATE_STATUSES = [
+    { value: 'New', label: 'New' },
+    { value: 'Screening', label: 'Screening' },
+    { value: 'Interview Scheduled', label: 'Interview Scheduled' },
+    { value: 'Shortlisted', label: 'Shortlisted' },
+    { value: 'Offer Extended', label: 'Offer Extended' },
+    { value: 'Hired', label: 'Hired' },
+    { value: 'On Hold', label: 'On Hold' },
+    { value: 'Rejected', label: 'Rejected' },
+];

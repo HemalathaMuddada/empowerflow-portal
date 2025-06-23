@@ -1,0 +1,120 @@
+/* Styles for ManageResumesPage.css */
+
+.manage-resumes-page .dashboard-content h2 {
+  margin-bottom: 20px;
+  color: var(--secondary-accent-color);
+}
+
+/* Reusing .page-actions and .filters-section styles if available globally or from other HR pages */
+.page-actions { /* If not global, copy from ManageEmployeesPage.css */
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;
+}
+.filters-section.resume-filters { /* Specific class if needed, or reuse .filters-section */
+  display: flex; gap: 15px; margin-bottom: 20px; padding: 15px;
+  background-color: rgba(var(--card-background),0.5); border-radius: 8px;
+  flex-wrap: wrap; /* Allow filters to wrap */
+}
+.filters-section.resume-filters .form-group {
+  flex: 1; min-width: 220px; /* Adjust min-width for resume filters */
+}
+.filters-section.resume-filters label {
+  display: block; margin-bottom: 5px; font-weight: 500; font-size: 0.9rem;
+}
+.filters-section.resume-filters select {
+  width: 100%; padding: 9px 10px; border: 1px solid rgba(var(--text-color), 0.2);
+  border-radius: 5px; font-size: 0.9rem;
+  background-color: var(--background-color); color: var(--text-color);
+}
+.filters-section.resume-filters select:focus {
+    border-color: var(--primary-accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-accent-color), 0.2);
+    outline: none;
+}
+
+
+.resumes-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  box-shadow: var(--card-shadow);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.resumes-table th,
+.resumes-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(var(--text-color), 0.1);
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+
+.resumes-table th {
+  background-color: rgba(var(--primary-accent-color), 0.08);
+  color: var(--secondary-accent-color);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resumes-table tbody tr:nth-child(even) {
+  background-color: rgba(var(--background-color), 0.5);
+}
+.resumes-table tbody tr:hover {
+  background-color: rgba(var(--primary-accent-color), 0.1);
+}
+
+.resumes-table .external-doc-link { /* Reusing from document center for consistency */
+    color: var(--primary-accent-color);
+    font-weight: 500;
+}
+.resumes-table .external-doc-link:hover {
+    color: var(--secondary-accent-color);
+    text-decoration: underline;
+}
+
+.resumes-table .status-select-inline {
+    padding: 4px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(var(--text-color), 0.2);
+    font-size: 0.8rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    max-width: 150px; /* Prevent select from being too wide */
+}
+
+
+.resumes-table .actions-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+/* Reusing .action-btn styles (edit-btn, delete-btn) */
+.resumes-table .action-btn {
+  background: none; border: none; cursor: pointer; font-size: 1.1rem;
+  padding: 5px 8px; margin: 0 3px; border-radius: 4px; transition: background-color 0.2s ease;
+}
+.resumes-table .action-btn.edit-btn { color: var(--primary-accent-color); }
+.resumes-table .action-btn.edit-btn:hover { background-color: rgba(var(--primary-accent-color), 0.15); }
+.resumes-table .action-btn.delete-btn { color: var(--danger-color); }
+.resumes-table .action-btn.delete-btn:hover { background-color: rgba(var(--danger-color), 0.15); }
+
+/* Status Badge styling (if not using select for display, or for other contexts) */
+/* Ensure .status-badge and its variants are defined globally or copied here if needed */
+/* Example for CANDIDATE_STATUSES: */
+.status-badge.status-new { background-color: #3498db; /* Blue */ }
+.status-badge.status-screening { background-color: #1abc9c; /* Turquoise */ }
+.status-badge.status-interview-scheduled { background-color: #9b59b6; /* Purple */ }
+.status-badge.status-shortlisted { background-color: #2980b9; /* Darker Blue */ }
+.status-badge.status-offer-extended { background-color: #f1c40f; /* Yellow */ }
+.status-badge.status-hired { background-color: #2ecc71; /* Green */ }
+.status-badge.status-on-hold { background-color: #e67e22; /* Orange */ }
+.status-badge.status-rejected { background-color: #e74c3c; /* Red */ }
+
+
+/* Form messages */
+.form-message {
+  padding: 10px; margin-bottom: 15px; border-radius: 5px; font-size: 0.9rem; text-align: center;
+}
+.form-message.success-message { background-color: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid #2ecc71; }

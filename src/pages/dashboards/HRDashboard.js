@@ -93,6 +93,7 @@ function HRDashboard() {
             <Link to="/dashboard/hr/manage-documents" className="action-button">Manage Documents</Link>
             <Link to="/dashboard/hr/manage-hikes" className="action-button">Manage Hikes</Link>
             <Link to="/dashboard/hr/view-declarations" className="action-button">View Declarations</Link>
+            <Link to="/dashboard/hr/manage-resumes" className="action-button">Manage Resumes</Link>
             {/* Add more primary navigation links as features are built */}
         </nav>
 
