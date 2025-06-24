@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
+import TeamQuickSummaryWidget from '../../components/managerDashboard/TeamQuickSummaryWidget'; // Import widget
+import ManagerTasksWidget from '../../components/managerDashboard/ManagerTasksWidget'; // Import widget
 import './Dashboard.css'; // Common dashboard styles
+import './ManagerDashboard.css'; // Specific styles for Manager Dashboard if needed
 
 function ManagerDashboard() {
   const [userName, setUserName] = useState('Manager');
@@ -52,7 +55,7 @@ function ManagerDashboard() {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container manager-dashboard"> {/* Added manager-dashboard class for specific styling if needed */}
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-and-title">
@@ -65,10 +68,56 @@ function ManagerDashboard() {
           </div>
         </div>
       </header>
-      <main className="dashboard-content">
-        <h2>Welcome, {userName}!</h2>
-        <p>Access analytics, manage departmental resources, and drive strategic initiatives.</p>
-        {/* More manager-specific content would go here */}
+      <main className="dashboard-main-content-area"> {/* Changed class for clarity */}
+        <div className="dashboard-greeting">
+          <h2>Welcome, {userName}!</h2>
+          <p>Oversee operations, manage your teams, and access company-wide insights.</p>
+        </div>
+
+        {/* Navigation Section */}
+        <nav className="manager-dashboard-nav dashboard-card"> {/* Added dashboard-card for styling */}
+          <h3>Portal Navigation</h3>
+          <div className="nav-section">
+            <h4>My Personal Tools (Employee View)</h4>
+            <ul>
+              <li><Link to="/dashboard/employee/leave" className="nav-link">Leave Management</Link></li>
+              <li><Link to="/dashboard/employee/payslips" className="nav-link">My Payslips</Link></li>
+              <li><Link to="/dashboard/employee/attendance" className="nav-link">My Attendance</Link></li>
+              <li><Link to="/dashboard/employee/tasks" className="nav-link">My Tasks</Link></li>
+              <li><Link to="/dashboard/employee/documents" className="nav-link">Document Center</Link></li>
+              <li><Link to="/dashboard/employee/declarations" className="nav-link">My Declarations</Link></li>
+              {/* Add other relevant employee links here */}
+            </ul>
+          </div>
+          <div className="nav-section">
+            <h4>Managerial Functions</h4>
+            <ul>
+              {/* Future links to manager specific pages */}
+              <li><span className="nav-link-placeholder">View Company Roster (coming soon)</span></li>
+              <li><span className="nav-link-placeholder">Manage HR Users (coming soon)</span></li>
+              <li><span className="nav-link-placeholder">Upload Hike Documents (coming soon)</span></li>
+            </ul>
+          </div>
+        </nav>
+
+        {/* Widgets Section (will be populated in a future step) */}
+        <section className="manager-widgets-section">
+          <h3>Key Insights & Widgets</h3>
+          <div className="widgets-grid">
+            <TeamQuickSummaryWidget />
+            <ManagerTasksWidget />
+            {/* Add more manager-specific widgets here as they are developed */}
+          </div>
+        </section>
+
+        {/* Main Content / Placeholder for future views managed by this dashboard */}
+        {/* This section might be removed or repurposed if manager functions are always separate pages */}
+        <section className="manager-main-view dashboard-card">
+          <h3>Manager Dashboard Overview</h3>
+          <p>Welcome to your central hub for management tasks and insights. Use the navigation links to access various tools and reports.</p>
+          <p>Future updates will populate this dashboard with more interactive widgets and direct access to key managerial functions.</p>
+        </section>
+
       </main>
       <footer className="dashboard-footer">
         <p>&copy; {new Date().getFullYear()} EmpowerFlow Inc. All rights reserved.</p>

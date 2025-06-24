@@ -1,0 +1,89 @@
+/* ManagerDashboard.css - Specific styles for the Manager Dashboard can be added here */
+
+.manager-dashboard .dashboard-main-content-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.manager-dashboard-nav {
+    padding: 15px;
+}
+
+.manager-dashboard-nav h3,
+.manager-widgets-section h3,
+.manager-main-view h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+body.dark-theme .manager-dashboard-nav h3,
+body.dark-theme .manager-widgets-section h3,
+body.dark-theme .manager-main-view h3 {
+    border-bottom-color: #444;
+}
+
+
+.manager-dashboard-nav .nav-section {
+    margin-bottom: 15px;
+}
+
+.manager-dashboard-nav h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #555;
+}
+body.dark-theme .manager-dashboard-nav h4 {
+    color: #bbb;
+}
+
+
+.manager-dashboard-nav ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.manager-dashboard-nav ul li {
+    margin-bottom: 8px;
+}
+
+.manager-dashboard-nav .nav-link,
+.manager-dashboard-nav .nav-link-placeholder {
+    text-decoration: none;
+    color: var(--primary-color, #007bff);
+    display: block;
+    padding: 5px 0;
+}
+.manager-dashboard-nav .nav-link:hover {
+    text-decoration: underline;
+    color: var(--primary-hover-color, #0056b3);
+}
+
+.manager-dashboard-nav .nav-link-placeholder {
+    color: #888;
+    cursor: not-allowed;
+}
+
+
+.manager-widgets-section .widgets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.manager-widget {
+    padding: 15px;
+}
+.widget-data-placeholder{
+    font-size: 0.95em;
+    margin-bottom: 5px;
+}
+
+/* Styles for dashboard-card if not already globally defined well enough */
+/* .dashboard-card { (already in Dashboard.css, ensure it's sufficient or override here) } */
+
+.manager-main-view {
+    padding: 15px;
+}
