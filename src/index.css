@@ -1,13 +1,276 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+:root {
+  /* GreytHR Inspired Palette - Light Theme Defaults */
+  --ghr-primary-blue: #007bff;         /* Primary action blue */
+  --ghr-primary-blue-darker: #0056b3;  /* For hover states */
+  --ghr-primary-blue-lighter: #e6f2ff; /* Light backgrounds/accents for buttons/links */
+
+  --ghr-secondary-blue: #005cbf;      /* A slightly different blue for secondary emphasis */
+
+  --ghr-background-main: #f4f7f9;     /* Overall page background - very light grey */
+  --ghr-background-card: #ffffff;    /* Card/widget backgrounds - white */
+  --ghr-background-header: #ffffff;  /* Header background */
+  --ghr-background-menu: #f8f9fa;   /* Sidebar/menu background */
+
+  --ghr-text-primary: #212529;       /* Main text color - dark grey */
+  --ghr-text-secondary: #495057;     /* Subdued text, labels - medium grey */
+  --ghr-text-on-primary-bg: #ffffff; /* Text on primary blue background */
+  --ghr-text-link: var(--ghr-primary-blue);
+
+  --ghr-border-color: #dee2e6;       /* Borders for cards, tables, inputs */
+  --ghr-border-color-light: #e9ecef; /* Lighter borders, table headers */
+
+  --ghr-accent-green: #28a745;       /* Success, confirmations */
+  --ghr-accent-red: #dc3545;         /* Errors, warnings */
+  --ghr-accent-orange: #fd7e14;      /* Attention, secondary warnings */
+  --ghr-accent-yellow: #ffc107;      /* Informational warnings */
+  --ghr-accent-cyan: #17a2b8;        /* Info color */
+
+  /* --- Mapping to generic variables used by the app --- */
+  /* It's better to replace these generic ones with specific GHR ones over time */
+  --primary-color: var(--ghr-primary-blue);
+  --primary-hover-color: var(--ghr-primary-blue-darker); /* For text hover */
+  --primary-hover-bg-color: var(--ghr-primary-blue-lighter); /* For link/button background hover */
+
+  --secondary-color: var(--ghr-secondary-blue); /* Example: for secondary buttons */
+
+  --background-color: var(--ghr-background-main);
+  --card-bg-color: var(--ghr-background-card);
+  --header-bg-color: var(--ghr-background-header); /* New variable for header */
+  --menu-bg-color: var(--ghr-background-menu); /* New variable for menus */
+
+  --text-color: var(--ghr-text-primary);
+  --text-secondary-color: var(--ghr-text-secondary); /* New variable for secondary text */
+  --link-color: var(--ghr-text-link);
+
+  --border-color: var(--ghr-border-color);
+  --table-header-bg: var(--ghr-border-color-light);
+  --table-row-hover-bg: #f1f3f5; /* Can be a lighter version of card or main bg */
+
+  --success-color: var(--ghr-accent-green);
+  --error-color: var(--ghr-accent-red);
+  --warning-color: var(--ghr-accent-yellow);
+  --info-color: var(--ghr-accent-cyan);
+
+  /* Voice Command Specific (can be themed too) */
+  --voice-toggle-bg-off: #ccc;
+  --voice-toggle-bg-on: var(--primary-color);
+  --voice-toggle-slider: white;
+
+  /* Button specific (new) */
+  --button-primary-bg: var(--ghr-primary-blue);
+  --button-primary-text: var(--ghr-text-on-primary-bg);
+  --button-primary-hover-bg: var(--ghr-primary-blue-darker);
+
+  --button-secondary-bg: #6c757d; /* Standard bootstrap secondary grey */
+  --button-secondary-text: #ffffff;
+  --button-secondary-hover-bg: #5a6268;
+}
+
+body.dark-theme {
+  /* GreytHR Inspired Palette - Dark Theme */
+  --ghr-primary-blue: #3c8bf0;          /* Adjusted blue for dark mode visibility */
+  --ghr-primary-blue-darker: #66aaff;   /* Lighter for hover on dark bg */
+  --ghr-primary-blue-lighter: #223a52;  /* Darker, subtle blue background for accents */
+
+  --ghr-secondary-blue: #4a90e2;
+
+  --ghr-background-main: #1a1d21;      /* Dark grey, not pure black */
+  --ghr-background-card: #24292e;      /* Slightly lighter dark grey for cards */
+  --ghr-background-header: #24292e;   /* Header background for dark theme */
+  --ghr-background-menu: #202428;    /* Sidebar/menu background for dark theme */
+
+  --ghr-text-primary: #c9d1d9;        /* Light grey text */
+  --ghr-text-secondary: #8b949e;      /* More subdued light grey */
+  --ghr-text-on-primary-bg: #ffffff;  /* Text on primary blue background (can stay white) */
+  --ghr-text-link: var(--ghr-primary-blue);
+
+  --ghr-border-color: #30363d;       /* Dark theme borders */
+  --ghr-border-color-light: #2a2f34;  /* Darker table header / lighter border element */
+
+  --ghr-accent-green: #34c759;        /* Brighter green for dark mode */
+  --ghr-accent-red: #ff453a;          /* Brighter red */
+  --ghr-accent-orange: #f09a40;       /* Adjusted orange */
+  --ghr-accent-yellow: #ffdd57;       /* Brighter yellow */
+  --ghr-accent-cyan: #29b6f6;         /* Brighter cyan */
+
+  /* --- Mapping to generic variables --- */
+  --primary-color: var(--ghr-primary-blue);
+  --primary-hover-color: var(--ghr-primary-blue-darker);
+  --primary-hover-bg-color: var(--ghr-primary-blue-lighter);
+
+  --secondary-color: var(--ghr-secondary-blue);
+
+  --background-color: var(--ghr-background-main);
+  --card-bg-color: var(--ghr-background-card);
+  --header-bg-color: var(--ghr-background-header);
+  --menu-bg-color: var(--ghr-background-menu);
+
+  --text-color: var(--ghr-text-primary);
+  --text-secondary-color: var(--ghr-text-secondary);
+  --link-color: var(--ghr-text-link);
+
+  --border-color: var(--ghr-border-color);
+  --table-header-bg: var(--ghr-border-color-light);
+  --table-row-hover-bg: #2c3136;
+
+  --success-color: var(--ghr-accent-green);
+  --error-color: var(--ghr-accent-red);
+  --warning-color: var(--ghr-accent-yellow);
+  --info-color: var(--ghr-accent-cyan);
+
+  --voice-toggle-bg-on: var(--primary-color);
+
+  --button-primary-bg: var(--ghr-primary-blue);
+  --button-primary-text: var(--ghr-text-on-primary-bg);
+  --button-primary-hover-bg: var(--ghr-primary-blue-darker); /* This should be lighter in dark mode if bg is dark */
+
+  --button-secondary-bg: #555e67;
+  --button-secondary-text: #c9d1d9;
+  --button-secondary-hover-bg: #484f58;
+}
+
+/* Apply base background and text color */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Global link styling */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--primary-hover-color);
+  text-decoration: underline;
+}
+
+/* --- Global Form Element Styling --- */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+input[type="search"],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--card-bg-color); /* Or --ghr-background-card directly */
+  background-clip: padding-box;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem; /* Standard border radius */
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-sizing: border-box; /* Ensures padding and border don't add to width */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary-color); /* Highlight with primary color */
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem var(--ghr-primary-blue-lighter); /* Subtle focus glow */
+}
+
+/* Placeholder text color */
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-secondary-color);
+  opacity: 0.7;
+}
+
+/* Select specific styling if needed (arrows are tricky to style consistently) */
+select {
+  appearance: none; /* Basic reset for custom arrow later if desired */
+  /* Consider adding a background SVG for a custom arrow if browser defaults are too inconsistent */
+}
+
+
+/* --- Global Button Styling --- */
+.button, /* Generic button class */
+button { /* Apply to raw button elements too */
+  display: inline-block;
+  font-weight: 600; /* Slightly bolder for buttons */
+  line-height: 1.5;
+  color: var(--button-primary-text);
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: var(--button-primary-bg);
+  border: 1px solid var(--button-primary-bg);
+  padding: 0.5rem 1rem; /* Standard padding */
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.button:hover,
+button:hover {
+  background-color: var(--button-primary-hover-bg);
+  border-color: var(--button-primary-hover-bg);
+  color: var(--button-primary-text); /* Ensure text color remains appropriate */
+}
+
+.button:focus,
+button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem var(--ghr-primary-blue-lighter);
+}
+
+/* Secondary button style */
+.button-secondary,
+button.secondary-action-button { /* Match existing class if used */
+  color: var(--button-secondary-text);
+  background-color: var(--button-secondary-bg);
+  border-color: var(--button-secondary-bg);
+}
+
+.button-secondary:hover,
+button.secondary-action-button:hover {
+  color: var(--button-secondary-text);
+  background-color: var(--button-secondary-hover-bg);
+  border-color: var(--button-secondary-hover-bg);
+}
+
+/* Add other button variations if needed (e.g., success, danger) */
+.button-danger,
+button.delete-btn { /* Example for delete buttons */
+    background-color: var(--error-color);
+    border-color: var(--error-color);
+    color: #fff;
+}
+.button-danger:hover,
+button.delete-btn:hover {
+    background-color: #c82333; /* Darker red */
+    border-color: #bd2130;
+    color: #fff;
+}
+
+/* Ensure action-button class (used in some components) also gets styled */
+.action-button {
+    /* This might inherit from button, or need specific overrides if its structure is different */
+    /* For now, assuming it's a <button> or <Link> styled as a button */
 }
