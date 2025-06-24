@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
 import VoiceToggleSwitch from '../../components/VoiceToggleSwitch'; // Import
-import '../Dashboard.css';
+import './Dashboard.css'; // Corrected path
 import './lead/LeadDashboard.css';
 
 // Import Employee Dashboard Cards for self-service section
