@@ -1,67 +1,24 @@
 /* Common Dashboard Styles */
 
-/* Theme variables - default to Light Theme */
-:root {
-  --background-color: #f9f9f9;
-  --text-color: #333;
-  --header-background: #007bff;
-  --header-text-color: white;
-  --card-background: #fff;
-  --card-shadow: rgba(0, 0, 0, 0.08);
-  --primary-accent-color: #007bff; /* Links, primary buttons if not overridden */
-  --secondary-accent-color: #0056b3; /* Headings, hover states */
-  --footer-background: #343a40;
-  --footer-text-color: white;
-  --button-text-color: white;
-  --danger-color: #e74c3c; /* Red */
-  --warning-color: #f39c12; /* Orange */
-  --success-color: #2ecc71; /* Green */
-}
-
-body[data-theme="dark"] {
-  --background-color: #2c3e50; /* Dark blue-grey */
-  --text-color: #ecf0f1; /* Light grey/white */
-  --header-background: #34495e; /* Slightly lighter dark blue-grey */
-  --header-text-color: #ecf0f1;
-  --card-background: #34495e; /* Same as header for a flatter dark look */
-  --card-shadow: rgba(0, 0, 0, 0.2);
-  --primary-accent-color: #3498db; /* Brighter blue for dark mode */
-  --secondary-accent-color: #2980b9;
-  --footer-background: #2c3e50; /* Match body background */
-  --footer-text-color: #bdc3c7; /* Softer white */
-}
-
-body[data-theme="corporate-blue"] {
-  --background-color: #eaf2f8; /* Very light blue */
-  --text-color: #2c3e50; /* Dark slate blue */
-  --header-background: #2980b9; /* Stronger blue */
-  --header-text-color: white;
-  --card-background: #ffffff;
-  --card-shadow: rgba(41, 128, 185, 0.15);
-  --primary-accent-color: #3498db; /* A slightly lighter, vibrant blue */
-  --secondary-accent-color: #21618c; /* Darker shade of primary */
-  --footer-background: #2c3e50; /* Dark slate blue */
-  --footer-text-color: #eaf2f8;
-}
-
+/* Theme variables are now defined globally in src/index.css */
 
 .dashboard-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: 'Roboto', 'Arial', sans-serif; /* Updated to Roboto */
-  background-color: var(--background-color);
-  color: var(--text-color);
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif; /* Matches index.css */
+  background-color: var(--background-color); /* This now maps to --ghr-background-main */
+  color: var(--text-color); /* This now maps to --ghr-text-primary */
   transition: background-color 0.3s, color 0.3s;
 }
 
 .dashboard-header {
-  background-color: var(--header-background);
-  color: var(--header-text-color);
-  padding: 20px 40px;
-  /* text-align: center; remove this to allow flex to align items */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--header-bg-color); /* Using new variable from index.css */
+  color: var(--ghr-text-on-primary-bg); /* Assuming header bg is often primary, or define a specific --header-text-color */
+  padding: 15px 30px; /* Adjusted padding */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: background-color 0.3s, color 0.3s;
+  border-bottom: 1px solid var(--border-color); /* Adding a light border */
 }
 
 .dashboard-header h1 {
@@ -92,7 +49,7 @@ body[data-theme="corporate-blue"] {
   margin: 5px 0 0;
   font-size: 1rem;
   opacity: 0.9;
-  color: var(--header-text-color); /* Ensure this inherits theme */
+  /* color will inherit from .dashboard-header or use a specific --ghr-text-secondary if desired for less emphasis */
 }
 
 .header-actions {
@@ -103,8 +60,8 @@ body[data-theme="corporate-blue"] {
 
 
 .logout-button {
-  background-color: #e74c3c; /* A slightly different red */
-  color: var(--button-text-color);
+  background-color: var(--ghr-accent-red); /* Using new variable */
+  color: var(--ghr-text-on-primary-bg); /* Assuming white/light text on red */
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
@@ -115,70 +72,74 @@ body[data-theme="corporate-blue"] {
 }
 
 .logout-button:hover {
-  background-color: #c0392b; /* Darker shade of the new red */
+  background-color: #c0392b; /* Darker shade of red - can create a variable for this too */
 }
 
-/* .dashboard-header p is now .dashboard-header .logo-and-title p */
-/* Ensure general p within header content respects header text color if not specifically styled */
-/* This might be redundant given the more specific .logo-and-title p styling */
-/* .dashboard-header p {
-  color: var(--header-text-color);
-} */
 
-/* Update other elements to use CSS variables */
-
-.dashboard-content {
+.dashboard-main-content-area, /* Class used in Manager/SuperAdmin Dashboards */
+.dashboard-content { /* Class used in HR/Employee/Lead Dashboards */
   flex-grow: 1;
-  padding: 30px 40px;
-  max-width: 1200px;
-  margin: 0 auto; /* Center content */
+  padding: 20px 30px; /* Adjusted padding */
+  max-width: 1300px; /* Slightly wider max-width */
+  margin: 0 auto;
   width: 100%;
-  background-color: var(--background-color); /* Ensure content bg also themed */
+  /* background-color: var(--background-color); Is inherited from .dashboard-container */
 }
 
-.dashboard-content h2 {
-  color: var(--secondary-accent-color); /* Use theme variable */
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  border-bottom: 2px solid var(--text-color); /* Themed border */
-  opacity: 0.5; /* Make border less prominent */
-  padding-bottom: 10px;
+/* Styling for section titles within dashboard content */
+.dashboard-main-content-area h2,
+.dashboard-content h2,
+.dashboard-main-content-area h3, /* For widgets sections etc. */
+.dashboard-content h3 {
+  color: var(--ghr-text-secondary); /* Using a more subdued color for section titles */
+  font-size: 1.5rem; /* Adjusted size */
+  margin-top: 0; /* Remove default top margin for headings if they are first in a card */
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--ghr-border-color-light); /* Lighter border */
 }
 
+.dashboard-main-content-area p,
 .dashboard-content p {
   line-height: 1.6;
   font-size: 1rem;
   margin-bottom: 15px;
-  color: var(--text-color); /* Ensure p text is themed */
+  color: var(--text-color);
 }
 
 .dashboard-footer {
-  background-color: var(--footer-background);
-  color: var(--footer-text-color);
+  background-color: var(--ghr-background-header); /* Match header or use a specific footer bg */
+  color: var(--ghr-text-secondary); /* Subdued text for footer */
   text-align: center;
-  padding: 15px 40px;
+  padding: 15px 30px;
   font-size: 0.9rem;
   transition: background-color 0.3s, color 0.3s;
+  border-top: 1px solid var(--ghr-border-color);
 }
 
 .dashboard-footer p {
   margin: 0;
 }
 
-/* Basic card styling for potential content blocks */
-.card {
-  background-color: var(--card-background);
-  border-radius: 8px;
+/* Common card styling for widgets and content blocks */
+.dashboard-card { /* Renamed from .card to .dashboard-card for clarity */
+  background-color: var(--card-bg-color); /* Uses --ghr-background-card */
+  border-radius: 6px; /* Slightly less rounded */
   padding: 20px;
-  box-shadow: 0 2px 10px var(--card-shadow);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03); /* More subtle shadow */
   margin-bottom: 20px;
   transition: background-color 0.3s, box-shadow 0.3s;
+  border: 1px solid var(--border-color); /* Consistent border */
 }
 
-.card h3 {
+.dashboard-card h3, .dashboard-card h4 { /* Common styling for card titles */
   margin-top: 0;
-  color: var(--primary-accent-color); /* Use theme variable */
+  margin-bottom: 15px;
+  color: var(--ghr-text-primary);
+  /* border-bottom: 1px solid var(--ghr-border-color-light); */ /* Optional: if card titles need a separator */
+  /* padding-bottom: 10px; */
 }
+
 
 @media (max-width: 768px) {
   .dashboard-header {
