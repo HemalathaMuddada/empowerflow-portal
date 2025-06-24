@@ -1,0 +1,100 @@
+/* SuperAdminDashboard.css - Specific styles for the Super Admin Dashboard */
+
+.superadmin-dashboard .superadmin-main-layout {
+    display: flex;
+    gap: 20px;
+    padding-top: 20px; /* Add some space from the header */
+}
+
+.superadmin-sidebar-nav {
+    flex: 0 0 280px; /* Sidebar width, doesn't grow or shrink */
+    padding: 20px;
+    /* background-color: #f8f9fa; Already handled by dashboard-card */
+    /* border-radius: 8px; Already handled by dashboard-card */
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); Already handled by dashboard-card */
+    height: fit-content; /* Make sidebar only as tall as its content */
+}
+
+.superadmin-sidebar-nav h3,
+.superadmin-sidebar-nav h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.superadmin-sidebar-nav h4 {
+    margin-top: 15px; /* Space above "Access Other Portals" */
+    color: #555;
+}
+body.dark-theme .superadmin-sidebar-nav h4 {
+    color: #bbb;
+}
+
+
+.superadmin-sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+.superadmin-sidebar-nav ul li {
+    margin-bottom: 10px;
+}
+
+.superadmin-sidebar-nav .nav-link,
+.superadmin-sidebar-nav .nav-link-placeholder {
+    text-decoration: none;
+    color: var(--primary-color, #007bff);
+    display: block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.superadmin-sidebar-nav .nav-link:hover {
+    background-color: var(--primary-hover-bg-color, #e9ecef);
+    color: var(--primary-hover-color, #0056b3);
+}
+body.dark-theme .superadmin-sidebar-nav .nav-link:hover {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+}
+
+
+.superadmin-sidebar-nav .nav-link-placeholder {
+    color: #888;
+    cursor: not-allowed;
+    background-color: transparent !important; /* Ensure no hover effect */
+}
+body.dark-theme .superadmin-sidebar-nav .nav-link-placeholder {
+    color: #666;
+}
+
+
+.superadmin-sidebar-nav hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+body.dark-theme .superadmin-sidebar-nav hr {
+    border-top-color: #444;
+}
+
+.superadmin-content-area {
+    flex-grow: 1; /* Takes up remaining space */
+    padding: 20px;
+}
+
+.superadmin-widgets-section .widgets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.superadmin-widget { /* Specific styling for widgets if needed */
+    padding: 15px;
+}
+.widget-data-placeholder {
+    font-size: 0.95em;
+    margin-bottom: 5px;
+}
