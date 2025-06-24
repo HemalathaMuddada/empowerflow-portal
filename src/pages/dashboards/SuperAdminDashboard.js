@@ -1,59 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
-import './Dashboard.css'; // Common dashboard styles
-
-function SuperAdminDashboard() {
-  const [userName, setUserName] = useState('Super Admin');
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('loggedInUser');
-    let currentUserName = 'Super Admin';
-
-    if (storedUser) {
-      try {
-        const userData = JSON.parse(storedUser);
-        if (userData && userData.name) {
-          currentUserName = userData.name;
-        }
-      } catch (e) {
-        console.error("Failed to parse user data from localStorage", e);
-      }
-    }
-    setUserName(currentUserName);
-
-    const greeting = getTimeBasedGreeting();
-    if (storedUser) {
-        const welcomeMessage = `${greeting} ${currentUserName}, you have successfully logged into the portal. Welcome to the Super Admin Dashboard.`;
-        speakText(welcomeMessage);
-    }
-
-    return () => {
-      if (window.speechSynthesis) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, []);
-
-  const handleLogout = () => {
-    const storedUserForLogout = localStorage.getItem('loggedInUser');
-    let currentUserNameForLogout = 'User';
-    if (storedUserForLogout) {
-      try {
-        const userData = JSON.parse(storedUserForLogout);
-        currentUserNameForLogout = userData.name || currentUserNameForLogout;
-      } catch (e) { /* ignore */ }
-    }
-    speakLogoutMessage(currentUserNameForLogout);
-    localStorage.removeItem('loggedInUser');
-    navigate('/login');
-  };
-
-import { Link } from 'react-router-dom';
 import SystemOverviewWidget from '../../components/superAdminDashboard/SystemOverviewWidget';
 import ActiveCompaniesWidget from '../../components/superAdminDashboard/ActiveCompaniesWidget';
+import './Dashboard.css'; // Common dashboard styles
 import './SuperAdminDashboard.css'; // For specific styles
 
 function SuperAdminDashboard() {

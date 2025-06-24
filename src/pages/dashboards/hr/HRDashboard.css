@@ -1,70 +1,42 @@
-/* Styles for HRDashboard.css */
+/* Styles specific to HRDashboard */
 
-.hr-dashboard .dashboard-greeting h2 {
-    margin-bottom: 5px;
-}
-.hr-dashboard .dashboard-greeting p {
-    font-size: 1rem;
-    opacity: 0.9;
-}
-
-.hr-dashboard .hr-main-navigation {
-    margin-top: 20px;
-    margin-bottom: 30px;
+.hr-dashboard .dashboard-layout-with-right-menu {
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    gap: 20px; /* Space between main content and right menu */
+    padding-top: 10px; /* Optional: if header doesn't have enough bottom margin/padding */
 }
-/* .action-button styles from EmployeeDashboard.css will be reused or can be globalized */
 
-.hr-dashboard .hr-widgets-grid {
+.hr-dashboard .dashboard-main-content {
+    flex-grow: 1; /* Main content takes available space */
+    /* Any other specific styling for the main content area of HR dashboard */
+}
+
+.hr-widgets-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for widgets */
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px; /* Space below greeting */
 }
 
-/* Styling for HR specific widgets */
-.hr-widget {
-    /* .dashboard-card styles are applied */
-    text-align: center; /* Center align text in widgets */
-}
+/* Ensure RightSideMenu component itself might have its own flex properties
+   (e.g. flex: 0 0 250px) defined in RightSideMenu.css to control its width.
+   The .right-side-menu class in RightSideMenu.css has order: 1,
+   which means if it's a direct child of a flex container along with
+   dashboard-main-content, it would try to position itself based on that order.
+   However, the structure in HRDashboard.js is:
+   <div className="dashboard-layout-with-right-menu">
+       <main className="dashboard-main-content">...</main>
+       <RightSideMenu ... />
+   </div>
+   So, the flex properties on dashboard-layout-with-right-menu directly affect
+   dashboard-main-content and the nav element rendered by RightSideMenu.
+*/
 
-.hr-widget h3 {
-    font-size: 1.1rem; /* Slightly smaller for widget titles */
-    margin-bottom: 10px;
+/* If RightSideMenu needs to be explicitly sized here, you could do:
+.hr-dashboard .right-side-menu {
+    flex-basis: 250px; // Or whatever width is desired
+    flex-shrink: 0;
 }
-
-.hr-widget .metric-large {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--primary-accent-color);
-    margin: 10px 0 5px 0;
-    line-height: 1;
-}
-
-.hr-widget .metric-label {
-    font-size: 0.95rem;
-    color: var(--text-color);
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-.hr-widget .metric-small {
-    font-size: 0.85rem;
-    color: rgba(var(--text-color), 0.7);
-    margin-bottom: 15px;
-}
-
-/* Ensure card-link is visible and spaced */
-.hr-widget .card-link {
-    margin-top: auto; /* Pushes link to bottom */
-    display: inline-block; /* Allows margin-top auto to work with flex */
-    padding-top: 10px;
-}
-
-/* Disabled link styling (if not already global) */
-.disabled-link {
-    color: var(--text-color) !important;
-    opacity: 0.6;
-    pointer-events: none;
-    text-decoration: none !important;
-}
+But it's better if RightSideMenu.css handles its own sizing.
+The `flex: 0 0 250px;` in RightSideMenu.css should achieve this.
+*/

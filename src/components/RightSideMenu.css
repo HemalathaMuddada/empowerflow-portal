@@ -1,0 +1,70 @@
+.right-side-menu {
+    flex: 0 0 250px; /* Fixed width, adjust as needed */
+    padding: 20px;
+    height: fit-content; /* Only as tall as its content */
+    /* background-color: #f8f9fa; -- Handled by dashboard-card */
+    /* border-radius: 8px; -- Handled by dashboard-card */
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); -- Handled by dashboard-card */
+    order: 1; /* Ensures it comes after the main content in flex order if not structurally placed last */
+}
+
+.right-side-menu-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    color: var(--text-color, #333); /* Ensure text color respects theme */
+}
+
+body.dark-theme .right-side-menu-title {
+    border-bottom-color: #444;
+    color: var(--dark-theme-text-color, #f0f0f0);
+}
+
+.right-side-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.right-side-menu-item {
+    margin-bottom: 10px;
+}
+
+.right-side-menu .nav-link,
+.right-side-menu .nav-link-placeholder {
+    text-decoration: none;
+    color: var(--primary-color, #007bff); /* Use CSS variable for theming */
+    display: block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 0.95em;
+}
+
+.right-side-menu .nav-link:hover {
+    background-color: var(--primary-hover-bg-color, #e9ecef); /* Use CSS variable */
+    color: var(--primary-hover-color, #0056b3); /* Use CSS variable */
+}
+
+body.dark-theme .right-side-menu .nav-link {
+    color: var(--dark-theme-primary-color, #4dabf7);
+}
+
+body.dark-theme .right-side-menu .nav-link:hover {
+    background-color: #3a3a3a; /* Darker hover for dark theme */
+    color: var(--dark-theme-primary-hover-color, #74c0fc);
+}
+
+
+.right-side-menu .nav-link-placeholder {
+    color: #888;
+    cursor: not-allowed;
+    padding: 8px 12px; /* Consistent padding */
+    border-radius: 4px; /* Consistent radius */
+}
+
+body.dark-theme .right-side-menu .nav-link-placeholder {
+    color: #666;
+}
