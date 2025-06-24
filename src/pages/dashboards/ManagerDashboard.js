@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Added Link here
 import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
 import TeamQuickSummaryWidget from '../../components/managerDashboard/TeamQuickSummaryWidget'; // Import widget
