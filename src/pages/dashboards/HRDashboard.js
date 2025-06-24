@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Link removed as it's now in RightSideMenu
 import { speakText, getTimeBasedGreeting, speakLogoutMessage } from '../../utils/speech';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
-import VoiceToggleSwitch from '../../components/VoiceToggleSwitch'; // Import
+import VoiceToggleSwitch from '../../components/VoiceToggleSwitch';
+import RightSideMenu from '../../components/RightSideMenu'; // Import RightSideMenu
 import './Dashboard.css';
-import './hr/HRDashboard.css';
+import './hr/HRDashboard.css'; // Ensure this file exists or create it
 
 // Import HR Dashboard Widgets
 import ActiveEmployeesWidget from '../../components/hrDashboard/ActiveEmployeesWidget';
@@ -12,10 +13,18 @@ import PendingReviewsWidget from '../../components/hrDashboard/PendingReviewsWid
 import NewHiresWidget from '../../components/hrDashboard/NewHiresWidget';
 import OpenConcernsWidget from '../../components/hrDashboard/OpenConcernsWidget';
 
-
 function HRDashboard() {
   const [userName, setUserName] = useState('HR Professional');
   const navigate = useNavigate();
+
+  const hrMenuItems = [
+    { label: 'Manage Employees', path: '/dashboard/hr/manage-employees' },
+    { label: 'Manage Holidays', path: '/dashboard/hr/manage-holidays' },
+    { label: 'Manage Documents', path: '/dashboard/hr/manage-documents' },
+    { label: 'Manage Hikes', path: '/dashboard/hr/manage-hikes' },
+    { label: 'View Declarations', path: '/dashboard/hr/view-declarations' },
+    { label: 'Manage Resumes', path: '/dashboard/hr/manage-resumes' },
+  ];
 
   useEffect(() => {
     const storedUser = localStorage.getItem('loggedInUser');
@@ -81,31 +90,26 @@ function HRDashboard() {
           </div>
         </div>
       </header>
-      <main className="dashboard-content">
-        <div className="dashboard-greeting">
-            <h2>Welcome, {userName}!</h2>
-            <p>Oversee and manage all HR operations from here.</p>
-        </div>
+      <div className="dashboard-layout-with-right-menu">
+        <main className="dashboard-main-content">
+          <div className="dashboard-greeting">
+              <h2>Welcome, {userName}!</h2>
+              <p>Oversee and manage all HR operations from here.</p>
+          </div>
 
-        <nav className="hr-main-navigation">
-            <Link to="/dashboard/hr/manage-employees" className="action-button">Manage Employees</Link>
-            <Link to="/dashboard/hr/manage-holidays" className="action-button">Manage Holidays</Link>
-            <Link to="/dashboard/hr/manage-documents" className="action-button">Manage Documents</Link>
-            <Link to="/dashboard/hr/manage-hikes" className="action-button">Manage Hikes</Link>
-            <Link to="/dashboard/hr/view-declarations" className="action-button">View Declarations</Link>
-            <Link to="/dashboard/hr/manage-resumes" className="action-button">Manage Resumes</Link>
-            {/* Add more primary navigation links as features are built */}
-        </nav>
+          {/* Widgets Section */}
+          <div className="hr-widgets-grid">
+              <ActiveEmployeesWidget />
+              <PendingReviewsWidget />
+              <NewHiresWidget />
+              <OpenConcernsWidget />
+              {/* More widgets can be added here */}
+          </div>
+          {/* Further main content for HR dashboard can go here */}
 
-        <div className="hr-widgets-grid">
-            <ActiveEmployeesWidget />
-            <PendingReviewsWidget />
-            <NewHiresWidget />
-            <OpenConcernsWidget />
-            {/* More widgets can be added here */}
-        </div>
-
-      </main>
+        </main>
+        <RightSideMenu title="HR Menu" menuItems={hrMenuItems} />
+      </div>
       <footer className="dashboard-footer">
         <p>&copy; {new Date().getFullYear()} EmpowerFlow Inc. All rights reserved.</p>
       </footer>
