@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import ThemeSwitcher from '../../../components/ThemeSwitcher';
 import { speakLogoutMessage, speakText } from '../../../utils/speech';
 import OffboardingModal from '../../../components/hrDashboard/OffboardingModal'; // Import OffboardingModal
@@ -19,13 +19,36 @@ const EmployeeFormModal = ({ employee, onSave, onClose, allReportingManagers }) 
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormError('');
-        if (!formData.id || !formData.name || !formData.email || !formData.role || !formData.designation || !formData.dateOfJoining || !formData.status) {
-            setFormError('All fields except Reporting Manager are required.');
+        const errors = [];
+
+        // ID is only required for new employees (when `employee` prop is null)
+        if (!employee && !formData.id.trim()) {
+            errors.push('Employee ID');
+        }
+        if (!formData.name.trim()) {
+            errors.push('Full Name');
+        }
+        if (!formData.email.trim()) {
+            errors.push('Email');
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            setFormError('Invalid email format.');
             return;
         }
-        // Basic email validation
-        if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            setFormError('Invalid email format.');
+        if (!formData.role.trim()) {
+            errors.push('Role');
+        }
+        if (!formData.designation.trim()) {
+            errors.push('Designation');
+        }
+        if (!formData.dateOfJoining) {
+            errors.push('Date of Joining');
+        }
+        if (!formData.status) { // Status should always be present due to select default
+            errors.push('Status');
+        }
+
+        if (errors.length > 0) {
+            setFormError(`Please fill in the following required fields: ${errors.join(', ')}.`);
             return;
         }
         onSave(formData);
@@ -103,11 +126,13 @@ const EmployeeFormModal = ({ employee, onSave, onClose, allReportingManagers }) 
 
 function ManageEmployeesPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [hrUserName, setHrUserName] = useState('HR Admin');
   const [allEmployees, setAllEmployees] = useState([]);
   const [filteredEmployees, setFilteredEmployees] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('All'); // 'All', 'Active', 'Inactive'
+  const [reviewFilterActive, setReviewFilterActive] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingEmployee, setEditingEmployee] = useState(null); // null for Add, employee object for Edit
@@ -140,14 +165,33 @@ function ManageEmployeesPage() {
       } catch (e) { console.error(e); }
     }
     loadEmployees();
-    speakText("Manage Employees");
-  }, []);
+
+    const filterState = location.state?.filter;
+    if (filterState === "pendingReviews") {
+      setReviewFilterActive(true);
+      // Clear the state to prevent re-filtering on unrelated re-renders
+      navigate(location.pathname, { replace: true, state: {} });
+      speakText("Showing employees pending review.");
+    } else {
+      speakText("Manage Employees");
+    }
+  }, [location.state, location.pathname, navigate]); // Added dependencies
 
   useEffect(() => {
     let tempEmployees = [...allEmployees];
-    if (statusFilter !== 'All') {
-      tempEmployees = tempEmployees.filter(emp => emp.status === statusFilter);
+
+    if (reviewFilterActive) {
+      tempEmployees = tempEmployees.filter(emp => emp.needsReview === true && emp.status === 'Active');
+      // Reset search and status filters when review filter is active by navigation
+      // setSearchTerm(''); // Optionally reset search
+      // setStatusFilter('Active'); // Optionally set status to active
+    } else {
+      // Apply status filter only if review filter is not active
+      if (statusFilter !== 'All') {
+        tempEmployees = tempEmployees.filter(emp => emp.status === statusFilter);
+      }
     }
+
     if (searchTerm.trim() !== '') {
       const lowerSearch = searchTerm.toLowerCase();
       tempEmployees = tempEmployees.filter(emp =>
@@ -159,7 +203,7 @@ function ManageEmployeesPage() {
       );
     }
     setFilteredEmployees(tempEmployees);
-  }, [searchTerm, statusFilter, allEmployees]);
+  }, [searchTerm, statusFilter, allEmployees, reviewFilterActive]);
 
 
   const handleLogout = () => {
@@ -295,6 +339,11 @@ HR Comments: ${offboardingData.additionalComments || 'None'}
         </div>
 
         <h2>Master Employee List</h2>
+        {reviewFilterActive && (
+          <div className="filter-active-message">
+            <p>Showing employees pending review. <button onClick={() => setReviewFilterActive(false)} className="clear-filter-btn">Clear Review Filter</button></p>
+          </div>
+        )}
 
         <div className="filters-section">
           <input

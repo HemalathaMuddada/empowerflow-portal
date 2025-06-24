@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ThemeSwitcher from '../../../components/ThemeSwitcher';
 import { speakLogoutMessage, speakText } from '../../../utils/speech';
 import { HOLIDAY_LIST as INITIAL_HOLIDAYS } from '../../../utils/constants'; // Initial seed
+import ConfirmationModal from '../../../components/ConfirmationModal'; // Import ConfirmationModal
 import './ManageHolidaysPage.css';
 
 // Simplified Modal for Add/Edit Holiday
@@ -14,8 +15,16 @@ const HolidayFormModal = ({ holiday, onSave, onClose }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormError('');
-        if (!name.trim() || !date) {
-            setFormError('Holiday Name and Date are required.');
+        const errors = [];
+        if (!name.trim()) {
+            errors.push('Holiday Name');
+        }
+        if (!date) {
+            errors.push('Date');
+        }
+
+        if (errors.length > 0) {
+            setFormError(`Please fill in the following required fields: ${errors.join(', ')}.`);
             return;
         }
         onSave({ ...holiday, name: name.trim(), date });
@@ -54,6 +63,8 @@ function ManageHolidaysPage() {
   const [holidays, setHolidays] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingHoliday, setEditingHoliday] = useState(null); // null for Add, holiday object for Edit
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [holidayToDelete, setHolidayToDelete] = useState(null);
 
   const loadHolidays = () => {
     let storedHolidays = localStorage.getItem('companyHolidayList');
@@ -132,26 +143,30 @@ function ManageHolidaysPage() {
     speakText(editingHoliday ? "Holiday updated." : "New holiday added.");
   };
 
-  const handleDeleteHoliday = (holidayToDelete) => {
-    // For items from INITIAL_HOLIDAYS that might not have an ID yet, match by date and name
+  const handleDeleteHolidayConfirm = () => { // Renamed to avoid confusion with the old direct delete
+    if (!holidayToDelete) return; // Should not happen if modal logic is correct
+
     const holidayId = holidayToDelete.id;
     const holidayDate = holidayToDelete.date;
     const holidayName = holidayToDelete.name;
 
-    if (!window.confirm(`Are you sure you want to delete the holiday: ${holidayName} on ${new Date(holidayDate).toLocaleDateString()}?`)) {
-      return;
-    }
-
-    let updatedHolidays;
+    let updatedHolidaysList;
     if(holidayId){
-        updatedHolidays = holidays.filter(h => h.id !== holidayId);
+        updatedHolidaysList = holidays.filter(h => h.id !== holidayId);
     } else { // Fallback for items without ID (e.g. from initial constants before getting an ID)
-        updatedHolidays = holidays.filter(h => !(h.date === holidayDate && h.name === holidayName));
+        updatedHolidaysList = holidays.filter(h => !(h.date === holidayDate && h.name === holidayName));
     }
 
-    localStorage.setItem('companyHolidayList', JSON.stringify(updatedHolidays));
-    setHolidays(updatedHolidays);
+    localStorage.setItem('companyHolidayList', JSON.stringify(updatedHolidaysList));
+    setHolidays(updatedHolidaysList);
     speakText("Holiday deleted.");
+    setIsConfirmModalOpen(false);
+    setHolidayToDelete(null);
+  };
+
+  const requestDeleteHoliday = (holiday) => { // This function now just opens the modal
+    setHolidayToDelete(holiday); // Set the holiday to be deleted
+    setIsConfirmModalOpen(true); // Open the confirmation modal
   };
 
   // When opening modal for an item from INITIAL_HOLIDAYS that has no ID.
@@ -166,6 +181,16 @@ function ManageHolidaysPage() {
 
   return (
     <div className="dashboard-container manage-holidays-page fade-in-content">
+      <ConfirmationModal
+        isOpen={isConfirmModalOpen}
+        message={`Are you sure you want to delete the holiday: ${holidayToDelete?.name} on ${holidayToDelete?.date ? new Date(holidayToDelete.date).toLocaleDateString() : ''}?`}
+        onConfirm={handleDeleteHolidayConfirm}
+        onCancel={() => {
+            setIsConfirmModalOpen(false);
+            setHolidayToDelete(null); // Clear the holiday to delete if cancelled
+        }}
+        confirmText="Delete"
+      />
       <header className="dashboard-header">
         {/* Standard Header */}
         <div className="header-content">
@@ -204,7 +229,7 @@ function ManageHolidaysPage() {
                     <td>{h.name}</td>
                     <td className="actions-cell">
                       <button onClick={() => prepareEditingHoliday(h)} className="action-btn edit-btn" title="Edit">&#9998;</button>
-                      <button onClick={() => handleDeleteHoliday(h)} className="action-btn delete-btn" title="Delete">&#10006;</button>
+                      <button onClick={() => requestDeleteHoliday(h)} className="action-btn delete-btn" title="Delete">&#10006;</button>
                     </td>
                   </tr>
                 );
