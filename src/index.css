@@ -75,7 +75,7 @@ code {
   --button-secondary-hover-bg: #5a6268;
 }
 
-body.dark-theme {
+body[data-theme="dark"] {
   /* Dark Theme Adaptation (will need refinement based on actual GreytHR dark mode if it exists) */
   --ghr-header-bg: #1a7899; /* Darker version of the header blue/teal */
   --ghr-header-text: #e0e0e0;

@@ -8,35 +8,61 @@
 }
 
 .login-branding-section {
-  flex: 1; /* Adjust flex factor as needed, e.g., 0 0 40% */
+  flex: 1.2; /* Give slightly more space if carousel needs it */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: var(--ghr-primary-blue-lighter); /* A very light blue or a specific branding color */
-  padding: 40px;
+  justify-content: center; /* Center content vertically */
+  background-color: var(--ghr-primary-blue-lighter);
+  padding: 30px;
   text-align: center;
-  color: var(--ghr-primary-accent-hover); /* Darker blue text on light blue bg */
+  color: var(--ghr-primary-accent-hover);
+  overflow: hidden; /* Hide overflow from carousel if it's too aggressive */
 }
 
 .login-logo {
-  max-width: 150px; /* Adjust as needed */
-  margin-bottom: 20px;
+  max-width: 120px;
+  margin-bottom: 15px;
 }
 
 .login-branding-section h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: 2.2rem; /* Slightly smaller */
+  margin-bottom: 8px;
   color: var(--ghr-primary-accent);
 }
 
-.login-branding-section p {
-  font-size: 1.1rem;
+.login-branding-section .tagline { /* Target tagline specifically */
+  font-size: 1rem;
   color: var(--ghr-text-medium);
+  margin-bottom: 25px; /* Space before carousel */
 }
 
+.login-carousel-wrapper {
+  width: 100%;
+  max-width: 500px; /* Max width for the carousel */
+  margin: 0 auto; /* Center carousel if column is wider */
+  overflow: hidden; /* Helps contain the carousel visuals */
+  border-radius: 8px; /* Optional: if you want rounded corners for the carousel area */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Optional: add a little shadow to the carousel */
+}
+
+.login-carousel-wrapper .carousel .slide img {
+  object-fit: cover;
+  height: 300px; /* Adjust height as needed for the column */
+  width: 100%;
+}
+
+.login-carousel-wrapper .carousel .legend {
+  background: rgba(0, 0, 0, 0.65) !important; /* Slightly darker legend */
+  color: #fff !important;
+  font-size: 1rem !important;
+  padding: 8px !important;
+  opacity: 0.9 !important;
+}
+
+
 .login-form-container {
-  flex: 1; /* Adjust flex factor, e.g., 0 0 60% */
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
