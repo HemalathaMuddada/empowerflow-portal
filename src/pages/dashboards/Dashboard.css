@@ -7,18 +7,18 @@
   flex-direction: column;
   min-height: 100vh;
   font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif; /* Matches index.css */
-  background-color: var(--background-color); /* This now maps to --ghr-body-bg */
-  color: var(--text-color); /* This now maps to --ghr-text-dark */
+  background-color: var(--background-color); /* This now maps to --mv-body-bg */
+  color: var(--text-color); /* This now maps to --mv-text-dark */
   transition: background-color 0.3s, color 0.3s;
 }
 
 .dashboard-header {
-  background-color: var(--header-bg-color); /* Uses --ghr-header-bg */
-  color: var(--ghr-header-text); /* Uses --ghr-header-text */
-  padding: 12px 30px; /* Slightly adjusted padding */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Adjusted shadow */
+  background-color: var(--header-bg-color); /* This now maps to --mv-primary-violet */
+  color: var(--mv-text-on-primary); /* Text on violet background */
+  padding: 15px 30px; /* Adjusted padding for a slightly taller header */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow if desired */
   transition: background-color 0.3s, color 0.3s;
-  /* border-bottom: 1px solid var(--border-color); Removed, header in image is solid */
+  /* border-bottom: none; Ensure no border from previous themes */
 }
 
 .dashboard-header h1 {
@@ -123,22 +123,23 @@
 
 /* Common card styling for widgets and content blocks */
 .dashboard-card {
-  background-color: var(--card-bg-color); /* This maps to --ghr-content-bg (white) */
-  border-radius: 4px; /* Common GreytHR radius */
+  background-color: var(--card-bg-color); /* This maps to --mv-content-bg (white) */
+  border-radius: 6px; /* Slightly rounded corners as per LsSyYbLm image */
   padding: 20px;
-  box-shadow: var(--ghr-card-shadow); /* Using specific shadow from new variables */
+  box-shadow: var(--mv-card-shadow); /* Using specific shadow from Modern Violet variables */
   margin-bottom: 20px;
   transition: background-color 0.3s, box-shadow 0.3s;
-  border: 1px solid var(--border-color); /* This maps to --ghr-card-border */
+  border: 1px solid var(--border-color); /* This maps to --mv-card-border */
 }
 
 .dashboard-card h3, .dashboard-card h4 { /* Common styling for card titles */
   margin-top: 0;
   margin-bottom: 15px;
-  color: var(--text-color); /* Maps to --ghr-text-dark */
-  font-weight: 500; /* Slightly less bold than default h3 */
-  font-size: 1.1rem; /* Adjust size if needed */
-  /* border-bottom: 1px solid var(--ghr-border-color-light); */
+  color: var(--text-color); /* Maps to --mv-text-dark */
+  font-weight: 600; /* Titles in cards look reasonably bold */
+  font-size: 1.15rem; /* Slightly larger */
+  /* Consider if a bottom border for card titles is desired from the image */
+  /* border-bottom: 1px solid var(--border-color); */
   /* padding-bottom: 10px; */
 }
 
