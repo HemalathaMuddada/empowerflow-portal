@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// Removed Carousel imports as it's being replaced by branding section
-// import { Carousel } from 'react-responsive-carousel';
-// import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import logo from '../logo.svg'; // Correctly placed import
+import { Carousel } from 'react-responsive-carousel'; // Restore Carousel import
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Restore Carousel CSS
+import logo from '../logo.svg';
 import './LoginPage.css';
 
 // Dummy credentials - In a real app, this would come from a backend or secure storage
@@ -52,7 +51,35 @@ function LoginPage() {
       <div className="login-branding-section">
         <img src={logo} alt="EmpowerFlow Logo" className="login-logo" />
         <h1>EmpowerFlow</h1>
-        <p>Integrated HR & Payroll Platform</p>
+        <p className="tagline">Integrated HR & Payroll Platform</p>
+        <div className="login-carousel-wrapper">
+          <Carousel
+              autoPlay
+              infiniteLoop
+              showThumbs={false}
+              showStatus={false}
+              interval={4000}
+              transitionTime={700}
+              emulateTouch={true}
+          >
+            <div>
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29sbGFib3JhdGlvbnxlbnwwfHwwfHx8MA&auto=format&fit=crop&w=800&q=80" alt="Dynamic Team Collaboration" />
+              <p className="legend">Foster Seamless Collaboration</p>
+            </div>
+            <div>
+              <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3Rpdml0eXxlbnwwfHwwfHx8MA&auto=format&fit=crop&w=800&q=80" alt="Peak Productivity Tools" />
+              <p className="legend">Elevate Team Productivity</p>
+            </div>
+            <div>
+              <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVtcGxveWVlJTIwd2VsbGJlaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Employee Well-being Focus" />
+              <p className="legend">Champion Employee Well-being</p>
+            </div>
+            <div>
+              <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW9kZXJuJTIwb2ZmaWNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80" alt="Future of Work Solutions" />
+              <p className="legend">Innovate Your HR Processes</p>
+            </div>
+          </Carousel>
+        </div>
       </div>
       <div className="login-form-container">
         <div className="login-form-card">
