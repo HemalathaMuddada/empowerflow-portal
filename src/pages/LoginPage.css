@@ -1,217 +1,125 @@
+/* LoginPage.css */
 .login-page-container {
   display: flex;
-  height: 100vh;
-  font-family: 'Roboto', 'Arial', sans-serif; /* Updated font */
-  overflow: hidden; /* Prevent scrollbars from slight animation overflows */
+  min-height: 100vh;
+  width: 100%;
+  align-items: stretch; /* Make columns equal height */
+  background-color: var(--background-color); /* Uses --ghr-body-bg */
 }
 
-.login-form-section {
-  flex: 1;
+.login-branding-section {
+  flex: 1; /* Adjust flex factor as needed, e.g., 0 0 40% */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px; /* Increased padding */
-  background-color: #ffffff; /* Cleaner white background */
-  box-shadow: 5px 0px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth if carousel is darker */
-  z-index: 1; /* Ensure form section is above carousel if overlapping */
-  animation: slideInForm 0.7s ease-out forwards;
+  background-color: var(--ghr-primary-blue-lighter); /* A very light blue or a specific branding color */
+  padding: 40px;
+  text-align: center;
+  color: var(--ghr-primary-accent-hover); /* Darker blue text on light blue bg */
 }
 
-@keyframes slideInForm {
-  from {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-
-.login-carousel-section {
-  flex: 1.5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f0f4f8; /* Light grey, can be an image or dark color too */
-  overflow: hidden;
-  animation: fadeInCarousel 1s ease-out 0.3s forwards; /* Delayed fade in */
-  opacity: 0; /* Start hidden */
-}
-
-@keyframes fadeInCarousel {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-
-.login-carousel-section .carousel-root {
-  width: 100%;
-  height: 100%;
-}
-
-.login-carousel-section .carousel .slider-wrapper,
-.login-carousel-section .carousel .slider {
-  height: 100%;
-}
-
-.login-carousel-section .carousel .slide img {
-  object-fit: cover; /* Cover the area, might crop */
-  height: 100vh; /* Make image take full viewport height */
-  width: 100%;
-}
-
-.login-carousel-section .carousel .legend {
-  background: rgba(0, 0, 0, 0.6) !important;
-  color: #fff !important;
-  font-size: 1.2rem !important;
-  padding: 10px !important;
-  opacity: 0.9 !important;
-}
-
-
-.logo {
-  font-family: 'Poppins', 'Arial', sans-serif; /* Using Poppins as an example */
-  font-size: 3rem; /* Increased size */
-  font-weight: 700; /* Bolder */
-  margin-bottom: 35px;
-  padding: 5px 0; /* Add some padding if background clipping makes it feel tight */
-
-  /* Gradient text effect */
-  background: linear-gradient(135deg, #007BFF, #00BFFF); /* Blue gradient */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  /* text-fill-color: transparent; Standard property, but -webkit- is key for wider support */
-
-  /* Animation for a subtle entrance */
-  animation: fadeInLogo 0.8s ease-out 0.2s forwards; /* Added delay */
-  opacity: 0; /* Start hidden for animation */
-  position: relative; /* For pseudo-elements if needed, or just good practice */
-}
-
-@keyframes fadeInLogo {
-  from {
-    opacity: 0;
-    transform: translateY(-15px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Fallback for browsers that don't support gradient text well */
-@supports not (-webkit-background-clip: text) and not (background-clip: text) {
-  .logo {
-    -webkit-text-fill-color: initial; /* Reset for fallback */
-    color: #007BFF; /* Fallback to a solid color */
-  }
-}
-
-
-.login-form-section h2 {
+.login-logo {
+  max-width: 150px; /* Adjust as needed */
   margin-bottom: 20px;
-  color: #333;
-  font-size: 1.8rem; /* Keep as is or adjust based on new logo size */
-  font-weight: 600; /* Slightly bolder heading */
 }
 
-.login-form-section form {
-  width: 100%;
-  max-width: 380px; /* Slightly wider form */
+.login-branding-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--ghr-primary-accent);
+}
+
+.login-branding-section p {
+  font-size: 1.1rem;
+  color: var(--ghr-text-medium);
+}
+
+.login-form-container {
+  flex: 1; /* Adjust flex factor, e.g., 0 0 60% */
   display: flex;
-  flex-direction: column;
-  gap: 5px; /* Add gap between form groups */
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: var(--ghr-content-bg); /* White background for the form area */
+}
+
+.login-form-card {
+  width: 100%;
+  max-width: 400px; /* Max width of the form card */
+  padding: 30px;
+  background-color: var(--card-bg-color); /* Should be white */
+  border-radius: 8px; /* Consistent with dashboard cards */
+  box-shadow: var(--ghr-card-shadow); /* Consistent shadow */
+  border: 1px solid var(--border-color); /* Consistent border */
+}
+
+.login-form-card h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: var(--text-color); /* Uses --ghr-text-dark */
+  font-weight: 600;
 }
 
 .form-group {
-  margin-bottom: 18px; /* Increased bottom margin */
+  margin-bottom: 20px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 8px; /* Increased space below label */
-  font-weight: 500; /* Medium weight */
-  color: #495057; /* Darker grey for labels */
+  margin-bottom: 6px;
+  font-weight: 500;
   font-size: 0.9rem;
+  color: var(--text-secondary-color); /* Uses --ghr-text-medium */
 }
 
-.form-group input {
+/* Input fields will inherit global styles from index.css */
+/* Buttons will inherit global styles from index.css */
+/* Links will inherit global styles from index.css */
+
+.form-options {
+  display: flex;
+  justify-content: flex-end; /* Align "Forgot Password" to the right */
+  margin-bottom: 20px;
+}
+
+.forgot-password-link {
+  font-size: 0.9rem;
+  /* color: var(--link-color); Inherited */
+  /* text-decoration: none; Inherited */
+}
+/* .forgot-password-link:hover { text-decoration: underline; Inherited } */
+
+
+.login-button { /* This class is on the submit button */
   width: 100%;
-  padding: 12px 15px; /* Increased padding */
-  border: 1px solid #ced4da; /* Lighter border */
-  border-radius: 8px; /* More rounded corners */
-  box-sizing: border-box;
-  font-size: 1rem;
-  color: #495057;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.form-group input::placeholder {
-    color: #adb5bd; /* Lighter placeholder text */
-}
-
-.form-group input:focus {
-  border-color: #007bff; /* Blue border on focus */
-  outline: none; /* Remove default outline */
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle blue glow */
+  padding: 0.75rem 1rem; /* Slightly larger padding for login button */
+  font-size: 1.1rem;
+  /* background-color, color, border, etc. inherited from global button styles */
 }
 
 .error-message {
-  color: #dc3545; /* Bootstrap danger red */
-  background-color: #f8d7da; /* Light red background */
-  border: 1px solid #f5c6cb; /* Reddish border */
+  color: var(--error-color);
+  background-color: #f8d7da; /* Consider making this a variable too */
+  border: 1px solid var(--error-color);
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 4px;
   margin-bottom: 15px;
   font-size: 0.9rem;
   text-align: center;
 }
 
-.login-button {
-  padding: 12px 20px; /* Increased padding */
-  background-image: linear-gradient(to right, #007bff 0%, #0056b3 100%); /* Gradient button */
-  background-size: 200% auto; /* For hover transition */
-  color: white;
-  border: none;
-  border-radius: 8px; /* More rounded */
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.5px; /* Slight letter spacing */
-  transition: background-position 0.4s ease, transform 0.1s ease; /* Added transform */
-  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2); /* Subtle shadow */
-}
-
-.login-button:hover {
-  background-position: right center; /* Change gradient direction on hover */
-  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
-}
-.login-button:active {
-    transform: translateY(1px); /* Slight press effect */
-    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
-}
-
-
-.signup-link {
-  margin-top: 25px; /* Increased margin */
+.signup-prompt {
+  margin-top: 25px;
+  text-align: center;
   font-size: 0.9rem;
-  color: #6c757d; /* Greyish text */
+  color: var(--text-secondary-color);
 }
 
-.signup-link a {
-  color: #007bff; /* Blue link */
-  font-weight: 600; /* Bolder link */
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.signup-link a:hover {
-  color: #0056b3; /* Darker blue on hover */
-  text-decoration: underline;
+.signup-prompt .signup-link { /* Specific styling if needed, else inherits global */
+  font-weight: 600;
+  /* color: var(--link-color); Inherited */
 }
 
 /* Responsive adjustments */
@@ -220,27 +128,24 @@
     flex-direction: column;
   }
 
-  .login-carousel-section {
-    flex: 1;
-    height: 300px; /* Fixed height for carousel on smaller screens */
-    order: -1; /* Show carousel on top on mobile */
+  .login-branding-section {
+    flex: 0 0 auto; /* Don't grow, take content height */
+    padding: 30px 20px;
+    min-height: 200px; /* Ensure some height */
+  }
+  .login-branding-section h1 {
+    font-size: 2rem;
+  }
+  .login-logo {
+    max-width: 100px;
   }
 
-  .login-carousel-section .carousel .slide img {
-    height: 300px; /* Adjust image height */
-  }
-
-  .login-form-section {
-    flex: 2; /* Give more space to form on mobile if carousel is smaller */
+  .login-form-container {
     padding: 20px;
   }
-
-  .logo {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
-  .login-form-section h2 {
-    font-size: 1.5rem;
+  .login-form-card {
+    padding: 25px;
+    box-shadow: none; /* Remove shadow on mobile for a flatter look if preferred */
+    border: none; /* Remove border on mobile if preferred */
   }
 }
