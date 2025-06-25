@@ -36,6 +36,11 @@ code {
   --mv-warning: #FF9F43;
   --mv-info: #00CFE8;
 
+  /* Tile specific colors from LsSyYbLm/3.png example */
+  --mv-tile-green: #28C76F; /* Same as --mv-success for consistency */
+  --mv-tile-blue-alt: #00CFE8; /* Same as --mv-info for consistency, a cyan/bright blue */
+  /* --mv-primary-violet and --mv-accent-pink are already defined and can be used for other tiles */
+
 
   /* --- Mapping to generic variables used by the app --- */
   --primary-color: var(--mv-primary-violet);
@@ -101,6 +106,10 @@ body[data-theme="dark"] {
   --mv-error: #F07171;
   --mv-warning: #FFAF58;
   --mv-info: #10D5EF;
+
+  /* Tile specific colors for dark theme */
+  --mv-tile-green: #30DB80; /* Same as --mv-success for dark theme */
+  --mv-tile-blue-alt: #10D5EF; /* Same as --mv-info for dark theme */
 
   /* --- Mapping generic variables for dark theme --- */
   --primary-color: var(--mv-primary-violet);

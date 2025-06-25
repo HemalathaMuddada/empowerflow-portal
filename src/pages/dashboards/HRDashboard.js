@@ -97,10 +97,10 @@ function HRDashboard() {
 
         {/* Widgets Section */}
         <div className="hr-widgets-grid">
-            <ActiveEmployeesWidget />
-            <PendingReviewsWidget />
-            <NewHiresWidget />
-            <OpenConcernsWidget />
+            <div className="widget-tile-violet"><ActiveEmployeesWidget /></div>
+            <div className="widget-tile-pink"><PendingReviewsWidget /></div>
+            <div className="widget-tile-green"><NewHiresWidget /></div>
+            <div className="widget-tile-blue"><OpenConcernsWidget /></div>
             {/* More widgets can be added here */}
         </div>
         {/* Further main content for HR dashboard can go here */}
