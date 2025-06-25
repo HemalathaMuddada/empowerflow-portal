@@ -11,129 +11,129 @@ code {
 }
 
 :root {
-  /* New GreytHR Inspired Palette (Light Theme based on image) */
-  --ghr-header-bg: #1D8EAB; /* Solid blue/teal from header - gradient is complex for now */
-  --ghr-header-text: #ffffff;
+  /* Modern Violet Theme (Light) based on image LsSyYbLm/3.png */
+  --mv-primary-violet: #7467F0;
+  --mv-primary-violet-darker: #5E50D6; /* For hover */
+  --mv-primary-violet-lighter: #E9E7FD; /* For light backgrounds/accents */
 
-  --ghr-primary-accent: #0073B7; /* Blue for links, icons, primary buttons */
-  --ghr-primary-accent-hover: #005689; /* Darker shade for hover */
-  --ghr-primary-accent-light-bg: #e5f1f8; /* Very light blue for button/link hover backgrounds */
+  --mv-accent-pink: #EA5455; /* Reddish-pink accent */
 
-  --ghr-body-bg: #f0f2f5; /* Very light grey for overall page background */
-  --ghr-content-bg: #ffffff; /* White for main content areas, cards */
-  --ghr-card-border: #e0e0e0; /* Subtle border for cards */
-  --ghr-card-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Subtle shadow for cards */
+  --mv-body-bg: #F8F8F8; /* Very light grey page background */
+  --mv-content-bg: #FFFFFF; /* White for cards, main content areas */
+  --mv-sidebar-bg: #FFFFFF; /* White sidebar as per image */
 
-  --ghr-text-dark: #333333;    /* Primary text */
-  --ghr-text-medium: #555555;  /* Secondary text */
-  --ghr-text-light: #777777;   /* Tertiary or placeholder text */
-  --ghr-text-on-accent: #ffffff; /* Text on primary accent background */
+  --mv-card-border: #EBE9F1; /* Subtle border for cards and sidebar */
+  --mv-card-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Softer, more modern shadow */
 
-  --ghr-sidebar-bg: #f8f9fa; /* Light grey for sidebars/menus if not white */
-  --ghr-sidebar-border: #d1d5da;
+  --mv-text-dark: #5E5873; /* Primary text - a softer dark, often a dark desaturated purple/blue */
+  --mv-text-medium: #6E6B7B; /* Secondary text */
+  --mv-text-light: #B9B9C3;   /* Tertiary or placeholder text */
+  --mv-text-on-primary: #FFFFFF; /* Text on violet backgrounds */
+  --mv-text-on-accent: #FFFFFF; /* Text on pink backgrounds */
 
-  --ghr-success: #28a745;
-  --ghr-error: #dc3545;
-  --ghr-warning: #ffc107;
-  --ghr-info: #17a2b8;
+  --mv-success: #28C76F; /* A specific green from similar palettes */
+  --mv-error: #EA5455;   /* Using the accent pink also for errors */
+  --mv-warning: #FF9F43;
+  --mv-info: #00CFE8;
+
 
   /* --- Mapping to generic variables used by the app --- */
-  --primary-color: var(--ghr-primary-accent);
-  --primary-hover-color: var(--ghr-primary-accent-hover);
-  --primary-hover-bg-color: var(--ghr-primary-accent-light-bg);
+  --primary-color: var(--mv-primary-violet);
+  --primary-hover-color: var(--mv-primary-violet-darker);
+  --primary-hover-bg-color: var(--mv-primary-violet-lighter);
 
-  --secondary-color: #6c757d; /* Standard grey, can be replaced if a GHR equivalent is clear */
+  --secondary-color: var(--mv-accent-pink); /* Using pink as a secondary action color */
 
-  --background-color: var(--ghr-body-bg);
-  --card-bg-color: var(--ghr-content-bg);
-  --header-bg-color: var(--ghr-header-bg);
-  --menu-bg-color: var(--ghr-sidebar-bg);
+  --background-color: var(--mv-body-bg);
+  --card-bg-color: var(--mv-content-bg);
+  --header-bg-color: var(--mv-primary-violet); /* Header will be primary violet */
+  --menu-bg-color: var(--mv-sidebar-bg);
 
-  --text-color: var(--ghr-text-dark);
-  --text-secondary-color: var(--ghr-text-medium);
-  --link-color: var(--ghr-primary-accent);
+  --text-color: var(--mv-text-dark);
+  --text-secondary-color: var(--mv-text-medium);
+  --link-color: var(--mv-primary-violet);
 
-  --border-color: var(--ghr-card-border);
-  --table-header-bg: #e9ecef; /* Light grey, can be themed further */
-  --table-row-hover-bg: #f1f3f5;
+  --border-color: var(--mv-card-border);
+  --table-header-bg: #F3F2F7; /* A very light grey for table headers */
+  --table-row-hover-bg: #EFEFEF;
 
-  --success-color: var(--ghr-success);
-  --error-color: var(--ghr-error);
-  --warning-color: var(--ghr-warning);
-  --info-color: var(--ghr-info);
+  --success-color: var(--mv-success);
+  --error-color: var(--mv-error);
+  --warning-color: var(--mv-warning);
+  --info-color: var(--mv-info);
 
-  --voice-toggle-bg-off: #ccc;
+  --voice-toggle-bg-off: #BABFC7;
   --voice-toggle-bg-on: var(--primary-color);
   --voice-toggle-slider: white;
 
-  --button-primary-bg: var(--ghr-primary-accent);
-  --button-primary-text: var(--ghr-text-on-accent);
-  --button-primary-hover-bg: var(--ghr-primary-accent-hover);
+  --button-primary-bg: var(--mv-primary-violet);
+  --button-primary-text: var(--mv-text-on-primary);
+  --button-primary-hover-bg: var(--mv-primary-violet-darker);
 
-  --button-secondary-bg: #6c757d;
-  --button-secondary-text: #ffffff;
-  --button-secondary-hover-bg: #5a6268;
+  /* Secondary button could use the pink, or a lighter violet, or grey */
+  --button-secondary-bg: var(--mv-accent-pink);
+  --button-secondary-text: var(--mv-text-on-accent);
+  --button-secondary-hover-bg: #D04040; /* Darker pink */
 }
 
 body[data-theme="dark"] {
-  /* Dark Theme Adaptation (will need refinement based on actual GreytHR dark mode if it exists) */
-  --ghr-header-bg: #1a7899; /* Darker version of the header blue/teal */
-  --ghr-header-text: #e0e0e0;
+  /* Dark Theme Adaptation for Modern Violet */
+  --mv-primary-violet: #8A7FF5; /* Lighter violet for dark mode */
+  --mv-primary-violet-darker: #A095F7;
+  --mv-primary-violet-lighter: #3A355E; /* Darker violet for light bg on dark */
 
-  --ghr-primary-accent: #3498db; /* Brighter blue for dark mode */
-  --ghr-primary-accent-hover: #5dade2;
-  --ghr-primary-accent-light-bg: #2c3e50;
+  --mv-accent-pink: #F07171; /* Lighter pink */
 
-  --ghr-body-bg: #1f2327; /* Dark background */
-  --ghr-content-bg: #2a2e33; /* Slightly lighter for cards */
-  --ghr-card-border: #3a3f44;
-  --ghr-card-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  --mv-body-bg: #161D31;    /* Dark blue/purpleish background */
+  --mv-content-bg: #283046; /* Cards background */
+  --mv-sidebar-bg: #283046; /* Sidebar same as cards */
 
-  --ghr-text-dark: #e0e0e0;
-  --ghr-text-medium: #b0b0b0;
-  --ghr-text-light: #888888;
-  --ghr-text-on-accent: #ffffff;
+  --mv-card-border: #3B4253;
+  --mv-card-shadow: 0 2px 8px rgba(0,0,0,0.25);
 
-  --ghr-sidebar-bg: #25292d;
-  --ghr-sidebar-border: #353a3f;
+  --mv-text-dark: #D0D2D6;
+  --mv-text-medium: #A6ACBE;
+  --mv-text-light: #676D7D;
+  --mv-text-on-primary: #FFFFFF;
+  --mv-text-on-accent: #FFFFFF;
 
-  --ghr-success: #34c759;
-  --ghr-error: #ff453a;
-  --ghr-warning: #ffdd57;
-  --ghr-info: #29b6f6;
+  --mv-success: #30DB80;
+  --mv-error: #F07171;
+  --mv-warning: #FFAF58;
+  --mv-info: #10D5EF;
 
   /* --- Mapping generic variables for dark theme --- */
-  --primary-color: var(--ghr-primary-accent);
-  --primary-hover-color: var(--ghr-primary-accent-hover);
-  --primary-hover-bg-color: var(--ghr-primary-accent-light-bg);
+  --primary-color: var(--mv-primary-violet);
+  --primary-hover-color: var(--mv-primary-violet-darker);
+  --primary-hover-bg-color: var(--mv-primary-violet-lighter);
 
-  --secondary-color: #868e96;
+  --secondary-color: var(--mv-accent-pink);
 
-  --background-color: var(--ghr-body-bg);
-  --card-bg-color: var(--ghr-content-bg);
-  --header-bg-color: var(--ghr-header-bg);
-  --menu-bg-color: var(--ghr-sidebar-bg);
+  --background-color: var(--mv-body-bg);
+  --card-bg-color: var(--mv-content-bg);
+  --header-bg-color: var(--mv-primary-violet); /* Header can remain violet */
+  --menu-bg-color: var(--mv-sidebar-bg);
 
-  --text-color: var(--ghr-text-dark);
-  --text-secondary-color: var(--ghr-text-medium);
-  --link-color: var(--ghr-primary-accent);
+  --text-color: var(--mv-text-dark);
+  --text-secondary-color: var(--mv-text-medium);
+  --link-color: var(--mv-primary-violet);
 
-  --border-color: var(--ghr-card-border);
-  --table-header-bg: #30363d;
-  --table-row-hover-bg: #383e44;
+  --border-color: var(--mv-card-border);
+  --table-header-bg: #3B4253;
+  --table-row-hover-bg: #353A50;
 
-  --success-color: var(--ghr-success);
-  --error-color: var(--ghr-error);
-  --warning-color: var(--ghr-warning);
-  --info-color: var(--ghr-info);
+  --success-color: var(--mv-success);
+  --error-color: var(--mv-error);
+  --warning-color: var(--mv-warning);
+  --info-color: var(--mv-info);
 
-  --button-primary-bg: var(--ghr-primary-accent);
-  --button-primary-text: var(--ghr-text-on-accent);
-  --button-primary-hover-bg: var(--ghr-primary-accent-hover);
+  --button-primary-bg: var(--mv-primary-violet);
+  --button-primary-text: var(--mv-text-on-primary);
+  --button-primary-hover-bg: var(--mv-primary-violet-darker);
 
-  --button-secondary-bg: #555e67;
-  --button-secondary-text: #e0e0e0;
-  --button-secondary-hover-bg: #484f58;
+  --button-secondary-bg: var(--mv-accent-pink);
+  --button-secondary-text: var(--mv-text-on-accent);
+  --button-secondary-hover-bg: #D95F5F; /* Darker pink for dark mode hover */
 }
 
 /* Apply base background and text color */
@@ -186,7 +186,7 @@ select:focus,
 textarea:focus {
   border-color: var(--primary-color); /* Highlight with primary color */
   outline: 0;
-  box-shadow: 0 0 0 0.2rem var(--ghr-primary-blue-lighter); /* Subtle focus glow */
+  box-shadow: 0 0 0 0.2rem var(--mv-primary-violet-lighter); /* Updated to Modern Violet variable */
 }
 
 /* Placeholder text color */
@@ -232,7 +232,7 @@ button:hover {
 .button:focus,
 button:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem var(--ghr-primary-blue-lighter);
+  box-shadow: 0 0 0 0.2rem var(--mv-primary-violet-lighter); /* Updated to Modern Violet variable */
 }
 
 /* Secondary button style */
