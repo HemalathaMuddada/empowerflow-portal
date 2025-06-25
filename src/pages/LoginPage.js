@@ -51,66 +51,84 @@ function LoginPage() {
     }
   };
 
+import logo from '../logo.svg'; // Assuming logo.svg is in src/
+
+function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setError('');
+
+    if (!email || !password) {
+      setError('Email and password are required.');
+      return;
+    }
+
+    const user = DUMMY_USERS[email.toLowerCase()];
+
+    if (user && user.password === password) {
+      localStorage.setItem('loggedInUser', JSON.stringify({
+        id: user.id,
+        name: user.name,
+        role: user.role,
+        email: email.toLowerCase()
+      }));
+      sessionStorage.setItem('justLoggedIn', 'true');
+      navigate(`/dashboard/${user.role}`, { state: { user: { id: user.id, name: user.name, role: user.role } } });
+    } else {
+      setError('Invalid email or password.');
+    }
+  };
+
   return (
-    <div className="login-page-container">
-      <div className="login-form-section">
-        <div className="logo">EmpowerFlow</div>
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="E.g., user@example.com"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-            />
-          </div>
-          {error && <p className="error-message">{error}</p>}
-          <button type="submit" className="login-button">Login</button>
-        </form>
-        <p className="signup-link">
-          Don't have an account? <a href="/signup">Sign Up</a>
-        </p>
+    <div className="login-page-container"> {/* This will be the main flex container */}
+      <div className="login-branding-section">
+        {/* Branding content: Logo and tagline */}
+        <img src={logo} alt="EmpowerFlow Logo" className="login-logo" />
+        <h1>EmpowerFlow</h1>
+        <p>Integrated HR & Payroll Platform</p>
       </div>
-      <div className="login-carousel-section">
-        <Carousel
-            autoPlay
-            infiniteLoop
-            showThumbs={false}
-            showStatus={false}
-            interval={4000} // Slightly faster interval
-            transitionTime={700} // Smoother transition
-            emulateTouch={true}
-        >
-          <div>
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29sbGFib3JhdGlvbnxlbnwwfHwwfHx8MA&auto=format&fit=crop&w=1000&q=80" alt="Dynamic Team Collaboration" />
-            <p className="legend">Foster Seamless Collaboration</p>
-          </div>
-          <div>
-            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3Rpdml0eXxlbnwwfHwwfHx8MA&auto=format&fit=crop&w=1000&q=80" alt="Peak Productivity Tools" />
-            <p className="legend">Elevate Team Productivity</p>
-          </div>
-          <div>
-            <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVtcGxveWVlJTIwd2VsbGJlaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=80" alt="Employee Well-being Focus" />
-            <p className="legend">Champion Employee Well-being</p>
-          </div>
-          <div>
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW9kZXJuJTIwb2ZmaWNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=1000&q=80" alt="Future of Work Solutions" />
-            <p className="legend">Innovate Your HR Processes</p>
-          </div>
-        </Carousel>
+      <div className="login-form-container"> {/* This will be the right column for the form */}
+        <div className="login-form-card"> {/* Inner card for the form itself */}
+          <h2>Login</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Login ID</label> {/* Changed label */}
+              <input
+                type="email" // Assuming Login ID is email
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your Login ID"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+            <div className="form-options">
+              {/* TODO: Implement "Login with OTP" if needed */}
+              <a href="/forgot-password" onClick={(e)=> e.preventDefault()} className="forgot-password-link">Forgot Password?</a>
+            </div>
+            {error && <p className="error-message">{error}</p>}
+            <button type="submit" className="login-button">Login</button>
+          </form>
+          <p className="signup-prompt">
+            Don't have an account? <a href="/signup" className="signup-link">Sign Up</a>
+          </p>
+        </div>
       </div>
     </div>
   );
