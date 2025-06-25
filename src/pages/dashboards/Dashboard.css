@@ -7,18 +7,18 @@
   flex-direction: column;
   min-height: 100vh;
   font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif; /* Matches index.css */
-  background-color: var(--background-color); /* This now maps to --ghr-background-main */
-  color: var(--text-color); /* This now maps to --ghr-text-primary */
+  background-color: var(--background-color); /* This now maps to --ghr-body-bg */
+  color: var(--text-color); /* This now maps to --ghr-text-dark */
   transition: background-color 0.3s, color 0.3s;
 }
 
 .dashboard-header {
-  background-color: var(--header-bg-color); /* Using new variable from index.css */
-  color: var(--ghr-text-on-primary-bg); /* Assuming header bg is often primary, or define a specific --header-text-color */
-  padding: 15px 30px; /* Adjusted padding */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: var(--header-bg-color); /* Uses --ghr-header-bg */
+  color: var(--ghr-header-text); /* Uses --ghr-header-text */
+  padding: 12px 30px; /* Slightly adjusted padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Adjusted shadow */
   transition: background-color 0.3s, color 0.3s;
-  border-bottom: 1px solid var(--border-color); /* Adding a light border */
+  /* border-bottom: 1px solid var(--border-color); Removed, header in image is solid */
 }
 
 .dashboard-header h1 {
@@ -122,21 +122,23 @@
 }
 
 /* Common card styling for widgets and content blocks */
-.dashboard-card { /* Renamed from .card to .dashboard-card for clarity */
-  background-color: var(--card-bg-color); /* Uses --ghr-background-card */
-  border-radius: 6px; /* Slightly less rounded */
+.dashboard-card {
+  background-color: var(--card-bg-color); /* This maps to --ghr-content-bg (white) */
+  border-radius: 4px; /* Common GreytHR radius */
   padding: 20px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03); /* More subtle shadow */
+  box-shadow: var(--ghr-card-shadow); /* Using specific shadow from new variables */
   margin-bottom: 20px;
   transition: background-color 0.3s, box-shadow 0.3s;
-  border: 1px solid var(--border-color); /* Consistent border */
+  border: 1px solid var(--border-color); /* This maps to --ghr-card-border */
 }
 
 .dashboard-card h3, .dashboard-card h4 { /* Common styling for card titles */
   margin-top: 0;
   margin-bottom: 15px;
-  color: var(--ghr-text-primary);
-  /* border-bottom: 1px solid var(--ghr-border-color-light); */ /* Optional: if card titles need a separator */
+  color: var(--text-color); /* Maps to --ghr-text-dark */
+  font-weight: 500; /* Slightly less bold than default h3 */
+  font-size: 1.1rem; /* Adjust size if needed */
+  /* border-bottom: 1px solid var(--ghr-border-color-light); */
   /* padding-bottom: 10px; */
 }
 
