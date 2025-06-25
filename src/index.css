@@ -11,133 +11,128 @@ code {
 }
 
 :root {
-  /* GreytHR Inspired Palette - Light Theme Defaults */
-  --ghr-primary-blue: #007bff;         /* Primary action blue */
-  --ghr-primary-blue-darker: #0056b3;  /* For hover states */
-  --ghr-primary-blue-lighter: #e6f2ff; /* Light backgrounds/accents for buttons/links */
+  /* New GreytHR Inspired Palette (Light Theme based on image) */
+  --ghr-header-bg: #1D8EAB; /* Solid blue/teal from header - gradient is complex for now */
+  --ghr-header-text: #ffffff;
 
-  --ghr-secondary-blue: #005cbf;      /* A slightly different blue for secondary emphasis */
+  --ghr-primary-accent: #0073B7; /* Blue for links, icons, primary buttons */
+  --ghr-primary-accent-hover: #005689; /* Darker shade for hover */
+  --ghr-primary-accent-light-bg: #e5f1f8; /* Very light blue for button/link hover backgrounds */
 
-  --ghr-background-main: #f4f7f9;     /* Overall page background - very light grey */
-  --ghr-background-card: #ffffff;    /* Card/widget backgrounds - white */
-  --ghr-background-header: #ffffff;  /* Header background */
-  --ghr-background-menu: #f8f9fa;   /* Sidebar/menu background */
+  --ghr-body-bg: #f0f2f5; /* Very light grey for overall page background */
+  --ghr-content-bg: #ffffff; /* White for main content areas, cards */
+  --ghr-card-border: #e0e0e0; /* Subtle border for cards */
+  --ghr-card-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Subtle shadow for cards */
 
-  --ghr-text-primary: #212529;       /* Main text color - dark grey */
-  --ghr-text-secondary: #495057;     /* Subdued text, labels - medium grey */
-  --ghr-text-on-primary-bg: #ffffff; /* Text on primary blue background */
-  --ghr-text-link: var(--ghr-primary-blue);
+  --ghr-text-dark: #333333;    /* Primary text */
+  --ghr-text-medium: #555555;  /* Secondary text */
+  --ghr-text-light: #777777;   /* Tertiary or placeholder text */
+  --ghr-text-on-accent: #ffffff; /* Text on primary accent background */
 
-  --ghr-border-color: #dee2e6;       /* Borders for cards, tables, inputs */
-  --ghr-border-color-light: #e9ecef; /* Lighter borders, table headers */
+  --ghr-sidebar-bg: #f8f9fa; /* Light grey for sidebars/menus if not white */
+  --ghr-sidebar-border: #d1d5da;
 
-  --ghr-accent-green: #28a745;       /* Success, confirmations */
-  --ghr-accent-red: #dc3545;         /* Errors, warnings */
-  --ghr-accent-orange: #fd7e14;      /* Attention, secondary warnings */
-  --ghr-accent-yellow: #ffc107;      /* Informational warnings */
-  --ghr-accent-cyan: #17a2b8;        /* Info color */
+  --ghr-success: #28a745;
+  --ghr-error: #dc3545;
+  --ghr-warning: #ffc107;
+  --ghr-info: #17a2b8;
 
   /* --- Mapping to generic variables used by the app --- */
-  /* It's better to replace these generic ones with specific GHR ones over time */
-  --primary-color: var(--ghr-primary-blue);
-  --primary-hover-color: var(--ghr-primary-blue-darker); /* For text hover */
-  --primary-hover-bg-color: var(--ghr-primary-blue-lighter); /* For link/button background hover */
+  --primary-color: var(--ghr-primary-accent);
+  --primary-hover-color: var(--ghr-primary-accent-hover);
+  --primary-hover-bg-color: var(--ghr-primary-accent-light-bg);
 
-  --secondary-color: var(--ghr-secondary-blue); /* Example: for secondary buttons */
+  --secondary-color: #6c757d; /* Standard grey, can be replaced if a GHR equivalent is clear */
 
-  --background-color: var(--ghr-background-main);
-  --card-bg-color: var(--ghr-background-card);
-  --header-bg-color: var(--ghr-background-header); /* New variable for header */
-  --menu-bg-color: var(--ghr-background-menu); /* New variable for menus */
+  --background-color: var(--ghr-body-bg);
+  --card-bg-color: var(--ghr-content-bg);
+  --header-bg-color: var(--ghr-header-bg);
+  --menu-bg-color: var(--ghr-sidebar-bg);
 
-  --text-color: var(--ghr-text-primary);
-  --text-secondary-color: var(--ghr-text-secondary); /* New variable for secondary text */
-  --link-color: var(--ghr-text-link);
+  --text-color: var(--ghr-text-dark);
+  --text-secondary-color: var(--ghr-text-medium);
+  --link-color: var(--ghr-primary-accent);
 
-  --border-color: var(--ghr-border-color);
-  --table-header-bg: var(--ghr-border-color-light);
-  --table-row-hover-bg: #f1f3f5; /* Can be a lighter version of card or main bg */
+  --border-color: var(--ghr-card-border);
+  --table-header-bg: #e9ecef; /* Light grey, can be themed further */
+  --table-row-hover-bg: #f1f3f5;
 
-  --success-color: var(--ghr-accent-green);
-  --error-color: var(--ghr-accent-red);
-  --warning-color: var(--ghr-accent-yellow);
-  --info-color: var(--ghr-accent-cyan);
+  --success-color: var(--ghr-success);
+  --error-color: var(--ghr-error);
+  --warning-color: var(--ghr-warning);
+  --info-color: var(--ghr-info);
 
-  /* Voice Command Specific (can be themed too) */
   --voice-toggle-bg-off: #ccc;
   --voice-toggle-bg-on: var(--primary-color);
   --voice-toggle-slider: white;
 
-  /* Button specific (new) */
-  --button-primary-bg: var(--ghr-primary-blue);
-  --button-primary-text: var(--ghr-text-on-primary-bg);
-  --button-primary-hover-bg: var(--ghr-primary-blue-darker);
+  --button-primary-bg: var(--ghr-primary-accent);
+  --button-primary-text: var(--ghr-text-on-accent);
+  --button-primary-hover-bg: var(--ghr-primary-accent-hover);
 
-  --button-secondary-bg: #6c757d; /* Standard bootstrap secondary grey */
+  --button-secondary-bg: #6c757d;
   --button-secondary-text: #ffffff;
   --button-secondary-hover-bg: #5a6268;
 }
 
 body.dark-theme {
-  /* GreytHR Inspired Palette - Dark Theme */
-  --ghr-primary-blue: #3c8bf0;          /* Adjusted blue for dark mode visibility */
-  --ghr-primary-blue-darker: #66aaff;   /* Lighter for hover on dark bg */
-  --ghr-primary-blue-lighter: #223a52;  /* Darker, subtle blue background for accents */
+  /* Dark Theme Adaptation (will need refinement based on actual GreytHR dark mode if it exists) */
+  --ghr-header-bg: #1a7899; /* Darker version of the header blue/teal */
+  --ghr-header-text: #e0e0e0;
 
-  --ghr-secondary-blue: #4a90e2;
+  --ghr-primary-accent: #3498db; /* Brighter blue for dark mode */
+  --ghr-primary-accent-hover: #5dade2;
+  --ghr-primary-accent-light-bg: #2c3e50;
 
-  --ghr-background-main: #1a1d21;      /* Dark grey, not pure black */
-  --ghr-background-card: #24292e;      /* Slightly lighter dark grey for cards */
-  --ghr-background-header: #24292e;   /* Header background for dark theme */
-  --ghr-background-menu: #202428;    /* Sidebar/menu background for dark theme */
+  --ghr-body-bg: #1f2327; /* Dark background */
+  --ghr-content-bg: #2a2e33; /* Slightly lighter for cards */
+  --ghr-card-border: #3a3f44;
+  --ghr-card-shadow: 0 1px 3px rgba(0,0,0,0.3);
 
-  --ghr-text-primary: #c9d1d9;        /* Light grey text */
-  --ghr-text-secondary: #8b949e;      /* More subdued light grey */
-  --ghr-text-on-primary-bg: #ffffff;  /* Text on primary blue background (can stay white) */
-  --ghr-text-link: var(--ghr-primary-blue);
+  --ghr-text-dark: #e0e0e0;
+  --ghr-text-medium: #b0b0b0;
+  --ghr-text-light: #888888;
+  --ghr-text-on-accent: #ffffff;
 
-  --ghr-border-color: #30363d;       /* Dark theme borders */
-  --ghr-border-color-light: #2a2f34;  /* Darker table header / lighter border element */
+  --ghr-sidebar-bg: #25292d;
+  --ghr-sidebar-border: #353a3f;
 
-  --ghr-accent-green: #34c759;        /* Brighter green for dark mode */
-  --ghr-accent-red: #ff453a;          /* Brighter red */
-  --ghr-accent-orange: #f09a40;       /* Adjusted orange */
-  --ghr-accent-yellow: #ffdd57;       /* Brighter yellow */
-  --ghr-accent-cyan: #29b6f6;         /* Brighter cyan */
+  --ghr-success: #34c759;
+  --ghr-error: #ff453a;
+  --ghr-warning: #ffdd57;
+  --ghr-info: #29b6f6;
 
-  /* --- Mapping to generic variables --- */
-  --primary-color: var(--ghr-primary-blue);
-  --primary-hover-color: var(--ghr-primary-blue-darker);
-  --primary-hover-bg-color: var(--ghr-primary-blue-lighter);
+  /* --- Mapping generic variables for dark theme --- */
+  --primary-color: var(--ghr-primary-accent);
+  --primary-hover-color: var(--ghr-primary-accent-hover);
+  --primary-hover-bg-color: var(--ghr-primary-accent-light-bg);
 
-  --secondary-color: var(--ghr-secondary-blue);
+  --secondary-color: #868e96;
 
-  --background-color: var(--ghr-background-main);
-  --card-bg-color: var(--ghr-background-card);
-  --header-bg-color: var(--ghr-background-header);
-  --menu-bg-color: var(--ghr-background-menu);
+  --background-color: var(--ghr-body-bg);
+  --card-bg-color: var(--ghr-content-bg);
+  --header-bg-color: var(--ghr-header-bg);
+  --menu-bg-color: var(--ghr-sidebar-bg);
 
-  --text-color: var(--ghr-text-primary);
-  --text-secondary-color: var(--ghr-text-secondary);
-  --link-color: var(--ghr-text-link);
+  --text-color: var(--ghr-text-dark);
+  --text-secondary-color: var(--ghr-text-medium);
+  --link-color: var(--ghr-primary-accent);
 
-  --border-color: var(--ghr-border-color);
-  --table-header-bg: var(--ghr-border-color-light);
-  --table-row-hover-bg: #2c3136;
+  --border-color: var(--ghr-card-border);
+  --table-header-bg: #30363d;
+  --table-row-hover-bg: #383e44;
 
-  --success-color: var(--ghr-accent-green);
-  --error-color: var(--ghr-accent-red);
-  --warning-color: var(--ghr-accent-yellow);
-  --info-color: var(--ghr-accent-cyan);
+  --success-color: var(--ghr-success);
+  --error-color: var(--ghr-error);
+  --warning-color: var(--ghr-warning);
+  --info-color: var(--ghr-info);
 
-  --voice-toggle-bg-on: var(--primary-color);
-
-  --button-primary-bg: var(--ghr-primary-blue);
-  --button-primary-text: var(--ghr-text-on-primary-bg);
-  --button-primary-hover-bg: var(--ghr-primary-blue-darker); /* This should be lighter in dark mode if bg is dark */
+  --button-primary-bg: var(--ghr-primary-accent);
+  --button-primary-text: var(--ghr-text-on-accent);
+  --button-primary-hover-bg: var(--ghr-primary-accent-hover);
 
   --button-secondary-bg: #555e67;
-  --button-secondary-text: #c9d1d9;
+  --button-secondary-text: #e0e0e0;
   --button-secondary-hover-bg: #484f58;
 }
 
