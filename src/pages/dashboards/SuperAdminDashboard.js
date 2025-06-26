@@ -103,8 +103,8 @@ function SuperAdminDashboard() {
           <section className="superadmin-widgets-section">
             <h4>Dashboard Overview & Widgets</h4>
             <div className="widgets-grid">
-                <SystemOverviewWidget />
-                <ActiveCompaniesWidget />
+                <div className="widget-tile-green"><SystemOverviewWidget /></div>
+                <div className="widget-tile-blue"><ActiveCompaniesWidget /></div>
             </div>
           </section>
         </main>

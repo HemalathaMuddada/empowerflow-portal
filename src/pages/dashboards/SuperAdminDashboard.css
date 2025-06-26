@@ -7,76 +7,74 @@
 }
 
 .superadmin-sidebar-nav {
-    flex: 0 0 280px; /* Sidebar width, doesn't grow or shrink */
+    flex: 0 0 280px;
     padding: 20px;
-    /* background-color: #f8f9fa; Already handled by dashboard-card */
-    /* border-radius: 8px; Already handled by dashboard-card */
-    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); Already handled by dashboard-card */
-    height: fit-content; /* Make sidebar only as tall as its content */
+    background-color: var(--menu-bg-color); /* Uses --mv-sidebar-bg (white) */
+    border-right: 1px solid var(--border-color); /* Uses --mv-card-border */
+    /* box-shadow is part of .dashboard-card which is applied in JSX */
+    height: fit-content;
 }
 
-.superadmin-sidebar-nav h3,
-.superadmin-sidebar-nav h4 {
+.superadmin-sidebar-nav h3 { /* "Super Admin Menu" */
     margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: var(--text-color); /* Uses --mv-text-dark */
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.superadmin-sidebar-nav h4 { /* "Access Other Portals" */
+    margin-top: 20px;
     margin-bottom: 10px;
+    color: var(--text-secondary-color); /* Uses --mv-text-medium */
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
-
-.superadmin-sidebar-nav h4 {
-    margin-top: 15px; /* Space above "Access Other Portals" */
-    color: #555;
-}
-body.dark-theme .superadmin-sidebar-nav h4 {
-    color: #bbb;
-}
-
 
 .superadmin-sidebar-nav ul {
     list-style: none;
     padding: 0;
-    margin: 0 0 15px 0;
+    margin: 0 0 20px 0; /* Increased bottom margin for section spacing */
 }
 
 .superadmin-sidebar-nav ul li {
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* Tighter spacing for links */
 }
 
-.superadmin-sidebar-nav .nav-link,
-.superadmin-sidebar-nav .nav-link-placeholder {
+.superadmin-sidebar-nav .nav-link {
     text-decoration: none;
-    color: var(--primary-color, #007bff);
+    color: var(--link-color); /* Uses --mv-primary-violet */
     display: block;
     padding: 8px 12px;
     border-radius: 4px;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease; /* Added padding-left transition */
+    font-weight: 500; /* Standard link weight */
 }
 
 .superadmin-sidebar-nav .nav-link:hover {
-    background-color: var(--primary-hover-bg-color, #e9ecef);
-    color: var(--primary-hover-color, #0056b3);
+    background-color: var(--primary-hover-bg-color); /* Uses --mv-primary-violet-lighter */
+    color: var(--primary-hover-color); /* Uses --mv-primary-violet-darker */
+    padding-left: 16px; /* Indent on hover */
 }
-body.dark-theme .superadmin-sidebar-nav .nav-link:hover {
-    background-color: #3a3a3a;
-    color: #e0e0e0;
-}
+/* Active link styling would require JS or NavLink from react-router-dom */
 
 
 .superadmin-sidebar-nav .nav-link-placeholder {
-    color: #888;
+    color: var(--text-light); /* Uses --mv-text-light */
+    display: block;
+    padding: 8px 12px;
+    border-radius: 4px;
     cursor: not-allowed;
-    background-color: transparent !important; /* Ensure no hover effect */
+    font-weight: 500;
 }
-body.dark-theme .superadmin-sidebar-nav .nav-link-placeholder {
-    color: #666;
-}
-
 
 .superadmin-sidebar-nav hr {
     margin: 20px 0;
     border: 0;
-    border-top: 1px solid #ddd;
-}
-body.dark-theme .superadmin-sidebar-nav hr {
-    border-top-color: #444;
+    border-top: 1px solid var(--border-color); /* Use themed border color */
 }
 
 .superadmin-content-area {

@@ -102,9 +102,9 @@ function LeadDashboard() {
             <section className="lead-section team-overview-section">
                 <h2 className="section-title">Team Overview</h2>
                 <div className="dashboard-grid">
-                    <PendingApprovalsWidget />
-                    <TeamTasksOverviewWidget />
-                    <TeamCompensationWidget />
+                    <div className="widget-tile-violet"><PendingApprovalsWidget /></div>
+                    <div className="widget-tile-pink"><TeamTasksOverviewWidget /></div>
+                    <div className="widget-tile-green"><TeamCompensationWidget /></div>
                     {/* Add more team-specific widgets here later */}
                 </div>
             </section>

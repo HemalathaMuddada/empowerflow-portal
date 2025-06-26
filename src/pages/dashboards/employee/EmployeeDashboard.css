@@ -27,23 +27,23 @@
 }
 
 .action-button {
-  background-color: var(--primary-accent-color);
-  color: var(--button-text-color);
-  padding: 12px 20px;
-  border-radius: 5px;
+  background-color: var(--button-primary-bg); /* Uses --mv-primary-violet */
+  color: var(--button-primary-text); /* Uses --mv-text-on-primary */
+  padding: 10px 18px; /* Adjusted padding */
+  border-radius: 4px; /* Consistent with global buttons */
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600; /* Consistent with global buttons */
   font-size: 0.95rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: inline-block; /* Ensure proper padding and alignment */
-  border: none; /* Reset default border */
+  transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
+  display: inline-block;
+  border: 1px solid transparent; /* Consistent with global buttons */
 }
 
 .action-button:hover {
-  background-color: var(--secondary-accent-color);
-  transform: translateY(-2px); /* Slight lift on hover */
-  text-decoration: none; /* Keep text decoration off */
-  color: var(--button-text-color); /* Ensure text color remains on hover */
+  background-color: var(--button-primary-hover-bg); /* Uses --mv-primary-violet-darker */
+  color: var(--button-primary-text);
+  transform: translateY(-2px);
+  text-decoration: none;
 }
 
 

@@ -2,21 +2,55 @@
 
 .lead-dashboard .lead-sections-container {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between Team Overview and My Dashboard sections */
 }
 
 .lead-dashboard .lead-section {
-    margin-bottom: 30px;
+    margin-bottom: 0; /* Gap is handled by flex container now */
 }
 
 .lead-dashboard .lead-section h2.section-title {
-    font-size: 1.5rem;
-    color: var(--secondary-accent-color);
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--primary-accent-color);
+    font-size: 1.4rem; /* Aligned with other dashboard section titles */
+    color: var(--text-color); /* Uses new theme variable */
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color); /* Uses new theme variable */
     margin-bottom: 20px;
 }
 
+/* Action buttons in the self-service section of Lead Dashboard */
+.lead-dashboard .my-dashboard-section .dashboard-actions {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.lead-dashboard .my-dashboard-section .action-button {
+  background-color: var(--button-secondary-bg); /* Uses --mv-accent-pink */
+  color: var(--button-secondary-text); /* Uses --mv-text-on-accent */
+  padding: 10px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
+  display: inline-block;
+  border: 1px solid transparent;
+}
+
+.lead-dashboard .my-dashboard-section .action-button:hover {
+  background-color: var(--button-secondary-hover-bg); /* Darker pink */
+  color: var(--button-secondary-text);
+  transform: translateY(-1px);
+}
+
+
 /* Styling for lead-specific widgets if needed beyond .dashboard-card */
+/* The actual tile colors are handled by global .widget-tile-* classes in Dashboard.css */
+/* These .lead-widget rules are for content *inside* the cards if needed */
 .lead-widget ul {
     list-style: disc;
     margin-left: 20px;
@@ -25,11 +59,15 @@
 .lead-widget ul li {
     margin-bottom: 8px;
     font-size: 0.95rem;
+    /* Text color inside colored tiles is handled by .widget-tile-* rules */
 }
 
 .disabled-link {
-    color: var(--text-color) !important;
+    color: var(--text-color) !important; /* Ensure this uses a themed variable */
     opacity: 0.6;
     pointer-events: none;
     text-decoration: none !important;
+}
+body[data-theme="dark"] .disabled-link {
+    color: var(--text-color) !important; /* Ensure dark theme text color is used */
 }

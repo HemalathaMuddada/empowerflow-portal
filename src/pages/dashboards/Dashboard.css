@@ -161,3 +161,92 @@
     font-size: 1.5rem;
   }
 }
+
+/* Styling for the colored widget tiles (moved from HRDashboard.css) */
+.widget-tile-violet,
+.widget-tile-pink,
+.widget-tile-green,
+.widget-tile-blue {
+  /* These wrappers themselves don't need much styling if the .dashboard-card inside gets the color */
+}
+
+/* Apply background colors to the .dashboard-card *within* these wrappers */
+/* And ensure text color provides good contrast */
+.widget-tile-violet .dashboard-card {
+  background-color: var(--mv-primary-violet);
+  color: var(--mv-text-on-primary);
+  border-color: var(--mv-primary-violet-darker); /* Optional: darker border for colored cards */
+}
+.widget-tile-violet .dashboard-card h3,
+.widget-tile-violet .dashboard-card h4,
+.widget-tile-violet .dashboard-card p,
+.widget-tile-violet .dashboard-card .metric-large,
+.widget-tile-violet .dashboard-card .metric-label,
+.widget-tile-violet .dashboard-card .metric-small,
+.widget-tile-violet .dashboard-card a {
+  color: var(--mv-text-on-primary);
+}
+.widget-tile-violet .dashboard-card a:hover {
+  color: #f0f0f0; /* Or a light variable from the theme */
+  opacity: 0.85;
+}
+
+
+.widget-tile-pink .dashboard-card {
+  background-color: var(--mv-accent-pink);
+  color: var(--mv-text-on-accent);
+  border-color: #D04040; /* Darker pink for border */
+}
+.widget-tile-pink .dashboard-card h3,
+.widget-tile-pink .dashboard-card h4,
+.widget-tile-pink .dashboard-card p,
+.widget-tile-pink .dashboard-card .metric-large,
+.widget-tile-pink .dashboard-card .metric-label,
+.widget-tile-pink .dashboard-card .metric-small,
+.widget-tile-pink .dashboard-card a {
+  color: var(--mv-text-on-accent);
+}
+.widget-tile-pink .dashboard-card a:hover {
+  color: #f0f0f0;
+  opacity: 0.85;
+}
+
+
+.widget-tile-green .dashboard-card {
+  background-color: var(--mv-tile-green);
+  color: var(--mv-text-on-primary); /* Assuming green is dark enough for light text */
+  border-color: #1f914f; /* Darker green for border */
+}
+.widget-tile-green .dashboard-card h3,
+.widget-tile-green .dashboard-card h4,
+.widget-tile-green .dashboard-card p,
+.widget-tile-green .dashboard-card .metric-large,
+.widget-tile-green .dashboard-card .metric-label,
+.widget-tile-green .dashboard-card .metric-small,
+.widget-tile-green .dashboard-card a {
+  color: var(--mv-text-on-primary);
+}
+.widget-tile-green .dashboard-card a:hover {
+  color: #f0f0f0;
+  opacity: 0.85;
+}
+
+
+.widget-tile-blue .dashboard-card {
+  background-color: var(--mv-tile-blue-alt);
+  color: var(--mv-text-on-primary); /* Assuming blue-alt is dark enough for light text */
+  border-color: #00a8c6; /* Darker cyan/blue for border */
+}
+.widget-tile-blue .dashboard-card h3,
+.widget-tile-blue .dashboard-card h4,
+.widget-tile-blue .dashboard-card p,
+.widget-tile-blue .dashboard-card .metric-large,
+.widget-tile-blue .dashboard-card .metric-label,
+.widget-tile-blue .dashboard-card .metric-small,
+.widget-tile-blue .dashboard-card a {
+  color: var(--mv-text-on-primary);
+}
+.widget-tile-blue .dashboard-card a:hover {
+  color: #f0f0f0;
+  opacity: 0.85;
+}
