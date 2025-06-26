@@ -10,32 +10,36 @@
     padding: 15px;
 }
 
-.manager-dashboard-nav h3,
-.manager-widgets-section h3,
-.manager-main-view h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-body.dark-theme .manager-dashboard-nav h3,
-body.dark-theme .manager-widgets-section h3,
-body.dark-theme .manager-main-view h3 {
-    border-bottom-color: #444;
+.manager-dashboard-nav h3, /* Title "Portal Navigation" */
+.manager-widgets-section h3, /* Title "Key Insights & Widgets" */
+.manager-main-view h3 { /* Title "Manager Dashboard Overview" */
+    /* These titles are inside .dashboard-card or general content. */
+    /* Their styling is now primarily handled by .dashboard-card h3 in Dashboard.css */
+    /* Or by general h3 if not in a card, which inherits from Dashboard.css */
+    /* We can add specific overrides if needed, e.g., font size or margin for these sections */
+    font-size: 1.3rem; /* Example: slightly smaller section titles */
+    margin-bottom: 15px; /* Keep margin */
+    /* color: var(--text-color); Already handled by Dashboard.css */
+    /* border-bottom: 1px solid var(--border-color); Already handled by Dashboard.css */
+    /* padding-bottom: 10px; Already handled by Dashboard.css */
 }
 
 
 .manager-dashboard-nav .nav-section {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Increased space between nav sections */
+}
+.manager-dashboard-nav .nav-section:last-child {
+    margin-bottom: 0;
 }
 
-.manager-dashboard-nav h4 {
+.manager-dashboard-nav h4 { /* Titles "My Personal Tools", "Managerial Functions" */
     margin-top: 0;
     margin-bottom: 10px;
-    color: #555;
-}
-body.dark-theme .manager-dashboard-nav h4 {
-    color: #bbb;
+    color: var(--text-secondary-color); /* Use themed secondary text color */
+    font-size: 0.95rem; /* Slightly smaller */
+    font-weight: 600; /* Bolder */
+    text-transform: uppercase; /* Uppercase for section sub-titles */
+    letter-spacing: 0.5px;
 }
 
 
@@ -46,24 +50,32 @@ body.dark-theme .manager-dashboard-nav h4 {
 }
 
 .manager-dashboard-nav ul li {
-    margin-bottom: 8px;
+    margin-bottom: 6px; /* Slightly tighter list items */
 }
 
-.manager-dashboard-nav .nav-link,
-.manager-dashboard-nav .nav-link-placeholder {
+.manager-dashboard-nav .nav-link {
     text-decoration: none;
-    color: var(--primary-color, #007bff);
+    color: var(--link-color); /* Uses --mv-primary-violet */
     display: block;
-    padding: 5px 0;
+    padding: 6px 0px; /* Adjusted padding */
+    font-size: 0.95rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 .manager-dashboard-nav .nav-link:hover {
-    text-decoration: underline;
-    color: var(--primary-hover-color, #0056b3);
+    color: var(--primary-hover-color); /* Uses --mv-primary-violet-darker */
+    background-color: var(--primary-hover-bg-color); /* Uses --mv-primary-violet-lighter */
+    text-decoration: none; /* Remove underline on hover if bg changes */
+    padding-left: 8px; /* Indent on hover for visual feedback */
+    margin-left: -8px; /* Counteract padding to keep text aligned */
 }
 
 .manager-dashboard-nav .nav-link-placeholder {
-    color: #888;
+    color: var(--text-light); /* Use themed light text color */
     cursor: not-allowed;
+    display: block;
+    padding: 6px 0px;
+    font-size: 0.95rem;
 }
 
 

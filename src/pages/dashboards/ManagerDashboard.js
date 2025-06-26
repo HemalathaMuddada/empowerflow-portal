@@ -104,8 +104,8 @@ function ManagerDashboard() {
         <section className="manager-widgets-section">
           <h3>Key Insights & Widgets</h3>
           <div className="widgets-grid">
-            <TeamQuickSummaryWidget />
-            <ManagerTasksWidget />
+            <div className="widget-tile-violet"><TeamQuickSummaryWidget /></div>
+            <div className="widget-tile-pink"><ManagerTasksWidget /></div>
             {/* Add more manager-specific widgets here as they are developed */}
           </div>
         </section>

@@ -111,16 +111,15 @@ function EmployeeDashboard() {
         </div>
 
         <div className="dashboard-grid">
-          {/* These components will be created in subsequent steps */}
-          <UpcomingHolidays />
-          <LeaveBalances />
-          <MyTasks />
-          <RecentPayslips />
-          <DocumentCenterCard />
-          <CompensationCard />
-          <PerformanceReviewCard />
-          <BirthdaysCard />
-          <AttendanceRegularizationCard />
+          <div className="widget-tile-violet"><UpcomingHolidays /></div>
+          <div className="widget-tile-pink"><LeaveBalances /></div>
+          <div className="widget-tile-green"><MyTasks /></div>
+          <div className="widget-tile-blue"><RecentPayslips /></div>
+          <div className="widget-tile-violet"><DocumentCenterCard /></div>
+          <div className="widget-tile-pink"><CompensationCard /></div>
+          <div className="widget-tile-green"><PerformanceReviewCard /></div>
+          <div className="widget-tile-blue"><BirthdaysCard /></div>
+          <div className="widget-tile-violet"><AttendanceRegularizationCard /></div>
         </div>
       </main>
       <footer className="dashboard-footer">
